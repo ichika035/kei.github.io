@@ -1,0 +1,11 @@
+#hoverText {
+    color: black;
+    text-decoration: none; /* 下線を消す */
+    cursor: pointer;
+}
+
+/* カーソルが乗った時 */
+#hoverText.hover {
+    color: blue;
+    text-decoration: underline;
+}
