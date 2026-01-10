@@ -73,14 +73,6 @@ a { color: inherit; }
   color: blue;
 }
 
-.hero {
-  display: flex;
-  gap: 16px; 
-}
 
-.hero img {
-  width: 50%; 
-  height: auto;
-}
 
 
