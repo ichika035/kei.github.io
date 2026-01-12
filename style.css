@@ -26,6 +26,17 @@ nav a {
 
 nav a:hover { background: #f6f6f6; }
 
+nav a[aria-current="page"] {
+  border: none;
+  padding: 0;
+  color: #999;
+  pointer-events: none;
+}
+
+nav a[aria-current="page"]:hover {
+  background: none;
+}
+
 hr {
   border: none;
   border-top: 1px solid #ddd;
