@@ -86,6 +86,34 @@ a { color: inherit; }
   color: blue;
 }
 
+.social-links {
+  display: flex;
+  gap: 14px;
+  margin-top: 14px;
+  align-items: center;
+}
+
+.social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.social-links a:hover {
+  transform: translateY(-2px);
+  opacity: 0.8;
+}
+
+.social-links img {
+  width: 28px;
+  height: 28px;
+  display: block;
+}
+
+
 
 
 
