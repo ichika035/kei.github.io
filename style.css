@@ -61,7 +61,7 @@ h2 { font-size: 18px; margin: 22px 0 8px; text-decoration: underline; }
   width: 100%;
   max-width: 776px;
   height: auto;
-  border-radius: 10px;
+  border-radius: 0;
   object-fit: cover;
 }
 
