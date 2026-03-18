@@ -91,6 +91,7 @@ a { color: inherit; }
   gap: 14px;
   margin-top: 14px;
   align-items: center;
+  justify-content: center;
 }
 
 .social-links a {
