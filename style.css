@@ -91,7 +91,8 @@ main:has(.page-layout) {
   overflow: hidden;
 }
 
-.sticky-image img {
+.sticky-image img,
+#weather-canvas {
   width: 100%;
   height: 100%;
   object-fit: cover;
