@@ -218,7 +218,122 @@
     });
   }
 
+  function drawMountain(t) {
+    const w = W(), h = H();
+    const snowy = t === 'snow';
 
+    // ── 遠景山（薄墨・雪舟風）──
+    // なだらかなベジェ曲線で山の輪郭を描く
+    const peak1x = w * 0.50, peak1y = h * 0.135;
+    const peak2x = w * 0.20, peak2y = h * 0.31;  // 左奥の山
+    const peak3x = w * 0.82, peak3y = h * 0.27;  // 右奥の山
+
+    // 遠景山（右）
+    ctx.beginPath();
+    ctx.moveTo(w * 0.55, h * 0.65);
+    ctx.bezierCurveTo(w * 0.68, h * 0.55, w * 0.74, h * 0.40, peak3x, peak3y);
+    ctx.bezierCurveTo(w * 0.90, h * 0.40, w * 1.00, h * 0.52, w * 1.02, h * 0.65);
+    ctx.closePath();
+    const rmg = ctx.createLinearGradient(peak3x, peak3y, peak3x, h * 0.65);
+    rmg.addColorStop(0,   snowy ? 'rgba(210,215,220,0.70)' : 'rgba(165,155,138,0.60)');
+    rmg.addColorStop(0.5, 'rgba(100,105,90,0.55)');
+    rmg.addColorStop(1,   'rgba(45,50,35,0.50)');
+    ctx.fillStyle = rmg; ctx.fill();
+
+    // 遠景山（左）
+    ctx.beginPath();
+    ctx.moveTo(w * -0.02, h * 0.65);
+    ctx.bezierCurveTo(w * 0.00, h * 0.52, w * 0.08, h * 0.40, peak2x, peak2y);
+    ctx.bezierCurveTo(w * 0.32, h * 0.40, w * 0.40, h * 0.55, w * 0.46, h * 0.65);
+    ctx.closePath();
+    const lmg = ctx.createLinearGradient(peak2x, peak2y, peak2x, h * 0.65);
+    lmg.addColorStop(0,   snowy ? 'rgba(210,215,220,0.68)' : 'rgba(160,150,135,0.58)');
+    lmg.addColorStop(0.5, 'rgba(95,100,85,0.52)');
+    lmg.addColorStop(1,   'rgba(42,47,32,0.48)');
+    ctx.fillStyle = lmg; ctx.fill();
+
+    // ── メイン富士山形（なめらかS字ライン）──
+    ctx.beginPath();
+    ctx.moveTo(w * 0.10, h * 0.65);
+    // 左裾 → 山頂: なだらかな凹型カーブ
+    ctx.bezierCurveTo(w * 0.18, h * 0.58, w * 0.32, h * 0.38, peak1x, peak1y);
+    // 山頂 → 右裾
+    ctx.bezierCurveTo(w * 0.68, h * 0.38, w * 0.82, h * 0.58, w * 0.90, h * 0.65);
+    ctx.closePath();
+
+    const mg = ctx.createLinearGradient(peak1x, peak1y, peak1x, h * 0.65);
+    if (snowy) {
+      mg.addColorStop(0,    '#E8E4DC');
+      mg.addColorStop(0.12, '#CDD5DF');
+      mg.addColorStop(0.30, '#8A9080');
+      mg.addColorStop(0.55, '#3A4030');
+      mg.addColorStop(1,    '#181E12');
+    } else {
+      mg.addColorStop(0,    '#E2D8C8');
+      mg.addColorStop(0.14, '#A89E8C');
+      mg.addColorStop(0.32, '#626856');
+      mg.addColorStop(0.55, '#363C2A');
+      mg.addColorStop(1,    '#171C10');
+    }
+    ctx.fillStyle = mg; ctx.fill();
+
+    // 山の輪郭線（雪舟の筆跡風：細い墨線）
+    ctx.beginPath();
+    ctx.moveTo(w * 0.10, h * 0.65);
+    ctx.bezierCurveTo(w * 0.18, h * 0.58, w * 0.32, h * 0.38, peak1x, peak1y);
+    ctx.bezierCurveTo(w * 0.68, h * 0.38, w * 0.82, h * 0.58, w * 0.90, h * 0.65);
+    ctx.strokeStyle = 'rgba(18,22,14,0.45)';
+    ctx.lineWidth = 1.2;
+    ctx.stroke();
+
+    // ── 雪線（山頂付近の白い帯）──
+    ctx.beginPath();
+    ctx.moveTo(w * 0.38, h * 0.255);
+    ctx.bezierCurveTo(w * 0.41, h * 0.230, w * 0.46, h * 0.185, peak1x, peak1y);
+    ctx.bezierCurveTo(w * 0.54, h * 0.185, w * 0.59, h * 0.230, w * 0.62, h * 0.255);
+    ctx.strokeStyle = snowy ? 'rgba(245,242,236,0.92)' : 'rgba(210,204,190,0.72)';
+    ctx.lineWidth = snowy ? 2.0 : 1.4;
+    ctx.stroke();
+
+    // 雪帽子のにじみ（墨の濃淡）
+    if (snowy) {
+      ctx.beginPath();
+      ctx.moveTo(w * 0.40, h * 0.245);
+      ctx.bezierCurveTo(w * 0.44, h * 0.200, w * 0.48, h * 0.168, peak1x, peak1y);
+      ctx.bezierCurveTo(w * 0.52, h * 0.168, w * 0.56, h * 0.200, w * 0.60, h * 0.245);
+      ctx.strokeStyle = 'rgba(235,238,242,0.50)';
+      ctx.lineWidth = 4.5;
+      ctx.stroke();
+    }
+
+    // ── 山肌の皴法（かすれた水墨線）──
+    ctx.lineWidth = 0.65;
+    const wrinkles = [
+      // [x0, y0, cx1, cy1, cx2, cy2, x1, y1]
+      [0.42, 0.26, 0.40, 0.33, 0.37, 0.42, 0.34, 0.52],
+      [0.48, 0.22, 0.46, 0.30, 0.44, 0.40, 0.40, 0.52],
+      [0.55, 0.25, 0.56, 0.33, 0.58, 0.41, 0.60, 0.51],
+      [0.60, 0.28, 0.62, 0.36, 0.65, 0.44, 0.68, 0.52],
+      [0.44, 0.30, 0.43, 0.38, 0.41, 0.46, 0.38, 0.58],
+      [0.56, 0.30, 0.58, 0.38, 0.61, 0.46, 0.64, 0.57],
+    ];
+    wrinkles.forEach(([x0, y0, cx1, cy1, cx2, cy2, x1, y1]) => {
+      ctx.beginPath();
+      ctx.moveTo(w * x0, h * y0);
+      ctx.bezierCurveTo(w * cx1, h * cy1, w * cx2, h * cy2, w * x1, h * y1);
+      ctx.strokeStyle = 'rgba(30,35,22,0.20)';
+      ctx.stroke();
+    });
+
+    // ── 霧（fog時）──
+    if (t === 'fog') {
+      const fog = ctx.createLinearGradient(0, h * 0.32, 0, h * 0.62);
+      fog.addColorStop(0, 'rgba(188,200,212,0.78)');
+      fog.addColorStop(1, 'rgba(188,200,212,0)');
+      ctx.fillStyle = fog;
+      ctx.fillRect(0, h * 0.32, w, h * 0.30);
+    }
+  }
 
   function drawWaves(t) {
     const w = W(), h = H(), spd = tick * 0.009;
