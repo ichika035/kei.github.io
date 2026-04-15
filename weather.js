@@ -218,35 +218,7 @@
     });
   }
 
-  function drawMountain(t) {
-    const w = W(), h = H();
-    const snowy = t === 'snow';
-    const mg = ctx.createLinearGradient(w*0.5, h*0.14, w*0.5, h*0.65);
-    mg.addColorStop(0,    '#EAE2D4');
-    mg.addColorStop(0.17, snowy ? '#CCD5E0' : '#ACA090');
-    mg.addColorStop(0.36, '#282E1E');
-    mg.addColorStop(1,    '#101408');
-    ctx.beginPath();
-    ctx.moveTo(w*0.17, h*0.65);
-    ctx.lineTo(w*0.50, h*0.135);
-    ctx.lineTo(w*0.83, h*0.65);
-    ctx.closePath();
-    ctx.fillStyle = mg; ctx.fill();
-    ctx.strokeStyle = 'rgba(8,12,6,0.55)'; ctx.lineWidth = 2; ctx.stroke();
-    ctx.beginPath();
-    ctx.moveTo(w*0.37, h*0.31);
-    ctx.lineTo(w*0.50, h*0.135);
-    ctx.lineTo(w*0.63, h*0.31);
-    ctx.strokeStyle = snowy ? '#FFFFFF' : '#C5BDB0';
-    ctx.lineWidth = 1.6; ctx.stroke();
-    if (t === 'fog') {
-      const fog = ctx.createLinearGradient(0, h*0.35, 0, h*0.65);
-      fog.addColorStop(0, 'rgba(188,200,212,0.72)');
-      fog.addColorStop(1, 'rgba(188,200,212,0)');
-      ctx.fillStyle = fog;
-      ctx.fillRect(0, h*0.35, w, h*0.30);
-    }
-  }
+
 
   function drawWaves(t) {
     const w = W(), h = H(), spd = tick * 0.009;
