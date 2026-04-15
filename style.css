@@ -68,7 +68,99 @@ h2 { font-size: 18px; margin: 22px 0 8px; text-decoration: underline; }
 .muted { color: #444; }
 .block { margin: 12px 0; }
 a { color: inherit; }
+main a:hover { color: #0066cc; }
 .list { text-align: center; }
+
+/* 2カラムレイアウト (Behance風) */
+.page-layout {
+  display: flex;
+  gap: 40px;
+  align-items: stretch;
+  height: calc(100vh - 220px);
+  overflow: hidden;
+}
+
+main:has(.page-layout) {
+  max-width: min(1400px, calc(100% - 48px));
+  padding: 0 24px 40px;
+  overflow: hidden;
+}
+
+.sticky-image {
+  flex: 0 0 50%;
+  overflow: hidden;
+}
+
+.sticky-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.scroll-content {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.scroll-content .list {
+  text-align: left;
+  /* スクロールバー: 細くシンプルに (Firefox) */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.18) transparent;
+}
+
+/* スクロールバー: Webkit (Chrome / Safari / Edge) */
+.scroll-content::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scroll-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-content::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+  border-radius: 2px;
+}
+
+.scroll-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.38);
+}
+
+/* モバイル: 上に画像・下にテキストの従来レイアウトに戻す */
+@media (max-width: 640px) {
+  .page-layout {
+    flex-direction: column;
+    height: auto;
+    overflow: visible;
+  }
+
+  main:has(.page-layout) {
+    max-width: var(--max);
+    padding: 0 16px 40px;
+    overflow: visible;
+  }
+
+  .sticky-image {
+    flex: none;
+    width: 100%;
+    height: auto;
+  }
+
+  .sticky-image img {
+    height: auto;
+    object-fit: cover;
+  }
+
+  .scroll-content {
+    overflow-y: visible;
+    text-align: center;
+  }
+}
 
 
 .underline {
