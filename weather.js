@@ -1,7 +1,7 @@
 /* weather.js
  * 水墨画パーティクルシステム
  * 暗背景に白〜灰のパーティクル群で墨の濃淡を表現
- * + 攻殻機動隊 ARISE 風 HUD
+ 
  */
 (async function () {
   'use strict';
