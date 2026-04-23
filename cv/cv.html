@@ -21,7 +21,7 @@
 
     @page {
       size: A4;
-      margin: 24mm 26mm 26mm;
+      margin: 14mm 10mm 14mm;   /* 紙色の網掛けを紙面端までひろげる */
     }
 
     * { box-sizing: border-box; }
@@ -43,7 +43,9 @@
 
     /* ---------------------------------------------------------- container */
     .cv {
-      max-width: 158mm; /* A4 210 − margin 26mm × 2 = 158mm ぴったりで余白を確保 */
+      /* body 背景 (網掛け) は printable area いっぱい (≒190mm)。
+         .cv はそれより狭くして、両側に cream の余白が出るようにする */
+      max-width: 162mm;
       margin: 0 auto;
       padding: 0;
     }
