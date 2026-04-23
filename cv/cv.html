@@ -21,7 +21,7 @@
 
     @page {
       size: A4;
-      margin: 18mm 18mm 20mm;
+      margin: 24mm 26mm 26mm;
     }
 
     * { box-sizing: border-box; }
@@ -43,7 +43,7 @@
 
     /* ---------------------------------------------------------- container */
     .cv {
-      max-width: 180mm;
+      max-width: 158mm; /* A4 210 − margin 26mm × 2 = 158mm ぴったりで余白を確保 */
       margin: 0 auto;
       padding: 0;
     }
@@ -233,7 +233,6 @@
     <div>
       <p class="eyebrow">Curriculum Vitae</p>
       <h1 class="name">Kei Ichikawa</h1>
-      <p class="subname">市川 慧</p>
     </div>
     <div class="header-contact">
       Email: <a href="mailto:ichikawa.k.25a5@m.isct.ac.jp">ichikawa.k.25a5[at]m.isct.ac.jp</a>
@@ -477,7 +476,7 @@
     </div>
   </section>
 
-  <!-- ============================================== Presentations -->
+  <!-- ============================================== Conference Talks -->
   <section class="cv-section">
     <div class="side">
       <p class="eyebrow">Talks</p>
@@ -509,7 +508,16 @@
         </li>
       </ul>
 
-      <p class="subhead">Journal paper (peer-reviewed)</p>
+    </div>
+  </section>
+
+  <!-- ============================================== Journal Papers -->
+  <section class="cv-section">
+    <div class="side">
+      <p class="eyebrow">Publications</p>
+      <h2 class="section-title">Journal Papers (peer-reviewed)</h2>
+    </div>
+    <div class="body">
       <ul class="items">
         <li>
           <div class="item-meta"><p>[1]</p><p>2025</p></div>
@@ -531,7 +539,6 @@
           </div>
         </li>
       </ul>
-
     </div>
   </section>
 

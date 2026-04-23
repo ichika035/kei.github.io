@@ -3,55 +3,91 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kei Ichikawa</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>存在の兆し (2022) — Kei Ichikawa</title>
+  <meta name="description" content="存在の兆し (2022) — 音に呼応して LED とディスプレイの模様が描画される、焚き火をイメージした作品。" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style-jp.css">
 </head>
+
 <body>
-  <header>
-
-    <h1>存在の兆し (2022)</h1>
-  </header>
-  
-  <hr />
-
-  <main>
-  <div class="hero">
-  <iframe 
-    width="560" 
-    height="315" 
-    src="https://www.youtube.com/embed/1cJf-16FWxI?si=NSX0jloeL6QjpH-2" 
-    title="YouTube video player" 
-    frameborder="0" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-    referrerpolicy="strict-origin-when-cross-origin" 
-    allowfullscreen>
-    
-  </iframe>
-  </div>
-
-
-    
-
-    <div class="block">
-    音に呼応するように小型LEDが発光し、背景のディスプレイに赤い斑点のような模様がコンピュータによって描画される。ディスプレイに描画される模様は消えることなく、音が流れ続ける限り描かれ続け、一度として同じ場所に描画されることはない。
-    本作品は人の存在感をテーマに焚き火をイメージして創作した。ここに火はなくとも、映し出されるものがある。聞こえてくるものが焚き火とはかけ離れたものであっても、私たちはそこから人の存在と火のぬくもりを感じることができる。
-    
-      
-
-
+  <header class="site-header">
+    <div class="row">
+      <a href="./jp.html" class="brand">Kei Ichikawa</a>
+      <nav class="nav" aria-label="Main">
+        <a href="./index.html" class="underline-quiet">English</a>
+        <a href="./jp.html" class="underline-quiet">日本語</a>
+        <a href="./works.html" class="underline-quiet">今日の天気は?</a>
+      </nav>
     </div>
+    <div class="rule"></div>
+  </header>
 
+  <!-- Hero -->
+  <section class="section">
+    <a href="./works.html" class="back-link underline-quiet">← Works</a>
+    <p class="eyebrow">2022 · Work</p>
+    <h1 class="hero-title" style="margin-top: 1rem;">存在の兆し</h1>
+  </section>
 
-    
-  <div class="muted">
-    Copyright ©︎ Kei Ichikawa All Rights Reserved. 
-  </div>  
-<script src="./script.js"></script>
+  <div class="rule"></div>
 
-  </main>
+  <!-- Video -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Video</p>
+      </div>
+      <div class="col-body">
+        <div class="media-video">
+          <iframe
+            src="https://www.youtube.com/embed/1cJf-16FWxI"
+            title="存在の兆し"
+            width="560"
+            height="315"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allowfullscreen
+            loading="lazy">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <div class="rule"></div>
 
+  <!-- About -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">About</p>
+        <h2 class="headline">作品について</h2>
+      </div>
+      <div class="col-body">
+        <p class="lead" style="margin-top:0">
+          音に呼応するように小型 LED が発光し、背景のディスプレイに赤い斑点のような模様がコンピュータによって描画される。ディスプレイに描画される模様は消えることなく、音が流れ続ける限り描かれ続け、一度として同じ場所に描画されることはない。
+        </p>
+        <p class="lead">
+          本作品は人の存在感をテーマに焚き火をイメージして創作した。ここに火はなくとも、映し出されるものがある。聞こえてくるものが焚き火とはかけ離れたものであっても、私たちはそこから人の存在と火のぬくもりを感じることができる。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="rule"></div>
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Kei Ichikawa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
-  
 </html>

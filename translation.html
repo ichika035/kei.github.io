@@ -3,44 +3,87 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kei Ichikawa</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>Translation (2024) — Kei Ichikawa</title>
+  <meta name="description" content="Translation (2024) — 生活音をフーリエ変換して二次元座標空間に描画した作品。" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style-jp.css">
 </head>
+
 <body>
-  <header>
-
-    <h1>Translation (2024)</h1>
+  <header class="site-header">
+    <div class="row">
+      <a href="./jp.html" class="brand">Kei Ichikawa</a>
+      <nav class="nav" aria-label="Main">
+        <a href="./index.html" class="underline-quiet">English</a>
+        <a href="./jp.html" class="underline-quiet">日本語</a>
+        <a href="./works.html" class="underline-quiet">今日の天気は?</a>
+      </nav>
+    </div>
+    <div class="rule"></div>
   </header>
-  <hr />
 
-  <main>
-    <div class="hero">
-      <img src="transition_2.png" alt="img_en">
+  <!-- Hero -->
+  <section class="section">
+    <a href="./works.html" class="back-link underline-quiet">← Works</a>
+    <p class="eyebrow">2024 · Work</p>
+    <h1 class="hero-title" style="margin-top: 1rem;">Translation</h1>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Image -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Work</p>
+      </div>
+      <div class="col-body" style="display: grid; gap: 1.5rem;">
+        <div class="media-image">
+          <img src="./transition_1.png" alt="Translation — フーリエ変換された生活音の描画 (4/26)">
+        </div>
+        <div class="media-image">
+          <img src="./transition_2.png" alt="Translation — フーリエ変換された生活音の描画 (4/27)">
+        </div>
+      </div>
     </div>
+  </section>
 
-    
+  <div class="rule"></div>
 
-    <div class="block">
-生活音をフーリエ変換して二次元座標空間に描画した。そのうちの一枚は油絵用の麻のキャンバスにUVプリントしている。
-２枚目の写真は4/26のもの、３枚目の写真は4/27のもの。それぞれほぼ丸一日生活音の採取を行い、その期間自宅のみで生活した。
-<br>
-いつもの自分とは違った、それでいて自分に他ならない、銀河系のような人間の形。
-      
-
-
+  <!-- About -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">About</p>
+        <h2 class="headline">作品について</h2>
+      </div>
+      <div class="col-body">
+        <p class="lead" style="margin-top:0">
+          生活音をフーリエ変換して二次元座標空間に描画した。そのうちの一枚は油絵用の麻のキャンバスに UV プリントしている。
+        </p>
+        <p class="lead">
+          2 枚目の写真は 4/26 のもの、3 枚目の写真は 4/27 のもの。それぞれほぼ丸一日生活音の採取を行い、その期間は自宅のみで生活した。
+        </p>
+        <p class="lead">
+          いつもの自分とは違った、それでいて自分に他ならない、銀河系のような人間の形。
+        </p>
+      </div>
     </div>
+  </section>
 
+  <footer class="footer">
+    <div class="rule"></div>
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Kei Ichikawa. All rights reserved.</p>
+    </div>
+  </footer>
 
-    
-  <div class="muted">
-    Copyright ©︎ Kei Ichikawa All Rights Reserved. 
-  </div>  
-<script src="./script.js"></script>
-
-  </main>
-
-
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
-  
 </html>

@@ -63,6 +63,22 @@
 
   <div class="rule"></div>
 
+  <!-- News (auto-populated from Papers / Talks) -->
+  <section class="section" id="news">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">News</p>
+        <h2 class="headline">News</h2>
+      </div>
+      <div class="col-body">
+        <ul class="news-list" id="news-list" aria-live="polite"></ul>
+        <p class="news-empty">No recent updates.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
   <!-- Research themes -->
   <section class="section">
     <div class="section-grid">
@@ -108,14 +124,14 @@
   <div class="rule"></div>
 
   <!-- Papers -->
-  <section class="section">
+  <section class="section" id="papers">
     <div class="section-grid">
       <div class="col-side">
         <p class="eyebrow">Papers</p>
         <h2 class="headline">Publications</h2>
       </div>
       <div class="col-body">
-        <ul class="items items-scroll">
+        <ul class="items items-scroll" id="papers-list">
           <li class="item">
             <div class="item-meta">
               <p>2025</p>
@@ -151,14 +167,14 @@
   <div class="rule"></div>
 
   <!-- Talks -->
-  <section class="section">
+  <section class="section" id="talks">
     <div class="section-grid">
       <div class="col-side">
         <p class="eyebrow">Talks</p>
         <h2 class="headline">Conferences</h2>
       </div>
       <div class="col-body">
-        <ul class="items items-scroll">
+        <ul class="items items-scroll" id="talks-list">
           <li class="item">
             <div class="item-meta">
               <p>2026</p>
@@ -342,5 +358,6 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script src="./news.js"></script>
 </body>
 </html>
