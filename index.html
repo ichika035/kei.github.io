@@ -1,215 +1,346 @@
 <!doctype html>
-<html lang="ja">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Kei Ichikawa</title>
-  <link rel="stylesheet" href="./style.css">
+  <meta name="description" content="Kei Ichikawa — PhD candidate at Institute of Science Tokyo. Computational social science, disinformation and deepfakes." />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style-jp.css">
 </head>
-<body>
-  <header>
-    <nav>
-      <!-- <a href="./">English</a> -->
-      <a href="./index.html" aria-current="page">English</a>
-      <a href="./jp.html">日本語</a> 
-      <!-- <a href="./K_Ichikawa_cv_20251230.pdf" target="_blank" rel="noopener">CV</a> -->
-      <!-- <a href="https://scholar.google.co.jp/citations?user=0dLpP_4AAAAJ&hl=ja" target="_blank" rel="noopener">Google Scholar</a> -->
-      <!-- <a href="https://nicelinks.net/home" target="_blank" rel="noopener">Nicelinks</a> -->
-      <a href="./works.html">How's the weather?</a>
-    </nav>
 
-    <h1>Kei Ichikawa</h1>
-    
+<body>
+  <header class="site-header">
+    <div class="row">
+      <a href="./index.html" class="brand">Kei Ichikawa</a>
+      <nav class="nav" aria-label="Main">
+        <a href="./index.html" aria-current="page">English</a>
+        <a href="./jp.html" class="underline-quiet">日本語</a>
+        <a href="./works.html" class="underline-quiet">How's the weather?</a>
+      </nav>
+    </div>
+    <div class="rule"></div>
   </header>
 
-  <hr />
-
-  <main>
-    <div class="page-layout">
-      <div class="sticky-image">
-        <img src="img_en.jpg" alt="img_en">
-      </div>
-      <div class="scroll-content">
-
-    <div class="block">
-      
-      <h2>Kei Ichikawa</h2>
-      
-      <div class="muted">I'm PhD candidate at Institute of Science Tokyo(Former Tokyo Institute of Technology), under the supervision of <br>
-        <a href="https://researchmap.jp/colorlessgreen?lang=en" class="hoverText">Prof. Kazutoshi Sasahara</a>. <br>
-      I'm studying how technology reshapes online human behaviour. Currently my work focus on how social media environments and artificial intelligence can either support or weaken resilience against disinformation and misinformation in online environments.
-      
-      <br>
-      I received my Master's degree from Tokyo Institute of Technology, mentored by <a href="https://researchmap.jp/colorlessgreen?lang=en" class="hoverText">Prof. Kazutoshi Sasahara</a>.
-      </div>
-      <div>
-        <br>
-        I welcome inquires about my works and potential collaborations. <br>
-        <a>ichikawa.k.25a5[at]m.isct.ac.jp</a>
-      </div>
-    </div>
-
-    <div class="block">
-      <!-- <a href="https://drive.google.com/file/d/10ewLh2D06WCE1SJ3l0klzRBpvq0OjG_8/view?usp=drive_link" target="_blank" rel="noopener">CV</a> -->
-      CV
+  <!-- Hero -->
+  <section class="section section--hero">
+    <h1 class="hero-title">Kei Ichikawa</h1>
+    <p class="lead">
+      I'm PhD candidate at Institute of Science Tokyo (Former Tokyo Institute of Technology), under the supervision of <a class="underline-quiet" href="https://www.colorlessgreen.info/" target="_blank" rel="noopener">Prof. Kazutoshi Sasahara</a>. I'm studying how technology reshapes online human behaviour. Currently my work focus on how social media environments and artificial intelligence can either support or weaken resilience against disinformation and misinformation in online environments.
+    </p>
+    <p class="lead lead--sm">
+      <a class="underline-quiet" href="./cv/cv.pdf" target="_blank" rel="noopener">CV</a>
       <span class="muted"> / with a full list of papers</span>
+    </p>
+
+    <div class="hero-links">
+      <a href="mailto:ichikawa.k.25a5@m.isct.ac.jp" class="underline-quiet">
+        ichikawa.k.25a5[at]m.isct.ac.jp
+      </a>
     </div>
 
-    
-  <div class="social-links" aria-label="Social media links">
-    <a href="https://speakerdeck.com/ichika035" target="_blank" rel="noopener" aria-label="SpeakerDeck">
-      <img src="./speakerdeck.png" alt="SpeakerDeck">
-    </a>
-    <a href="https://scholar.google.co.jp/citations?user=0dLpP_4AAAAJ&hl=ja&oi=ao" target="_blank" rel="noopener" aria-label="Google Scholar">
-      <img src="./google_scholar.png" alt="Google Scholar">
-    </a>
-    <a href="https://www.facebook.com/share/1AjPTX6ruS/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
-      <img src="./fb.png" alt="Facebook">
-    </a>
-    
-  </div>
-
-    <hr />
-
-      
-    <h2>Research Themes</h2>
-    
-    <div class="list">Computational Social Science</div>
-    <div class="list">Disinformation &amp; Misinformation, Deepfakes, Internet meme</div>
-
-   <hr>
-    
-    <h2>Research Methods</h2>
-    
-    <div class="list">Image detection, Software engneering</div>
-    <div class="list">Survey-based data collection and analysis, Machine learning</div>
-    
-   <hr>
-    <h2>Recent Papers</h2>
-    
-    <div class="block">
-      <a href="https://osf.io/preprints/osf/tnmyv_v1"
-         target="_blank" rel="noreferrer noopener">
-        Domain-specific emotional effects of deepfakes on news-sharing behaviour<br>(Under review, 2026)
+    <div class="social" aria-label="Social links">
+      <a href="https://speakerdeck.com/ichika035" target="_blank" rel="noopener" aria-label="SpeakerDeck">
+        <img src="./speakerdeck.png" alt="SpeakerDeck">
       </a>
-      <div class="muted">
-        <span class="underline">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara
+      <a href="https://scholar.google.co.jp/citations?user=0dLpP_4AAAAJ&hl=ja&oi=ao" target="_blank" rel="noopener" aria-label="Google Scholar">
+        <img src="./google_scholar.png" alt="Google Scholar">
+      </a>
+      <a href="https://www.facebook.com/share/1AjPTX6ruS/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+        <img src="./fb.png" alt="Facebook">
+      </a>
+      <a href="https://x.com/KIchikawa785482" target="_blank" rel="noopener" aria-label="X (@KIchikawa785482)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Research themes -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Research</p>
+        <h2 class="headline">Research Themes</h2>
+      </div>
+      <div class="col-body">
+        <ol class="keywords">
+          <li>Computational Social Science</li>
+          <li>Disinformation</li>
+          <li>Deepfakes</li>
+          <li>Internet Memes</li>
+          <li>Information Behaviour</li>
+          <li>Belief Formation</li>
+        </ol>
       </div>
     </div>
-    
-    <div class="block">
-      <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1574840/full"
-         target="_blank" rel="noreferrer noopener">
-        False failures, real distrust: the impact of an infrastructure failure deepfake on government trust (Front. Psychol,2025)
-      </a>
-      <div class="muted">
-        Saifuddin Ahmed, Muhammad Masood, Adeline Wei Ting Bee, <span class="underline">Kei Ichikawa</span>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Methods -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Methods</p>
+        <h2 class="headline">Research Methods</h2>
+      </div>
+      <div class="col-body">
+        <ol class="keywords">
+          <li>Online Experiments</li>
+          <li>Large-scale Data Analysis</li>
+          <li>Image Recognition</li>
+          <li>Image Generation</li>
+          <li>Machine Learning</li>
+          <li>Statistical Modelling</li>
+        </ol>
       </div>
     </div>
-    
-    <hr />
+  </section>
 
-    <h2>Conference</h2>
-    
-    <div class="block">
-      <span style="text-decoration: underline;">
-      How Emotion Shapes the Sharing of AI-Generated Images: Findings from an Online Experiment
-     </span>
-    
-    <div class="muted">
-        <span class="underline">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara
-    </div>    
-      
-    <div class="muted">
-      47th Hawai International Conference on System Sciences (HICSS-58), <br>
-      Hilton Waikoloa, Big Island,USA.
-    </div>            
-    </div>
+  <div class="rule"></div>
 
-    
-    <div class="block">
-      <span style="text-decoration: underline;">
-        The Emotional Levers of AI-generated Content
-      </span>
-    
-    <div class="muted">
-        <span class="underline">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara
-    </div>
-      
-    <div class="muted">
-      Paper presented at the annual meeting of the  <br>
-      International Conference on Computational Social Science (IC2S2).Philadelphia,USA.
-    </div>            
-    </div>
-
-  <hr>
-      
-    <h2>Awards</h2>
-    <div class="block">
-      <span style="text-decoration: underline;">
-       2024 Master thesis excellence awards
-      </span>
-    
-    <div class="muted">
-       Tokyo Institute of Technology
-    </div>
-      
-     <div class="block">
-      <span style="text-decoration: underline;"><a href="https://award.tech-director.org/winner01" target="_blank" rel="noreferrer noopener">
-      2024 Tech Direction Awards R&D/Prototype department Bronze award
-      </a>
-      </span>
-       
-    <div class="muted">
-      TECH DIRECTOR’S ASSOCIATION
-    </div>
-       
-    
-    
-<hr />
-    <h2>Academic service</h2>
-    
-    <div class="block">
-      2025-now　Organizer　<br><a href="https://sites.google.com/view/web-socialmedia-study/home" target="_blank" rel="noreferrer noopener">
-        Journal Club of Web and Social Media in Japan
-      </a>
-        
-    </div>
-
-    <div class="block">
-        2023 Teaching Assistant<br>
-        Cource: Study design in user research. Tokyo Institute of Technology
-      
-    </div>
-
-    <hr />
-    
-    <h2>Jobs</h2>
-    
-    <div class="block">
-      2025-now
-      <a href="https://nicelinks.net/home" target="_blank" rel="noreferrer noopener">
-        NiceLinks
-      </a>
-      Platform Administrator
-    </div>
-
-    <div class="block">
-      2024-now Full time software developer in Japan
-    </div>
-    
-    
-      <div class="muted">
-        Copyright ©︎ Kei Ichikawa All Rights Reserved.
+  <!-- Papers -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Papers</p>
+        <h2 class="headline">Publications</h2>
       </div>
-      </div><!-- /.scroll-content -->
-    </div><!-- /.page-layout -->
-<script src="./script.js"></script>
+      <div class="col-body">
+        <ul class="items items-scroll">
+          <li class="item">
+            <div class="item-meta">
+              <p>2025</p>
+              <p>Journal</p>
+            </div>
+            <div class="item-body">
+              <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1574840/full" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">False failures, real distrust: the impact of an infrastructure failure deepfake on government trust</h3>
+              </a>
+              <p class="item-authors">Saifuddin Ahmed, Muhammad Masood, Adeline Wei Ting Bee, <span class="me">Kei Ichikawa</span></p>
+              <p class="item-venue">Frontiers in Psychology</p>
+            </div>
+          </li>
 
-  </main>
+          <li class="item">
+            <div class="item-meta">
+              <p>2025</p>
+              <p>Preprint</p>
+            </div>
+            <div class="item-body">
+              <a href="https://osf.io/preprints/osf/tnmyv_v1" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">Domain-specific emotional effects of deepfakes on news-sharing behaviour</h3>
+              </a>
+              <p class="item-authors"><span class="me">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara</p>
+              <p class="item-venue">OSF Preprint (Under review)</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
+  <div class="rule"></div>
 
+  <!-- Talks -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Talks</p>
+        <h2 class="headline">Conferences</h2>
+      </div>
+      <div class="col-body">
+        <ul class="items items-scroll">
+          <li class="item">
+            <div class="item-meta">
+              <p>2026</p>
+              <p>Domestic</p>
+            </div>
+            <div class="item-body">
+              <h3 class="item-title">A study on how internet memes evoke in-group identity and affective polarisation</h3>
+              <p class="item-authors"><span class="me">Kei Ichikawa</span>, Aoi Naito, Jiayu Chen, Kazutoshi Sasahara</p>
+              <p class="item-venue">5th Annual Meeting of Computational Social Science Japan</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta">
+              <p>2025</p>
+              <p>International</p>
+            </div>
+            <div class="item-body">
+              <h3 class="item-title">How Emotion Shapes the Sharing of AI-Generated Images: Findings from an Online Experiment</h3>
+              <p class="item-authors"><span class="me">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara</p>
+              <p class="item-venue">HICSS-58 — Hilton Waikoloa, Big Island, USA</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta">
+              <p>2024</p>
+              <p>International</p>
+            </div>
+            <div class="item-body">
+              <h3 class="item-title">The Emotional Levers of AI-generated Content</h3>
+              <p class="item-authors"><span class="me">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara</p>
+              <p class="item-venue">IC2S2 2024 — Philadelphia, USA</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta">
+              <p>2024</p>
+              <p>Domestic</p>
+            </div>
+            <div class="item-body">
+              <h3 class="item-title">Survey experiment on news-sharing behaviour for generative-AI content</h3>
+              <p class="item-authors"><span class="me">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara</p>
+              <p class="item-venue">38th Annual Conference of the Japanese Society for Artificial Intelligence</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Awards -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Awards</p>
+        <h2 class="headline">Awards</h2>
+      </div>
+      <div class="col-body">
+        <ul class="items items-scroll">
+          <li class="item">
+            <div class="item-meta"><p>2024</p></div>
+            <div class="item-body">
+              <h3 class="item-title">Master Thesis Excellence Award</h3>
+              <p class="item-venue">Tokyo Institute of Technology</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2024</p></div>
+            <div class="item-body">
+              <a href="https://award.tech-director.org/winner01" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">Tech Direction Awards — R&amp;D / Prototype, Bronze</h3>
+              </a>
+              <p class="item-venue">Tech Directors Association</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Service -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Service</p>
+        <h2 class="headline">Academic Service</h2>
+      </div>
+      <div class="col-body">
+        <ul class="items items-scroll">
+          <li class="item">
+            <div class="item-meta"><p>2025 – now</p></div>
+            <div class="item-body">
+              <a href="https://sites.google.com/view/web-socialmedia-study/home" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">Journal Club of Web and Social Media in Japan</h3>
+              </a>
+              <p class="item-venue">Organiser</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2023</p></div>
+            <div class="item-body">
+              <h3 class="item-title">Teaching Assistant</h3>
+              <p class="item-venue">Study Design in User Research — Tokyo Institute of Technology</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Work -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Work</p>
+        <h2 class="headline">Current Positions</h2>
+      </div>
+      <div class="col-body">
+        <ul class="items items-scroll">
+          <li class="item">
+            <div class="item-meta"><p>2025 – now</p></div>
+            <div class="item-body">
+              <a href="https://nicelinks.net/home" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">NiceLinks</h3>
+              </a>
+              <p class="item-venue">Platform Administrator</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2024 – now</p></div>
+            <div class="item-body">
+              <h3 class="item-title">Full-time Software Developer</h3>
+              <p class="item-venue">Japan</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Contact CTA -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-body">
+        <p class="eyebrow">Contact</p>
+        <h2 class="headline">Get in touch</h2>
+        <p class="lead muted">
+          For research inquiries, potential collaborations or questions, please feel free to reach out.
+        </p>
+      </div>
+      <div class="col-side">
+        <div class="contact-cta">
+          <a href="mailto:ichikawa.k.25a5@m.isct.ac.jp" class="button">
+            ichikawa.k.25a5[at]m.isct.ac.jp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="rule"></div>
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Kei Ichikawa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
-  
 </html>

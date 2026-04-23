@@ -3,245 +3,366 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kei Ichikawa</title>
-  <link rel="stylesheet" href="./style.css">
+  <title>市川慧 — Kei Ichikawa</title>
+  <meta name="description" content="市川慧（東京科学大学 環境・社会理工学院）の個人サイト。計算社会科学、偽・誤情報、ディープフェイクに関する研究。" />
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style-jp.css">
 </head>
-<body>
-  <header>
-    <nav>
-      <!-- <a href="./">English</a> -->
-      <a href="./index.html">English</a>
-      <a href="./ja.html" aria-current="page">日本語</a> 
-      <!-- <a href="./K_Ichikawa_cv_20251230.pdf" target="_blank" rel="noopener">CV</a> -->
-      <!-- <a href="https://scholar.google.co.jp/citations?user=0dLpP_4AAAAJ&hl=ja" target="_blank" rel="noopener">Google Scholar</a> -->
-      <!-- <a href="https://nicelinks.net/home" target="_blank" rel="noopener">Nicelinks</a> -->
-      <a href="./works.html">今日の天気は？</a>
-    </nav>
 
-    <h1>Kei Ichikawa</h1>
+<body>
+  <header class="site-header">
+    <div class="row">
+      <a href="./jp.html" class="brand">Kei Ichikawa</a>
+      <nav class="nav" aria-label="Main">
+        <a href="./index.html" class="underline-quiet">English</a>
+        <a href="./jp.html" aria-current="page">日本語</a>
+        <a href="./works.html" class="underline-quiet">今日の天気は?</a>
+      </nav>
+    </div>
+    <div class="rule"></div>
   </header>
 
-  <hr />
+  <!-- Hero -->
+  <section class="section section--hero">
+    <p class="eyebrow">Kei Ichikawa</p>
+    <h1 class="hero-title">市川 慧</h1>
+    <p class="lead">
+      市川慧（<a class="underline-quiet" href="https://www.colorlessgreen.info/" target="_blank" rel="noopener">東京科学大学 環境・社会理工学院</a>）の個人サイトです。
+      オンライン上で不確実な情報が拡散される状況下で、技術導入によって人の行動・意思決定をどのように支援できるかを、
+      実験や大規模データ解析を用いて研究しています。主に画像を用いた偽・誤情報の拡散と信念形成に注目しています。
+    </p>
+    <p class="lead lead--sm">
+      何か気になる点や共同研究のご依頼などがありましたら、お気軽にご連絡ください.
+    </p>
 
-  <main>
-    <div class="page-layout">
-      <div class="sticky-image">
-        <img src="img_works.jpg" alt="img_jp">
-      </div>
-      <div class="scroll-content">
+    <div class="hero-links">
+      <a href="mailto:ichikawa.k.25a5@m.isct.ac.jp" class="underline-quiet">
+        ichikawa.k.25a5[at]m.isct.ac.jp
+      </a>
+    </div>
 
-    <div class="block">
-      
-      <div class="muted">市川慧(
-            <a href="https://www.colorlessgreen.info/"
-         target="_blank" rel="noreferrer noopener">
-        東京科学大学(旧:東京工業大学) 環境・社会理工学院</a>)の個人サイトです.
-      </div>
-      <div>
-        <br>
-        オンライン上で不確実な情報が拡散される状況下で、技術導入によって人の行動・意思決定をどのように支援できるかを、実験や大規模データ解析を用いて研究しています.<br>
-        主に画像を用いた偽誤情報の拡散・信念に注目して研究しています.
-        <br>
-        <br>
-        何か気になる点や共同研究のご依頼などがありましたら、お気軽にご連絡ください.
-        <a>ichikawa.k.25a5[at]m.isct.ac.jp</a>
-      </div>
-
-    <div class="social-links" aria-label="Social media links">
+    <div class="social" aria-label="Social links">
       <a href="https://speakerdeck.com/ichika035" target="_blank" rel="noopener" aria-label="SpeakerDeck">
         <img src="./speakerdeck.png" alt="SpeakerDeck">
       </a>
       <a href="https://scholar.google.co.jp/citations?user=0dLpP_4AAAAJ&hl=ja&oi=ao" target="_blank" rel="noopener" aria-label="Google Scholar">
         <img src="./google_scholar.png" alt="Google Scholar">
       </a>
-    <a href="https://www.facebook.com/share/1AjPTX6ruS/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
-      <img src="./fb.png" alt="Facebook">
-    </a>  
-    </div>
-    </div>
-
-
-
-    <hr />
-    
-    <h2>研究テーマ・関心</h2>
-    <div class="list">計算社会科学</div>
-    <div class="list">偽・誤情報 &amp; ディープフェイク, インターネットミーム</div>
-
-    <hr>
-    
-    <h2>研究手法</h2>
-    <div class="list">画像認識,画像生成</div>
-    <div class="list">コンピュータを用いたオンライン実験, 機械学習手法を用いた大規模データの解析</div>
-
-      <hr>
-    <h2>学術論文</h2>
-    <div class="block">
-      <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1574840/full"
-         target="_blank" rel="noreferrer noopener">
-        False failures, real distrust: the impact of an infrastructure failure deepfake on government trust (Front. Psychol)
+      <a href="https://www.facebook.com/share/1AjPTX6ruS/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+        <img src="./fb.png" alt="Facebook">
       </a>
-      <div class="muted">
-        Saifuddin Ahmed, Muhammad Masood, Adeline Wei Ting Bee, <span class="underline">Kei Ichikawa</span>
+      <a href="https://x.com/KIchikawa785482" target="_blank" rel="noopener" aria-label="X (@KIchikawa785482)">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Research themes -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Research</p>
+        <h2 class="headline">研究テーマ・関心</h2>
+      </div>
+      <div class="col-body">
+        <ol class="keywords">
+          <li>計算社会科学</li>
+          <li>偽・誤情報</li>
+          <li>ディープフェイク</li>
+          <li>インターネットミーム</li>
+          <li>情報行動</li>
+          <li>信念形成</li>
+        </ol>
       </div>
     </div>
-    
-    <div class="block">
-      <a href="https://osf.io/preprints/osf/tnmyv_v1"
-         target="_blank" rel="noreferrer noopener">
-        Domain-specific emotional effects of deepfakes on news-sharing behaviour(Under review)
-      </a>
-      <div class="muted">
-        <span class="underline">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Methods -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Methods</p>
+        <h2 class="headline">研究手法</h2>
+      </div>
+      <div class="col-body">
+        <ol class="keywords">
+          <li>オンライン実験</li>
+          <li>大規模データ解析</li>
+          <li>画像認識</li>
+          <li>画像生成</li>
+          <li>機械学習</li>
+          <li>統計モデリング</li>
+        </ol>
       </div>
     </div>
-    
-  <hr />
-    <h2>国際/国内会議</h2>
-    <div class="block">
-      <span style="text-decoration: underline;">
-      インターネットミームが内集団意識の喚起と感情的分極化に与える影響に関する考察
-      </span>
-    
-    <div class="muted">
-        <span class="underline">市川慧</span>, 内藤碧, 陳佳玉, 笹原和俊
-    </div>
-      
-    <div class="muted">
-      第5回 計算社会科学会大会 (2026)
-    </div>  
-      
-    
-    <div class="block">
-      <span style="text-decoration: underline;">
-      How Emotion Shapes the Sharing of AI-Generated Images: Findings from an Online Experiment
-     </span>
-    
-    <div class="muted">
-        <span class="underline">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara
-    </div>    
-      
-    <div class="muted">
-      47th Hawai International Conference on System Sciences (HICSS-58) 2025, <br>
-      Hilton Waikoloa, Big Island,USA.
-    </div>            
-    </div>
+  </section>
 
-    
-    <div class="block">
-      <span style="text-decoration: underline;">
-        The Emotional Levers of AI-generated Content
-      </span>
-    
-    <div class="muted">
-        <span class="underline">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara
-    </div>
-      
-    <div class="muted">
-      Paper presented at the annual meeting of the  <br>
-      International Conference on Computational Social Science (IC2S2) 2024.Philadelphia,USA.
-    </div>  
+  <div class="rule"></div>
 
-    <div class="block">
-      <span style="text-decoration: underline;">
-        生成 AI によるニュースの共有行動に関するサーベイ実験
-      </span>
-    
-    <div class="muted">
-        <span class="underline">市川慧</span>, 陳佳玉, 笹原和俊
-    </div>
-      
-    <div class="muted">
-      第38回 人工知能学会全国大会 (2024)
-    </div>  
-      
-  <hr>
-      
-    <h2>受賞</h2>
-    <div class="block">
-      <span style="text-decoration: underline;">
-       2024 東京工業大学　環境・社会理工学院　技術経営専門職学位課程 優秀発表賞
-      </span>
-    
-    <div class="muted">
-       東京工業大学
-    </div>
-      
-     <div class="block">
-      <span style="text-decoration: underline;"><a href="https://award.tech-director.org/winner01" target="_blank" rel="noreferrer noopener">
-       2024 第1回 Tech Direction Awards R&D/Prototype部門 Bronze
-      </a>
-      </span>
-       
-    <div class="muted">
-一般社団法人テクニカルディレクターズアソシエーション
-    </div>
-
-<hr>       
-<h2>プレスリリースなど</h2>
-
-    <div class="block">
-      <a href="https://chizaizukan.com/property/computational-food-texture-design-project/"
-         target="_blank" rel="noreferrer noopener">
-        2024 株式会社知財図鑑　コンピュテーショナル食感デザインプロジェクト 
-      </a>
-
-    </div>
-
-    <div class="block">
-      <a href="https://news.sharelab.jp/interviews/3dstructure-melt-food-230221/"
-         target="_blank" rel="noreferrer noopener">
-        2023 「3D構造体食感ビュッフェ」取材レポート、下北沢で未知の食感を体験！
-      </a>
-
-    </div>
-
-     <div class="block">
-      <a href="https://fabcafe.com/jp/magazine/nagoya/230219-melt-xproject-buffet"
-         target="_blank" rel="noreferrer noopener">
-        2023　3D構造体を味わう『食感ビュッフェ』 開催レポート！-3D構造体食感ビュッフェ- Melt. X Project
-      </a>
-
-    </div>    
-    
-     <div class="block">
-      <a href="https://fabcafe.com/jp/events/nagoya/220712_mer/"
-         target="_blank" rel="noreferrer noopener">
-        2022　食感マテリアルディグ -コンピュテーショナル食感デザインの夜明け #4- Melt. Extra Research
-      </a>
-
-       
-     <hr />    
-    <h2>教育・学術組織への貢献</h2>
-    <div class="block">
-      2025-now　運営メンバー　<br><a href="https://sites.google.com/view/web-socialmedia-study/home" target="_blank" rel="noreferrer noopener">
-        ウェブ・ソーシャルメディア論文読み会
-      </a>
-        
-    </div>
-
-    <div class="block">
-        2023 ティーチング・アシスタント(TA)<br>
-        講義: ユーザー調査法　東京工業大学
-      
-    </div>
-      
-      
-      
-    </div>
-    
-    
-      <div class="muted">
-        Copyright ©︎ Kei Ichikawa All Rights Reserved.
+  <!-- Papers -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Papers</p>
+        <h2 class="headline">学術論文</h2>
       </div>
-      </div><!-- /.scroll-content -->
-    </div><!-- /.page-layout -->
-<script src="./script.js"></script>
+      <div class="col-body">
+        <ul class="items items-scroll">
+          <li class="item">
+            <div class="item-meta">
+              <p>2025</p>
+              <p>Journal</p>
+            </div>
+            <div class="item-body">
+              <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1574840/full" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">False failures, real distrust: the impact of an infrastructure failure deepfake on government trust</h3>
+              </a>
+              <p class="item-authors">Saifuddin Ahmed, Muhammad Masood, Adeline Wei Ting Bee, <span class="me">Kei Ichikawa</span></p>
+              <p class="item-venue">Frontiers in Psychology</p>
+            </div>
+            <div class="item-tag"><span class="item-chip">Published</span></div>
+          </li>
 
-  </main>
+          <li class="item">
+            <div class="item-meta">
+              <p>2025</p>
+              <p>Preprint</p>
+            </div>
+            <div class="item-body">
+              <a href="https://osf.io/preprints/osf/tnmyv_v1" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">Domain-specific emotional effects of deepfakes on news-sharing behaviour</h3>
+              </a>
+              <p class="item-authors"><span class="me">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara</p>
+              <p class="item-venue">OSF Preprint</p>
+            </div>
+            <div class="item-tag"><span class="item-chip">Under review</span></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 
+  <div class="rule"></div>
 
+  <!-- Talks / Conferences -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Talks</p>
+        <h2 class="headline">国際・国内会議</h2>
+      </div>
+      <div class="col-body">
+        <ul class="items items-scroll">
+          <li class="item">
+            <div class="item-meta">
+              <p>2026</p>
+              <p>国内</p>
+            </div>
+            <div class="item-body">
+              <h3 class="item-title">インターネットミームが内集団意識の喚起と感情的分極化に与える影響に関する考察</h3>
+              <p class="item-authors"><span class="me">市川慧</span>, 内藤碧, 陳佳玉, 笹原和俊</p>
+              <p class="item-venue">第5回 計算社会科学会大会</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta">
+              <p>2025</p>
+              <p>International</p>
+            </div>
+            <div class="item-body">
+              <h3 class="item-title">How Emotion Shapes the Sharing of AI-Generated Images: Findings from an Online Experiment</h3>
+              <p class="item-authors"><span class="me">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara</p>
+              <p class="item-venue">HICSS-58 — Hilton Waikoloa, Big Island, USA</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta">
+              <p>2024</p>
+              <p>International</p>
+            </div>
+            <div class="item-body">
+              <h3 class="item-title">The Emotional Levers of AI-generated Content</h3>
+              <p class="item-authors"><span class="me">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara</p>
+              <p class="item-venue">IC2S2 2024 — Philadelphia, USA</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta">
+              <p>2024</p>
+              <p>国内</p>
+            </div>
+            <div class="item-body">
+              <h3 class="item-title">生成 AI によるニュースの共有行動に関するサーベイ実験</h3>
+              <p class="item-authors"><span class="me">市川慧</span>, 陳佳玉, 笹原和俊</p>
+              <p class="item-venue">第38回 人工知能学会全国大会</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Awards -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Awards</p>
+        <h2 class="headline">受賞</h2>
+      </div>
+      <div class="col-body">
+        <ul class="items items-scroll">
+          <li class="item">
+            <div class="item-meta"><p>2024</p></div>
+            <div class="item-body">
+              <h3 class="item-title">環境・社会理工学院 技術経営専門職学位課程 優秀発表賞</h3>
+              <p class="item-venue">東京工業大学</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2024</p></div>
+            <div class="item-body">
+              <a href="https://award.tech-director.org/winner01" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">第1回 Tech Direction Awards — R&amp;D / Prototype 部門 Bronze</h3>
+              </a>
+              <p class="item-venue">一般社団法人テクニカルディレクターズアソシエーション</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Press -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Press</p>
+        <h2 class="headline">プレスリリースなど</h2>
+      </div>
+      <div class="col-body">
+        <ul class="items items-scroll">
+          <li class="item">
+            <div class="item-meta"><p>2024</p></div>
+            <div class="item-body">
+              <a href="https://chizaizukan.com/property/computational-food-texture-design-project/" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">株式会社知財図鑑 — コンピュテーショナル食感デザインプロジェクト</h3>
+              </a>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2023</p></div>
+            <div class="item-body">
+              <a href="https://news.sharelab.jp/interviews/3dstructure-melt-food-230221/" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">「3D構造体食感ビュッフェ」取材レポート — 下北沢で未知の食感を体験</h3>
+              </a>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2023</p></div>
+            <div class="item-body">
+              <a href="https://fabcafe.com/jp/magazine/nagoya/230219-melt-xproject-buffet" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">3D構造体を味わう『食感ビュッフェ』開催レポート — Melt. X Project</h3>
+              </a>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2022</p></div>
+            <div class="item-body">
+              <a href="https://fabcafe.com/jp/events/nagoya/220712_mer/" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">食感マテリアルディグ — コンピュテーショナル食感デザインの夜明け #4</h3>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Service -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Service</p>
+        <h2 class="headline">教育・学術組織<br />への貢献</h2>
+      </div>
+      <div class="col-body">
+        <ul class="items items-scroll">
+          <li class="item">
+            <div class="item-meta"><p>2025 – now</p></div>
+            <div class="item-body">
+              <a href="https://sites.google.com/view/web-socialmedia-study/home" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">ウェブ・ソーシャルメディア論文読み会</h3>
+              </a>
+              <p class="item-venue">運営メンバー</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2023</p></div>
+            <div class="item-body">
+              <h3 class="item-title">ティーチング・アシスタント (TA)</h3>
+              <p class="item-venue">ユーザー調査法 — 東京工業大学</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Contact CTA -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-body">
+        <p class="eyebrow">Contact</p>
+        <h2 class="headline">お問い合わせ</h2>
+        <p class="lead muted">
+          研究に関するご質問や共同研究のご依頼など、お気軽にご連絡ください。
+        </p>
+      </div>
+      <div class="col-side">
+        <div class="contact-cta">
+          <a href="mailto:ichikawa.k.25a5@m.isct.ac.jp" class="button">
+            ichikawa.k.25a5[at]m.isct.ac.jp
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="rule"></div>
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Kei Ichikawa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
-  
 </html>

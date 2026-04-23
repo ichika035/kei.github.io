@@ -1,0 +1,555 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kei Ichikawa — Curriculum Vitae</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------------------------------------------------------- page + palette */
+    :root {
+      --ink: #1c2633;
+      --paper: #fafaf7;
+      --muted: #64748b;
+      --rule: rgba(28, 38, 51, 0.14);
+      --hover: #4a78a8;
+    }
+
+    @page {
+      size: A4;
+      margin: 18mm 18mm 20mm;
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: "Noto Sans JP", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+      font-feature-settings: "palt";
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      font-size: 10pt;
+    }
+
+    a { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(28,38,51,0.25); }
+    a:hover { color: var(--hover); }
+
+    /* ---------------------------------------------------------- container */
+    .cv {
+      max-width: 180mm;
+      margin: 0 auto;
+      padding: 0;
+    }
+
+    /* ---------------------------------------------------------- typography */
+    .name {
+      font-family: "Noto Serif JP", Georgia, serif;
+      font-weight: 700;
+      font-size: 32pt;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin: 0;
+      color: var(--ink);
+    }
+    .subname {
+      font-family: "Noto Serif JP", Georgia, serif;
+      font-weight: 500;
+      font-size: 13pt;
+      color: var(--muted);
+      margin: 3mm 0 0;
+      letter-spacing: -0.01em;
+    }
+    .eyebrow {
+      font-size: 7.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.3em;
+      color: var(--muted);
+      margin: 0 0 2mm;
+      font-weight: 500;
+    }
+    h2.section-title {
+      font-family: "Noto Serif JP", Georgia, serif;
+      font-weight: 700;
+      font-size: 13pt;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      margin: 0;
+      color: var(--ink);
+      word-break: keep-all;
+    }
+
+    .muted { color: var(--muted); }
+    .me { font-weight: 600; border-bottom: 1px solid rgba(28,38,51,0.45); }
+
+    /* ---------------------------------------------------------- layout primitives */
+    .header-block {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 6mm;
+      padding-bottom: 6mm;
+    }
+    .header-contact {
+      text-align: right;
+      font-size: 9pt;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+    .header-contact a { border-bottom: none; }
+
+    section.cv-section {
+      display: grid;
+      grid-template-columns: 42mm 1fr;
+      gap: 6mm;
+      padding: 5.5mm 0;
+      border-top: 1px solid var(--rule);
+      page-break-inside: avoid;
+    }
+    section.cv-section:first-of-type { border-top: none; }
+    .side .eyebrow { margin-top: 0.5mm; }
+    .side .section-title { margin-top: 0; }
+
+    /* ---------------------------------------------------------- keywords (inline, slash-separated) */
+    .keywords-inline {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1mm 4mm;
+      font-family: "Noto Serif JP", Georgia, serif;
+      font-weight: 500;
+      font-size: 10.5pt;
+      color: var(--ink);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+    .keywords-inline li {
+      white-space: nowrap;
+      word-break: keep-all;
+    }
+    .keywords-inline li + li::before {
+      content: "／";
+      color: var(--muted);
+      opacity: 0.55;
+      margin-right: 3mm;
+      margin-left: -1mm;
+      font-weight: 300;
+    }
+
+    /* ---------------------------------------------------------- items (pub list, experience, etc.) */
+    ul.items {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    ul.items li {
+      display: grid;
+      grid-template-columns: 22mm 1fr;
+      gap: 4mm;
+      padding: 2.8mm 0;
+      border-top: 1px solid var(--rule);
+      page-break-inside: avoid;
+    }
+    ul.items li:first-child { border-top: none; padding-top: 0.5mm; }
+    .item-meta {
+      font-size: 7.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+    .item-meta p { margin: 0 0 0.3mm; }
+    .item-title {
+      font-family: "Noto Serif JP", Georgia, serif;
+      font-weight: 600;
+      font-size: 10.5pt;
+      line-height: 1.4;
+      margin: 0;
+      color: var(--ink);
+      word-break: keep-all;
+      overflow-wrap: anywhere;
+    }
+    .item-sub { margin: 0.6mm 0 0; font-size: 9pt; color: var(--muted); line-height: 1.55; }
+    .item-authors { margin: 1mm 0 0; font-size: 9pt; color: var(--muted); }
+    .item-venue   { margin: 0.6mm 0 0; font-size: 9pt; color: var(--muted); }
+    .item-desc    { margin: 1.5mm 0 0; font-size: 9pt; line-height: 1.6; color: var(--ink); }
+
+    /* ---------------------------------------------------------- paragraph lead */
+    .lead {
+      max-width: 150mm;
+      font-size: 10.5pt;
+      line-height: 1.75;
+      color: var(--ink);
+      margin: 0;
+    }
+
+    /* ---------------------------------------------------------- subgroup heading inside items list */
+    .subhead {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 7.5pt;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin: 4mm 0 1mm;
+      padding-top: 2mm;
+      border-top: 1px solid var(--rule);
+    }
+    .subhead:first-child { margin-top: 0; padding-top: 0; border-top: none; }
+
+    /* ---------------------------------------------------------- footer */
+    .cv-footer {
+      margin-top: 8mm;
+      padding-top: 4mm;
+      border-top: 1px solid var(--rule);
+      font-size: 7.5pt;
+      color: var(--muted);
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2mm;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    @media print {
+      html, body { background: var(--paper); }
+      a { border-bottom: none; }
+    }
+  </style>
+</head>
+
+<body>
+<div class="cv">
+
+  <!-- ============================================== Header -->
+  <header class="header-block">
+    <div>
+      <p class="eyebrow">Curriculum Vitae</p>
+      <h1 class="name">Kei Ichikawa</h1>
+      <p class="subname">市川 慧</p>
+    </div>
+    <div class="header-contact">
+      Email: <a href="mailto:ichikawa.k.25a5@m.isct.ac.jp">ichikawa.k.25a5[at]m.isct.ac.jp</a>
+    </div>
+  </header>
+
+  <!-- ============================================== Education -->
+  <section class="cv-section">
+    <div class="side">
+      <p class="eyebrow">Education</p>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="body">
+      <ul class="items">
+        <li>
+          <div class="item-meta"><p>2024 –</p><p>PhD</p></div>
+          <div>
+            <h3 class="item-title">Ph.D. in Engineering</h3>
+            <p class="item-sub">
+              School of Environment and Society, Department of Innovation Science<br>
+              Institute of Science Tokyo (Former Tokyo Institute of Technology)
+            </p>
+            <p class="item-venue">Adviser: Prof. Kazutoshi Sasahara</p>
+          </div>
+        </li>
+
+        <li>
+          <div class="item-meta"><p>2022 – 2024</p><p>Master</p></div>
+          <div>
+            <h3 class="item-title">M.S. Management of Technology</h3>
+            <p class="item-sub">
+              School of Environment and Society, Department of Management of Technology<br>
+              Tokyo Institute of Technology
+            </p>
+            <p class="item-venue"><em>Master thesis:</em> Deepfake Sharing Behaviour with a Focus on Emotional Valence and Cognitive Biases</p>
+            <p class="item-venue">Adviser: Prof. Kazutoshi Sasahara</p>
+          </div>
+        </li>
+
+        <li>
+          <div class="item-meta"><p>2023</p><p>Exchange</p></div>
+          <div>
+            <h3 class="item-title">Exchange Programme (one semester)</h3>
+            <p class="item-sub">
+              Wee Kim Wee School of Communication and Information<br>
+              Nanyang Technological University (NTU), Singapore
+            </p>
+            <p class="item-venue"><em>Research project:</em> How people's trust in the media changes when they are exposed to deepfakes.</p>
+            <p class="item-venue">Adviser: Prof. Saifuddin Ahmed</p>
+          </div>
+        </li>
+
+        <li>
+          <div class="item-meta"><p>2018 – 2020</p><p>Bachelor</p></div>
+          <div>
+            <h3 class="item-title">B.S. Data Science</h3>
+            <p class="item-sub">
+              School of Informatics, Department of Natural Informatics<br>
+              Nagoya University
+            </p>
+            <p class="item-venue"><em>Bachelor thesis:</em> The advancement of three-axis tactile sensors for robots using deep learning methods.</p>
+            <p class="item-venue">Adviser: Prof. Masahiro Ohka</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================== Skills -->
+  <section class="cv-section">
+    <div class="side">
+      <p class="eyebrow">Skills</p>
+      <h2 class="section-title">Skills</h2>
+    </div>
+    <div class="body">
+      <ul class="items">
+        <li>
+          <div class="item-meta"><p>Programming</p><p>&amp; Algorithms</p></div>
+          <div>
+            <p class="item-desc" style="margin: 0;">Python, R, LaTeX, HTML, CSS, JavaScript, SQL, Machine &amp; Deep Learning</p>
+          </div>
+        </li>
+        <li>
+          <div class="item-meta"><p>Data Analysis</p><p>&amp; Visualization</p></div>
+          <div>
+            <p class="item-desc" style="margin: 0;">RStudio, Excel, matplotlib, Python (TensorFlow, NumPy, Pandas, Scikit-learn, Keras), statistical analysis</p>
+          </div>
+        </li>
+        <li>
+          <div class="item-meta"><p>Web</p><p>Engineering</p></div>
+          <div>
+            <p class="item-desc" style="margin: 0;">Django, AWS, GCP</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================== Research Interests -->
+  <section class="cv-section">
+    <div class="side">
+      <p class="eyebrow">Research</p>
+      <h2 class="section-title">Interests</h2>
+    </div>
+    <div class="body">
+      <ul class="keywords-inline">
+        <li>Social Media Analysis</li>
+        <li>Disinformation and Political Behaviour</li>
+        <li>Polarization</li>
+        <li>Computational Social Science</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================== Work Experience -->
+  <section class="cv-section">
+    <div class="side">
+      <p class="eyebrow">Work</p>
+      <h2 class="section-title">Work Experience</h2>
+    </div>
+    <div class="body">
+      <ul class="items">
+        <li>
+          <div class="item-meta"><p>2024 –</p><p>Full-time</p></div>
+          <div>
+            <h3 class="item-title">Data Scientist · Software Developer</h3>
+            <p class="item-venue">Dentsu Digital Inc.</p>
+          </div>
+        </li>
+        <li>
+          <div class="item-meta"><p>2022 – 2023</p><p>Intern</p></div>
+          <div>
+            <h3 class="item-title">Corporate Planning Analyst</h3>
+            <p class="item-venue">Startbahn, Inc.</p>
+          </div>
+        </li>
+        <li>
+          <div class="item-meta"><p>2022 – 2023</p><p>Intern</p></div>
+          <div>
+            <h3 class="item-title">Data Scientist</h3>
+            <p class="item-venue">Accenture PLC</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================== Languages -->
+  <section class="cv-section">
+    <div class="side">
+      <p class="eyebrow">Languages</p>
+      <h2 class="section-title">Languages</h2>
+    </div>
+    <div class="body">
+      <ul class="items">
+        <li>
+          <div class="item-meta"><p>English</p></div>
+          <div>
+            <h3 class="item-title">Fluent</h3>
+            <p class="item-venue">IELTS 7.0 (2024 / 10)</p>
+          </div>
+        </li>
+        <li>
+          <div class="item-meta"><p>Japanese</p></div>
+          <div>
+            <h3 class="item-title">Native</h3>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================== Research Experience -->
+  <section class="cv-section">
+    <div class="side">
+      <p class="eyebrow">Research</p>
+      <h2 class="section-title">Research Experience</h2>
+    </div>
+    <div class="body">
+      <ul class="items">
+        <li>
+          <div class="item-meta"><p>2022 – 2024</p><p>Tokyo Tech</p><p>(Master, 2y)</p></div>
+          <div>
+            <h3 class="item-title">Deepfake Sharing Behaviour with a Focus on Emotional Valence and Cognitive Biases</h3>
+            <p class="item-desc">
+              Examined how emotional valence in AI-generated content (deepfakes) influences their sharing intentions,
+              exploring the impact of altering emotional valence on users' willingness to share.
+            </p>
+          </div>
+        </li>
+        <li>
+          <div class="item-meta"><p>2023</p><p>NTU Singapore</p><p>(Intern, 1 sem)</p></div>
+          <div>
+            <h3 class="item-title">How deepfakes are perceived in Asian countries</h3>
+            <p class="item-desc">
+              Investigated how people's trust in the media changes when they are exposed to deepfakes in seven Asian
+              countries (Singapore, Vietnam, Indonesia, Malaysia, Thailand, China, and the Philippines). Primary focus
+              on generating deepfakes and discussing research design.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================== Awards -->
+  <section class="cv-section">
+    <div class="side">
+      <p class="eyebrow">Honours</p>
+      <h2 class="section-title">Academic Honours &amp; Awards</h2>
+    </div>
+    <div class="body">
+      <ul class="items">
+        <li>
+          <div class="item-meta"><p>2024</p></div>
+          <div>
+            <h3 class="item-title">Master Thesis Excellence Presentation Award</h3>
+            <p class="item-venue">Tokyo Institute of Technology</p>
+          </div>
+        </li>
+        <li>
+          <div class="item-meta"><p>2024</p></div>
+          <div>
+            <a href="https://award.tech-director.org/winner01">
+              <h3 class="item-title">Tech Direction Awards — Bronze (R&amp;D / Prototype category)</h3>
+            </a>
+            <p class="item-venue">Technical Directors Association</p>
+          </div>
+        </li>
+        <li>
+          <div class="item-meta"><p>2024</p></div>
+          <div>
+            <h3 class="item-title">CAMPUS Asia Plus Scholarship</h3>
+            <p class="item-venue">
+              A Joint Educational Program of four universities in Japan, China, South Korea and Singapore.
+              ¥100,000 (JPY) per month × 4 months. Tokyo Institute of Technology.
+            </p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================================== Presentations -->
+  <section class="cv-section">
+    <div class="side">
+      <p class="eyebrow">Talks</p>
+      <h2 class="section-title">Presentations at Conferences</h2>
+    </div>
+    <div class="body">
+
+      <p class="subhead">International conferences (peer-reviewed)</p>
+      <ul class="items">
+        <li>
+          <div class="item-meta"><p>[1]</p><p>2024 / 07</p></div>
+          <div>
+            <h3 class="item-title">The Emotional Levers of AI-generated Content</h3>
+            <p class="item-authors"><span class="me">Ichikawa, K.</span>, Chen, J., Sasahara, K.</p>
+            <p class="item-venue">Paper presented at the annual meeting of the International Conference on Computational Social Science (IC2S2). Philadelphia, USA.</p>
+          </div>
+        </li>
+      </ul>
+
+      <p class="subhead">Invited talk</p>
+      <ul class="items">
+        <li>
+          <div class="item-meta"><p>[1]</p><p>2025 / 01</p></div>
+          <div>
+            <h3 class="item-title">How Emotion Shapes the Sharing of AI-Generated Images: Findings from an Online Experiment</h3>
+            <p class="item-authors"><span class="me">Ichikawa, K.</span>, Chen, J., Sasahara, K.</p>
+            <p class="item-venue">47th Hawaii International Conference on System Sciences (HICSS-58), 7 – 10 January 2025, Hilton Waikoloa, Big Island, USA.</p>
+          </div>
+        </li>
+      </ul>
+
+      <p class="subhead">Journal paper (peer-reviewed)</p>
+      <ul class="items">
+        <li>
+          <div class="item-meta"><p>[1]</p><p>2025</p></div>
+          <div>
+            <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1574840/full">
+              <h3 class="item-title">False Failures, Real Distrust: The Impact of an Infrastructure Failure Deepfake on Government Trust</h3>
+            </a>
+            <p class="item-authors">Ahmed, S., Masood, M., Bee, A., <span class="me">Ichikawa, K.</span></p>
+            <p class="item-venue">Frontiers in Psychology</p>
+          </div>
+        </li>
+        <li>
+          <div class="item-meta"><p>[2]</p><p>2025</p><p>Under review</p></div>
+          <div>
+            <a href="https://osf.io/preprints/osf/tnmyv_v1">
+              <h3 class="item-title">Domain-specific emotional effects of deepfakes on news-sharing behaviour</h3>
+            </a>
+            <p class="item-authors"><span class="me">Ichikawa, K.</span>, Chen, J., Sasahara, K.</p>
+          </div>
+        </li>
+      </ul>
+
+    </div>
+  </section>
+
+  <footer class="cv-footer">
+    <span>Kei Ichikawa · Curriculum Vitae</span>
+    <span id="cv-date">—</span>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    const d = new Date();
+    const y = d.getFullYear();
+    const m = String(d.getMonth() + 1).padStart(2, '0');
+    const el = document.getElementById('cv-date');
+    if (el) el.textContent = `Updated ${y}-${m}`;
+  })();
+</script>
+</body>
+</html>

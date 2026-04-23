@@ -3,208 +3,283 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Kei Ichikawa</title>
-  <link rel="stylesheet" href="./style.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap">
-</head>
-<body>
-  <header>
-    <nav>
-      
-      <a href="./index.html">English</a>
-      <a href="./jp.html">日本語</a>
-      <!-- <a href="./K_Ichikawa_cv_20251230.pdf" target="_blank" rel="noopener">CV</a> -->
-      <!-- <a href="https://scholar.google.co.jp/citations?user=0dLpP_4AAAAJ&hl=ja" target="_blank" rel="noopener">Google Scholar</a> -->
-      <!-- <a href="https://nicelinks.net/home" target="_blank" rel="noopener">Nicelinks</a> -->
-      <a href="./works.html" aria-current="page">今日の天気は？</a>
-    </nav>
+  <title>今日の天気は? — Kei Ichikawa</title>
+  <meta name="description" content="市川慧のかつて関わったプロジェクト、イベント、執筆。訪問者の地域の天気を雪舟風の水墨画で描画します。" />
 
-    <h1>Kei Ichikawa</h1>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style-jp.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="row">
+      <a href="./jp.html" class="brand">Kei Ichikawa</a>
+      <nav class="nav" aria-label="Main">
+        <a href="./index.html" class="underline-quiet">English</a>
+        <a href="./jp.html" class="underline-quiet">日本語</a>
+        <a href="./works.html" aria-current="page">今日の天気は?</a>
+      </nav>
+    </div>
+    <div class="rule"></div>
   </header>
 
-  <hr />
+  <!-- Hero: left = 自己紹介, right = 雪舟風の天気水墨画 -->
+  <section class="section section--hero">
+    <div class="hero-grid">
+      <div class="hero-left">
+        <p class="eyebrow">Kei Ichikawa</p>
+        <h1 class="hero-title">市川 慧</h1>
+        <p class="lead">
+          <a class="underline-quiet" href="https://fabcafe.com/jp/labs/nagoya/melt" target="_blank" rel="noopener">高次素材設計技術研究舎 (Melt.)</a>, IACILS の幽霊舎員.
+          <br />
+          なお、記載させていただいている所属は当時のものになります.
+        </p>
 
-  <main>
-    <div class="page-layout">
-      <div class="sticky-image">
-        <canvas id="weather-canvas"></canvas>
+        <div class="hero-links">
+          <a href="mailto:ichikawa.k.25a5@m.isct.ac.jp" class="underline-quiet">
+            ichikawa.k.25a5[at]m.isct.ac.jp
+          </a>
+        </div>
+
+        <div class="social" aria-label="Social links">
+          <a href="https://speakerdeck.com/ichika035" target="_blank" rel="noopener" aria-label="SpeakerDeck">
+            <img src="./speakerdeck.png" alt="SpeakerDeck">
+          </a>
+          <a href="https://scholar.google.co.jp/citations?user=0dLpP_4AAAAJ&hl=ja&oi=ao" target="_blank" rel="noopener" aria-label="Google Scholar">
+            <img src="./google_scholar.png" alt="Google Scholar">
+          </a>
+          <a href="https://www.facebook.com/share/1AjPTX6ruS/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook">
+            <img src="./fb.png" alt="Facebook">
+          </a>
+          <a href="https://x.com/KIchikawa785482" target="_blank" rel="noopener" aria-label="X (@KIchikawa785482)">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </div>
       </div>
-      <div class="scroll-content">
-  <h2>About</h2>
 
-    <div class="block">
-      <a href="https://fabcafe.com/jp/labs/nagoya/melt"
-         target="_blank" rel="noreferrer noopener">
-        高次素材設計技術研究舎(Melt.)
-      </a>,IACILSの幽霊舎員.
-      <br> なお、記載させていただいている所属は当時のものになります.
-    </div>
-    
-    <hr />
-
-    <h2>作ったor関わったもの</h2>
-
-    <div class="block">
-      <a href="https://scrapbox.io/meltarchives/01_%E9%A3%9F%E6%84%9F%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC"
-         target="_blank" rel="noreferrer noopener">
-        2021- コンピュテーショナル食感デザインプロジェクト
-      </a>
-      <div class="muted">
-        Mutsushi Asai(Metalium LLC), Kentaro Saito(FabCafe Nagoya), Ryosuke Wakasugi（Byte Bites inc.）,
-        Eri Nakasuga（慶応Future Crafts）, Kakeru Funai（東大DLX）, Makoto Amano , <span class="underline">Kei Ichikawa（IACILS）</span>
-      </div>
-    </div>
-
-    
-    <div class="block">
-      <a href="./translation.html"
-         target="_blank" rel="noreferrer noopener">
-        2024 Translation
-      </a>
-
-    </div>
-
-    <div class="block">
-      <a href="./footprint.html"
-         target="_blank" rel="noreferrer noopener">
-        2022 存在の兆し
-      </a>
-
-    </div>
-
-    
-     <hr>
-
-    <h2>イベント</h2>
-
-    
-    <div class="block">
-      <a href="https://fabcafe.com/jp/events/kyoto/NFT_x_traditional_crafts"
-         target="_blank" rel="noreferrer noopener">
-        2023 NFT x 伝統文化の可能性「Proof of Japan x FabCafe Kyoto」
-      </a>
-      <div class="muted">
-        村山 カズマサ（京都村正,
-        長艸 真吾（株式会社繡司長艸）,
-        <span class="underline">市川 慧（IACILS）</span>,
-        磯野 太佑（Funder Storm / SMBC日興証券株式会社）,
-        羽間 弘善（株式会社リーフ・パブリケーションズ）,
-        増田醇一（増田德兵衞商店 ）,
-        伊澤 諒太（Proof of Japan株式会社）,
-        蔡 海（HUMAN AWESOME ERROR）,
-        福原 志保（HUMAN AWESOME ERROR）
-        
+      <div class="hero-right">
+        <div class="weather-frame">
+          <canvas id="weather-canvas" aria-label="訪問地の現在の天気を描いた水墨画"></canvas>
+        </div>
+        <p class="weather-meta">
+          <span id="weather-city">—</span>
+          <span class="weather-dot" aria-hidden="true">・</span>
+          <span id="weather-label">—</span>
+          <span class="weather-dot" aria-hidden="true">・</span>
+          <span id="weather-temp">—</span>
+        </p>
       </div>
     </div>
+  </section>
 
-    <div class="block">
-      <a href="https://digitalfutures.international/workshop/reconfiguratable-architecture%EF%BD%9E%E5%86%8D%E6%A7%8B%E6%88%90%E5%8F%AF%E8%83%BD%E3%81%AA%E5%BB%BA%E7%AF%89%E3%82%92%E8%80%83%E3%81%88%E3%82%8B%EF%BD%9E/"
-         target="_blank" rel="noreferrer noopener">
-        2022 Reconfiguratable Architecture～再構成可能な建築を考える～
-      </a>
-      <div class="muted">
-      近藤誠之介,
-      田住梓,
-      池本祥子,
-      北島千朔,
-      九冨恵一,
-      水口峰志,
-      <span class="underline">市川 慧</span>,
-      大口博之,
-      太田妃南
-        
+  <div class="rule"></div>
+
+  <!-- Works -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Works</p>
+        <h2 class="headline">作った・関わった<br />もの</h2>
+      </div>
+      <div class="col-body">
+        <ul class="items items-scroll">
+          <li class="item">
+            <div class="item-meta"><p>2021 – now</p></div>
+            <div class="item-body">
+              <a href="https://scrapbox.io/meltarchives/01_%E9%A3%9F%E6%84%9F%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">コンピュテーショナル食感デザインプロジェクト</h3>
+              </a>
+              <p class="item-authors">Mutsushi Asai (Metalium LLC), Kentaro Saito (FabCafe Nagoya), Ryosuke Wakasugi (Byte Bites inc.), Eri Nakasuga (慶応 Future Crafts), Kakeru Funai (東大 DLX), Makoto Amano, <span class="me">Kei Ichikawa (IACILS)</span></p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2024</p></div>
+            <div class="item-body">
+              <a href="./translation.html" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">Translation</h3>
+              </a>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2022</p></div>
+            <div class="item-body">
+              <a href="./footprint.html" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">存在の兆し</h3>
+              </a>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
-    
+  </section>
 
-    <div class="block">
-      <a href="https://scrapbox.io/meltarchives/01_%E9%A3%9F%E6%84%9F%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC"
-         target="_blank" rel="noreferrer noopener">
-        2021- Fungible？ VOL.1　-NFTから考える未来の美-
-      </a>
-      <div class="muted">
-        秋庭史典（名古屋大学）, 伊村靖子（情報科学芸術大学院大学[IAMAS]）, 松井茂（情報科学芸術大学院大学[IAMAS]）, 加藤 明洋（drawCircle合同会社） , <span class="underline">市川 慧（IACILS, 企画設計）</span>
+  <div class="rule"></div>
+
+  <!-- Events -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Events</p>
+        <h2 class="headline">イベント</h2>
+      </div>
+      <div class="col-body">
+        <ul class="items items-scroll">
+          <li class="item">
+            <div class="item-meta"><p>2023</p></div>
+            <div class="item-body">
+              <a href="https://fabcafe.com/jp/events/kyoto/NFT_x_traditional_crafts" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">NFT × 伝統文化の可能性「Proof of Japan × FabCafe Kyoto」</h3>
+              </a>
+              <p class="item-authors">村山カズマサ (京都村正), 長艸真吾 (株式会社繡司長艸), <span class="me">市川 慧 (IACILS)</span>, 磯野太佑 (Funder Storm / SMBC日興証券), 羽間弘善 (リーフ・パブリケーションズ), 増田醇一 (増田德兵衞商店), 伊澤諒太 (Proof of Japan), 蔡海・福原志保 (HUMAN AWESOME ERROR)</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2022</p></div>
+            <div class="item-body">
+              <a href="https://digitalfutures.international/workshop/reconfiguratable-architecture%EF%BD%9E%E5%86%8D%E6%A7%8B%E6%88%90%E5%8F%AF%E8%83%BD%E3%81%AA%E5%BB%BA%E7%AF%89%E3%82%92%E8%80%83%E3%81%88%E3%82%8B%EF%BD%9E/" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">Reconfiguratable Architecture 〜再構成可能な建築を考える〜</h3>
+              </a>
+              <p class="item-authors">近藤誠之介, 田住梓, 池本祥子, 北島千朔, 九冨恵一, 水口峰志, <span class="me">市川 慧</span>, 大口博之, 太田妃南</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2021</p></div>
+            <div class="item-body">
+              <a href="https://scrapbox.io/meltarchives/01_%E9%A3%9F%E6%84%9F%E3%82%B8%E3%82%A7%E3%83%8D%E3%83%AC%E3%83%BC%E3%82%BF%E3%83%BC" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">Fungible? Vol.1 — NFT から考える未来の美</h3>
+              </a>
+              <p class="item-authors">秋庭史典 (名古屋大学), 伊村靖子・松井茂 (IAMAS), 加藤明洋 (drawCircle 合同会社), <span class="me">市川 慧 (IACILS, 企画設計)</span></p>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
+  </section>
 
-    <hr />
-    
-   <h2>プレスリリースなど</h2>
+  <div class="rule"></div>
 
-    <div class="block">
-      <a href="https://chizaizukan.com/property/computational-food-texture-design-project/"
-         target="_blank" rel="noreferrer noopener">
-        2024 株式会社知財図鑑　コンピュテーショナル食感デザインプロジェクト 
-      </a>
-
-    </div>
-
-    <div class="block">
-      <a href="https://news.sharelab.jp/interviews/3dstructure-melt-food-230221/"
-         target="_blank" rel="noreferrer noopener">
-        2023 「3D構造体食感ビュッフェ」取材レポート、下北沢で未知の食感を体験！
-      </a>
-
-    </div>
-
-     <div class="block">
-      <a href="https://fabcafe.com/jp/magazine/nagoya/230219-melt-xproject-buffet"
-         target="_blank" rel="noreferrer noopener">
-        2023　3D構造体を味わう『食感ビュッフェ』 開催レポート！-3D構造体食感ビュッフェ- Melt. X Project
-      </a>
-
-    </div>    
-    
-     <div class="block">
-      <a href="https://fabcafe.com/jp/events/nagoya/220712_mer/"
-         target="_blank" rel="noreferrer noopener">
-        2022　食感マテリアルディグ -コンピュテーショナル食感デザインの夜明け #4- Melt. Extra Research
-      </a>
-
-    </div>    
-     <hr>
-    <h2>書いたもの</h2>
-    <div class="block">
-      <a href="https://note.com/startbahn/n/n70624ea1346f"
-         target="_blank" rel="noreferrer noopener">
-        2022 NFTプロジェクトの栄枯盛衰 — フロア価格推移の定型パターン
-      </a>
-
-    </div>
-    
-    <div class="block">
-      <a href="https://fabcafe.com/jp/Fungible_NFT_vol1_1"
-         target="_blank" rel="noreferrer noopener">
-        2021 NFTとはいったいなんなのか？その正体を探る 【Fungible? Vol.1 -NFTから考える未来の美- 】＃１
-      </a>
-    </div>
-
-    <div class="block">
-      <a href="https://fabcafe.com/jp/Fungible_NFT_vol1_2"
-         target="_blank" rel="noreferrer noopener">
-        2021 芸術の輪郭を探って【Fungible? Vol.1 -NFTから考える未来の美- 】＃2
-      </a>
-    </div>
-
-    <div class="block">
-      <a href="https://fabcafe.com/jp/Fungible_NFT_vol1_3?preview=true"
-         target="_blank" rel="noreferrer noopener">
-        2021 芸術の輪郭を探ってII　【Fungible? Vol.1 -NFTから考える未来の美- 】＃3
-      </a>
-    </div>
-    
-      <div class="muted">
-        Copyright ©︎ Kei Ichikawa All Rights Reserved.
+  <!-- Press -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Press</p>
+        <h2 class="headline">プレスリリース<br />など</h2>
       </div>
-      </div><!-- /.scroll-content -->
-    </div><!-- /.page-layout -->
-<script src="./script.js"></script>
-<script src="./weather.js"></script>
+      <div class="col-body">
+        <ul class="items items-scroll">
+          <li class="item">
+            <div class="item-meta"><p>2024</p></div>
+            <div class="item-body">
+              <a href="https://chizaizukan.com/property/computational-food-texture-design-project/" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">株式会社知財図鑑 — コンピュテーショナル食感デザインプロジェクト</h3>
+              </a>
+            </div>
+          </li>
 
-  </main>
+          <li class="item">
+            <div class="item-meta"><p>2023</p></div>
+            <div class="item-body">
+              <a href="https://news.sharelab.jp/interviews/3dstructure-melt-food-230221/" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">「3D構造体食感ビュッフェ」取材レポート — 下北沢で未知の食感を体験</h3>
+              </a>
+            </div>
+          </li>
 
+          <li class="item">
+            <div class="item-meta"><p>2023</p></div>
+            <div class="item-body">
+              <a href="https://fabcafe.com/jp/magazine/nagoya/230219-melt-xproject-buffet" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">3D構造体を味わう『食感ビュッフェ』開催レポート — Melt. X Project</h3>
+              </a>
+            </div>
+          </li>
 
+          <li class="item">
+            <div class="item-meta"><p>2022</p></div>
+            <div class="item-body">
+              <a href="https://fabcafe.com/jp/events/nagoya/220712_mer/" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">食感マテリアルディグ — コンピュテーショナル食感デザインの夜明け #4</h3>
+              </a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Writings -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Writings</p>
+        <h2 class="headline">書いたもの</h2>
+      </div>
+      <div class="col-body">
+        <ul class="items items-scroll">
+          <li class="item">
+            <div class="item-meta"><p>2022</p></div>
+            <div class="item-body">
+              <a href="https://note.com/startbahn/n/n70624ea1346f" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">NFT プロジェクトの栄枯盛衰 — フロア価格推移の定型パターン</h3>
+              </a>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2021</p></div>
+            <div class="item-body">
+              <a href="https://fabcafe.com/jp/Fungible_NFT_vol1_1" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">NFT とはいったいなんなのか? その正体を探る #1</h3>
+              </a>
+              <p class="item-venue">Fungible? Vol.1 — NFT から考える未来の美</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2021</p></div>
+            <div class="item-body">
+              <a href="https://fabcafe.com/jp/Fungible_NFT_vol1_2" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">芸術の輪郭を探って #2</h3>
+              </a>
+              <p class="item-venue">Fungible? Vol.1 — NFT から考える未来の美</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2021</p></div>
+            <div class="item-body">
+              <a href="https://fabcafe.com/jp/Fungible_NFT_vol1_3?preview=true" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">芸術の輪郭を探って II #3</h3>
+              </a>
+              <p class="item-venue">Fungible? Vol.1 — NFT から考える未来の美</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="rule"></div>
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Kei Ichikawa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+  <script src="./weather.js"></script>
 </body>
-  
 </html>
