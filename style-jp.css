@@ -61,6 +61,47 @@ img, svg { max-width: 100%; display: block; }
   word-break: keep-all;
 }
 
+/* Hero block — desktop: square portrait next to text; mobile: small circle next to title */
+.hero-block {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  grid-template-areas:
+    "eyebrow eyebrow"
+    "title   image"
+    "lead    lead";
+  align-items: center;
+  column-gap: 1rem;
+}
+.hero-block > .eyebrow { grid-area: eyebrow; }
+.hero-block > .hero-title { grid-area: title; min-width: 0; word-break: normal; overflow-wrap: anywhere; }
+.hero-block > .lead { grid-area: lead; }
+.hero-block > .hero-portrait { grid-area: image; }
+
+.hero-portrait {
+  width: clamp(96px, 22vw, 128px);
+  aspect-ratio: 1;
+  height: auto;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .hero-block {
+    grid-template-areas:
+      "eyebrow image"
+      "title   image"
+      "lead    image";
+    column-gap: 3rem;
+    align-items: start;
+  }
+  .hero-block > .hero-title { word-break: keep-all; overflow-wrap: normal; }
+  .hero-portrait {
+    width: clamp(280px, 24vw, 320px);
+    border-radius: 8px;
+  }
+}
+
 .headline {
   font-family: "Noto Serif JP", Georgia, serif;
   font-weight: 700;
