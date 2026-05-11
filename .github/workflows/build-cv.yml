@@ -1,0 +1,58 @@
+name: Build CV PDF
+
+# Re-renders cv/cv.pdf from cv/cv.html using headless Chrome whenever
+# the HTML source (or this workflow) changes on main, then commits the
+# updated PDF back to the branch. Also runnable manually from the
+# Actions tab via the workflow_dispatch button.
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'cv/cv.html'
+      - '.github/workflows/build-cv.yml'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Locate or install Chromium
+        run: |
+          if command -v google-chrome >/dev/null 2>&1; then
+            echo "Using preinstalled google-chrome:"
+            google-chrome --version
+          else
+            sudo apt-get update
+            sudo apt-get install -y chromium-browser
+          fi
+
+      - name: Render cv.html → cv.pdf
+        run: |
+          BROWSER=$(command -v google-chrome || command -v chromium-browser || command -v chromium)
+          echo "Renderer: $BROWSER"
+          "$BROWSER" \
+            --headless \
+            --disable-gpu \
+            --no-sandbox \
+            --no-pdf-header-footer \
+            --virtual-time-budget=10000 \
+            --print-to-pdf="$(pwd)/cv/cv.pdf" \
+            "file://$(pwd)/cv/cv.html"
+          ls -la cv/cv.pdf
+
+      - name: Commit updated cv.pdf (if changed)
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet -- cv/cv.pdf; then
+            echo "No PDF changes; nothing to commit."
+            exit 0
+          fi
+          git add cv/cv.pdf
+          git commit -m "chore(cv): auto-regenerate cv.pdf from cv.html"
+          git push

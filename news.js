@@ -1,20 +1,21 @@
 /* news.js
  * Populates the #news-list block by scanning the Papers (#papers-list)
- * and Talks (#talks-list) sections and pulling the most recent entry
- * from each.
+ * and Talks (#talks-list) sections, merging them into a single list
+ * sorted newest-first, and rendering every entry. The container itself
+ * is capped (via CSS) so only ~2 entries are visible at once and the
+ * rest is reachable by scrolling.
  *
  *   - Paper: only items whose item-meta[2] matches /journal|accepted/i are
- *     considered. Text rendered as:
- *       JP: 「タイトル」が <venue> にアクセプトされました.
+ *     included. Text rendered as:
+ *       JP: 論文 「タイトル」 が <venue> にアクセプトされました.
  *       EN: Our paper "title" was accepted at <venue>.
  *
- *   - Talk: the most recent entry by year. Future (year ≥ currentYear) uses
- *     future tense, past uses past tense:
- *       JP: <venue> で「タイトル」を発表します / しました.
+ *   - Talk: every entry. Future (year ≥ currentYear) uses future tense,
+ *     past uses past tense:
+ *       JP: <venue> で 「タイトル」 を発表します / しました.
  *       EN: Presenting / Presented "title" at <venue>.
  *
- * No manual edits to the News block are needed — re-rendering happens each
- * page load, and editing Papers / Talks in the HTML updates News.
+ * Editing Papers / Talks in the HTML automatically updates News.
  */
 (function () {
   'use strict';
@@ -50,30 +51,6 @@
         .replace(/"/g, '&quot;');
     }
 
-    // ------------------------------------------------ Papers: most recent accepted
-    function pickPaper() {
-      const list = document.getElementById('papers-list');
-      if (!list) return null;
-      const items = Array.from(list.querySelectorAll('.item'));
-      const accepted = items.filter(function (it) {
-        const metas = it.querySelectorAll('.item-meta p');
-        const type = metas.length > 1 ? metas[1].textContent.trim() : '';
-        return /journal|accepted/i.test(type);
-      });
-      accepted.sort(function (a, b) { return yearOf(b) - yearOf(a); });
-      return accepted[0] || null;
-    }
-
-    // ------------------------------------------------ Talks: most recent
-    function pickTalk() {
-      const list = document.getElementById('talks-list');
-      if (!list) return null;
-      const items = Array.from(list.querySelectorAll('.item'));
-      items.sort(function (a, b) { return yearOf(b) - yearOf(a); });
-      return items[0] || null;
-    }
-
-    // ------------------------------------------------ Render helpers
     function extract(item) {
       const titleEl = item.querySelector('.item-title');
       const titleLink = item.querySelector('.item-body > a, a');
@@ -88,9 +65,16 @@
       };
     }
 
-    function renderPaper(item) {
+    function paperIsAccepted(item) {
+      const metas = item.querySelectorAll('.item-meta p');
+      const type = metas.length > 1 ? metas[1].textContent.trim() : '';
+      return /journal|accepted/i.test(type);
+    }
+
+    // ------------------------------------------------ Renderers
+    function renderPaper(item, idx) {
       const d = extract(item);
-      if (!d.title) return '';
+      if (!d.title) return null;
       const titleHtml = d.href
         ? `<a href="${escapeHtml(d.href)}" target="_blank" rel="noopener" class="underline-quiet">${isJP ? '「' : '“'}${escapeHtml(d.title)}${isJP ? '」' : '”'}</a>`
         : `${isJP ? '「' : '“'}${escapeHtml(d.title)}${isJP ? '」' : '”'}`;
@@ -102,16 +86,20 @@
         : (venueHtml
             ? `Our paper ${titleHtml} was accepted at ${venueHtml}.`
             : `Our paper ${titleHtml} was accepted.`);
-      return `
+      return {
+        year: yearOf(item),
+        order: idx,
+        html: `
         <li class="news-item">
           <span class="news-label">${isJP ? '論文' : 'Paper'} · ${escapeHtml(d.year)}</span>
           <p class="news-text">${text}</p>
-        </li>`;
+        </li>`
+      };
     }
 
-    function renderTalk(item) {
+    function renderTalk(item, idx) {
       const d = extract(item);
-      if (!d.title) return '';
+      if (!d.title) return null;
       const n = parseInt(d.year, 10);
       const isFuture = !isNaN(n) && n >= currentYear;
       const titleHtml = d.href
@@ -125,20 +113,44 @@
         : (venueHtml
             ? `${isFuture ? 'Presenting' : 'Presented'} ${titleHtml} at ${venueHtml}.`
             : `${isFuture ? 'Presenting' : 'Presented'} ${titleHtml}.`);
-      return `
+      return {
+        year: yearOf(item),
+        order: idx,
+        html: `
         <li class="news-item">
           <span class="news-label">${isJP ? '発表' : 'Talk'} · ${escapeHtml(d.year)}</span>
           <p class="news-text">${text}</p>
-        </li>`;
+        </li>`
+      };
     }
 
-    // ------------------------------------------------ Build
-    const paper = pickPaper();
-    const talk  = pickTalk();
-    const parts = [];
-    if (paper) parts.push(renderPaper(paper));
-    if (talk)  parts.push(renderTalk(talk));
+    // ------------------------------------------------ Build merged list
+    const entries = [];
 
-    newsList.innerHTML = parts.join('');
+    const papersList = document.getElementById('papers-list');
+    if (papersList) {
+      Array.from(papersList.querySelectorAll('.item')).forEach(function (it, i) {
+        if (!paperIsAccepted(it)) return;
+        const e = renderPaper(it, i);
+        if (e) entries.push(e);
+      });
+    }
+
+    const talksList = document.getElementById('talks-list');
+    if (talksList) {
+      Array.from(talksList.querySelectorAll('.item')).forEach(function (it, i) {
+        const e = renderTalk(it, i);
+        if (e) entries.push(e);
+      });
+    }
+
+    // Sort: year desc; ties keep source order (which is already newest-first
+    // within each section in the HTML).
+    entries.sort(function (a, b) {
+      if (b.year !== a.year) return b.year - a.year;
+      return a.order - b.order;
+    });
+
+    newsList.innerHTML = entries.map(function (e) { return e.html; }).join('');
   });
 })();
