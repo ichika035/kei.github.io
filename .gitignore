@@ -1,0 +1,6 @@
+# Generated in CI by .github/workflows/build-cv.yml from cv/cv.html.
+# Locally regeneratable via the chrome command in cv/README.md.
+cv/cv.pdf
+
+# macOS
+.DS_Store

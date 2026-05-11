@@ -1,22 +1,31 @@
-name: Build CV PDF
+name: Build & Deploy Site
 
-# Re-renders cv/cv.pdf from cv/cv.html using headless Chrome whenever
-# the HTML source (or this workflow) changes on main, then commits the
-# updated PDF back to the branch. Also runnable manually from the
-# Actions tab via the workflow_dispatch button.
+# On every push to main:
+#   1. Render cv/cv.html → cv/cv.pdf with headless Chrome (in-CI only;
+#      the file is NOT stored in the repo).
+#   2. Upload the whole working tree (HTML + the freshly built PDF) as a
+#      Pages artifact.
+#   3. Deploy to GitHub Pages.
+#
+# This replaces the previous "commit cv.pdf back to main" approach so
+# local pushes never collide with a bot commit.
 on:
   push:
     branches: [main]
-    paths:
-      - 'cv/cv.html'
-      - '.github/workflows/build-cv.yml'
   workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -45,14 +54,18 @@ jobs:
             "file://$(pwd)/cv/cv.html"
           ls -la cv/cv.pdf
 
-      - name: Commit updated cv.pdf (if changed)
-        run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if git diff --quiet -- cv/cv.pdf; then
-            echo "No PDF changes; nothing to commit."
-            exit 0
-          fi
-          git add cv/cv.pdf
-          git commit -m "chore(cv): auto-regenerate cv.pdf from cv.html"
-          git push
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
