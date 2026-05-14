@@ -166,8 +166,29 @@ img, svg { max-width: 100%; display: block; }
   font-size: 0.8125rem;
   flex-wrap: wrap;
   justify-content: flex-end;
+  align-items: baseline;
 }
 /* nav link colors handled globally (inherit + hover rule above) */
+
+/* In-page section anchors live inside .nav, to the left of page-switch links.
+   They are visually quieter so the three page links remain prominent. */
+.nav-section {
+  font-size: 0.6875rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.nav-section:hover { color: var(--hover); }
+.nav-divider {
+  width: 1px;
+  height: 0.875rem;
+  background: var(--rule);
+  align-self: center;
+  margin: 0 -0.25rem;
+}
+
+/* Offset section anchors so the sticky header doesn't cover them */
+.section[id] { scroll-margin-top: 6rem; }
 
 /* --- Sections --- */
 .section {
@@ -579,9 +600,11 @@ img, svg { max-width: 100%; display: block; }
   }
   .nav {
     justify-content: flex-start;
-    gap: 1.25rem;
+    gap: 1rem 1.25rem;
     width: 100%;
   }
+  .nav-section { font-size: 0.625rem; }
+  .nav-divider { display: none; }
 
   .section { padding: 3.5rem 1.25rem; }
   .section--hero { padding-top: 2.5rem; padding-bottom: 3.5rem; }
