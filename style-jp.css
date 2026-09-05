@@ -897,3 +897,10 @@ img, svg { max-width: 100%; display: block; }
   font-style: normal;
   color: var(--muted);
 }
+
+.weather-hint {
+  margin: 0.5rem 0 0;
+  font-size: 0.75rem;
+  line-height: 1.7;
+  color: var(--muted);
+}
