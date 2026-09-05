@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>雑記 — Kei Ichikawa</title>
+  <meta name="description" content="市川慧の雑記。旅先や日々のなかで考えたことを、日付ごとに書きとめています。" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style-jp.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="row">
+      <a href="./jp.html" class="brand">Kei Ichikawa</a>
+      <nav class="nav" aria-label="Main">
+        <a href="./index.html" class="underline-quiet">English</a>
+        <a href="./jp.html" class="underline-quiet">日本語</a>
+        <a href="./works.html" class="underline-quiet">今日の天気は?</a>
+        <a href="./zakki.html" aria-current="page">雑記</a>
+      </nav>
+    </div>
+    <div class="rule"></div>
+  </header>
+
+  <!-- Hero -->
+  <section class="section section--hero">
+    <div class="hero-block">
+      <p class="eyebrow">Essays</p>
+      <h1 class="hero-title">雑記</h1>
+      <p class="lead">
+        旅先や日々のなかで考えたことを、日付ごとに書きとめたものです。
+        研究とは直接関係のない話がほとんどです。
+      </p>
+    </div>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Entries -->
+  <section class="section" id="entries">
+    <div class="section-grid">
+      <div class="col-side">
+        <p class="eyebrow">Entries</p>
+        <h2 class="headline">記事</h2>
+      </div>
+      <div class="col-body">
+        <ul class="items">
+          <li class="item">
+            <div class="item-meta"><p>2023.11.06</p></div>
+            <div class="item-body">
+              <a href="./zakki/2023-11-06.html" class="underline-quiet">
+                <h3 class="item-title">シンガポールの音楽と National Day</h3>
+              </a>
+              <p class="item-venue">National Day の音楽から、シンガポールで聴かれている音楽について。</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2023.10.14</p></div>
+            <div class="item-body">
+              <a href="./zakki/2023-10-14.html" class="underline-quiet">
+                <h3 class="item-title">シンガポールの移民政策</h3>
+              </a>
+              <p class="item-venue">移民に寛容な国の歴史と、2010年以降の変化について。</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2023.09.05</p></div>
+            <div class="item-body">
+              <a href="./zakki/2023-09-05.html" class="underline-quiet">
+                <h3 class="item-title">シンガポールの道徳教育</h3>
+              </a>
+              <p class="item-venue">赤道直下の気候と、国民性を築いてきた道徳教育について。</p>
+            </div>
+          </li>
+        </ul>
+
+        <!-- ============================================================
+             新しい記事を追加するとき:
+               1. zakki/ にある既存のファイルを YYYY-MM-DD.html としてコピーし、
+                  タイトル・日付・本文を書き換える
+               2. 下のテンプレートをコピーして、このリストの一番上に貼る
+                  (新しい記事が上に来るように並べる)
+
+          <li class="item">
+            <div class="item-meta"><p>2026.01.01</p></div>
+            <div class="item-body">
+              <a href="./zakki/2026-01-01.html" class="underline-quiet">
+                <h3 class="item-title">タイトル</h3>
+              </a>
+              <p class="item-venue">一行の要約</p>
+            </div>
+          </li>
+
+             ============================================================ -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="rule"></div>
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Kei Ichikawa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
