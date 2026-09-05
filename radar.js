@@ -1,9 +1,10 @@
 /* radar.js
- * Shows a rain-cloud radar for the visitor's current location.
+ * Shows a rain-cloud radar for the visitor's location.
  *
- *   - Base map : CARTO Positron (OpenStreetMap data)
+ *   - Base map : OpenStreetMap tiles (desaturated with a CSS filter)
  *   - Radar    : RainViewer public tiles (latest frame, refreshed every 5 min)
- *   - Location : navigator.geolocation, falling back to Tokyo when denied
+ *   - Location : IP-based estimate first (no permission needed), then refined
+ *                with navigator.geolocation if the visitor allows it
  *
  * Replaces the earlier sumi-e weather painting (weather.js, kept in the repo
  * but no longer loaded by works.html).
@@ -14,19 +15,61 @@
   const el = document.getElementById('radar-map');
   if (!el || typeof L === 'undefined') return;
 
-  const FALLBACK = { lat: 35.681236, lon: 139.767125, label: '東京（位置情報が使えないため）' };
   const $city = document.getElementById('radar-city');
   const $time = document.getElementById('radar-time');
 
-  // ------------------------------------------------------------ location
-  let lat = FALLBACK.lat, lon = FALLBACK.lon, cityName = FALLBACK.label;
+  // 位置が取れないときの最終手段
+  let lat = 35.681236, lon = 139.767125;
+
+  // ------------------------------------------------------- 1. IP から概算
   try {
-    const pos = await new Promise((ok, ng) =>
-      navigator.geolocation.getCurrentPosition(ok, ng, { timeout: 7000 })
-    );
+    const r = await fetch('https://get.geojs.io/v1/ip/geo.json');
+    const d = await r.json();
+    const la = parseFloat(d.latitude), lo = parseFloat(d.longitude);
+    if (isFinite(la) && isFinite(lo)) {
+      lat = la; lon = lo;
+      if ($city && d.city) $city.textContent = `${d.city} 周辺`;
+    }
+  } catch (_) {}
+
+  // ------------------------------------------------------- 2. 地図
+  const map = L.map(el, {
+    center: [lat, lon],
+    zoom: 8,
+    scrollWheelZoom: false,   // ページのスクロールを奪わない
+    attributionControl: true,
+  });
+
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; OpenStreetMap contributors',
+    className: 'basemap-quiet',
+    maxZoom: 12,
+    minZoom: 4,
+  }).addTo(map);
+
+  let here = L.circleMarker([lat, lon], {
+    radius: 4,
+    color: '#1c2633',
+    weight: 1.5,
+    fillColor: '#1c2633',
+    fillOpacity: 0.9,
+  }).addTo(map);
+
+  // ------------------------------------------------------- 3. 正確な現在地
+  (async function refine() {
+    if (!navigator.geolocation) return;
+    let pos;
+    try {
+      pos = await new Promise((ok, ng) =>
+        navigator.geolocation.getCurrentPosition(ok, ng, { timeout: 10000, maximumAge: 300000 })
+      );
+    } catch (_) {
+      return;   // 拒否された場合は IP からの概算のまま
+    }
     lat = pos.coords.latitude;
     lon = pos.coords.longitude;
-    cityName = '—';
+    map.setView([lat, lon], 9);
+    here.setLatLng([lat, lon]);
     try {
       const r = await fetch(
         `https://nominatim.openstreetmap.org/reverse?format=jsonv2` +
@@ -35,35 +78,12 @@
       );
       const d = await r.json();
       const a = d.address ?? {};
-      cityName = a.city || a.town || a.village || a.municipality || a.county || d.name || '—';
+      const name = a.city || a.town || a.village || a.municipality || a.county || d.name;
+      if ($city && name) $city.textContent = name;
     } catch (_) {}
-  } catch (_) {}
-  if ($city) $city.textContent = cityName;
+  })();
 
-  // ------------------------------------------------------------ map
-  const map = L.map(el, {
-    center: [lat, lon],
-    zoom: 8,
-    scrollWheelZoom: false,   // ページのスクロールを奪わない
-    attributionControl: true,
-  });
-
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; OpenStreetMap &copy; CARTO',
-    subdomains: 'abcd',
-    maxZoom: 12,
-    minZoom: 4,
-  }).addTo(map);
-
-  L.circleMarker([lat, lon], {
-    radius: 4,
-    color: '#1c2633',
-    weight: 1.5,
-    fillColor: '#1c2633',
-    fillOpacity: 0.9,
-  }).addTo(map);
-
-  // ------------------------------------------------------------ radar frames
+  // ------------------------------------------------------- 4. 雨雲
   let radarLayer = null;
 
   function stamp(unix) {
@@ -82,13 +102,12 @@
 
       const next = L.tileLayer(
         `${d.host}${frame.path}/512/{z}/{x}/{y}/2/1_1.png`,
-        { opacity: 0.7, maxZoom: 12, attribution: 'Radar: RainViewer' }
+        { opacity: 0.75, maxZoom: 12, attribution: 'Radar: RainViewer' }
       );
+      const previous = radarLayer;
       next.addTo(map);
-      next.once('load', () => { if (radarLayer) map.removeLayer(radarLayer); radarLayer = next; });
-      // load イベントが来ないブラウザでも古い層が残らないように
-      setTimeout(() => { if (radarLayer && radarLayer !== next) { map.removeLayer(radarLayer); radarLayer = next; } }, 4000);
-      radarLayer = radarLayer || next;
+      radarLayer = next;
+      if (previous) setTimeout(() => map.removeLayer(previous), 1500);
 
       if ($time) $time.textContent = stamp(frame.time);
     } catch (_) {

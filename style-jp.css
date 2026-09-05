@@ -727,6 +727,10 @@ img, svg { max-width: 100%; display: block; }
   height: 100%;
   background: #eceae4;
 }
+/* ベースマップだけ彩度を落として、雨雲が読みやすいようにする */
+#radar-map .basemap-quiet {
+  filter: grayscale(0.9) contrast(0.92) brightness(1.06);
+}
 #radar-map .leaflet-control-attribution {
   background: rgba(255, 255, 255, 0.75);
   font-size: 0.625rem;
