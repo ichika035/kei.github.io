@@ -681,3 +681,40 @@ img, svg { max-width: 100%; display: block; }
 @media (max-width: 767px) {
   .essay-body p { font-size: 1rem; line-height: 1.95; margin-bottom: 1.5rem; }
 }
+
+/* 本文中の注番号 → 記事末の注へ / 注 → 本文へ */
+.essay-body .fn-ref {
+  font-size: 0.7em;
+  margin-left: 0.1em;
+}
+.essay-body .fn-ref a {
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(28, 38, 51, 0.25);
+  padding-bottom: 1px;
+}
+.essay-body .fn-ref a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+
+.essay-notes li { scroll-margin-top: 6rem; }
+.essay-notes li:target {
+  background: rgba(28, 38, 51, 0.06);
+  border-radius: 3px;
+  box-shadow: 0 0 0 0.4rem rgba(28, 38, 51, 0.06);
+}
+.fn-back { color: var(--muted); text-decoration: none; }
+.fn-back:hover { color: var(--ink); }
+
+/* 雑記の一覧: 年ごとの区分け */
+.year-group + .year-group { margin-top: 2.5rem; }
+.year-label {
+  margin: 0 0 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.8125rem;
+  letter-spacing: 0.18em;
+}
+.year-group .items .item:first-child { padding-top: 1rem; }
+
+@media (max-width: 767px) {
+  .year-group + .year-group { margin-top: 2rem; }
+}
