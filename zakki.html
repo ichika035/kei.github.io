@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>雑記 — Kei Ichikawa</title>
-  <meta name="description" content="市川慧の雑記。研究とは直接関係のない話がほとんどです。" />
+  <meta name="description" content="市川慧の雑記。カテゴリごとに記事をまとめています。" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,85 +27,36 @@
     <div class="rule"></div>
   </header>
 
-  <!-- Entries -->
-  <section class="section" id="entries">
+  <!-- Categories -->
+  <section class="section" id="categories">
     <div class="section-grid">
       <div class="col-side">
         <h1 class="headline">雑記</h1>
         <p class="lead lead--sm">研究とは直接関係のない話がほとんどです。</p>
       </div>
-      <div class="col-body items-scroll">
-        <section class="year-group" aria-label="2026年の記事">
-          <p class="eyebrow year-label">2026</p>
-          <ul class="items">
-            <li class="item">
-              <div class="item-meta"><p>09.05</p></div>
-              <div class="item-body">
-                <a href="./zakki/2026-09-05.html" class="underline-quiet">
-                  <h3 class="item-title">人とは何か</h3>
-                </a>
-                <p class="item-venue">ジャロン・ラニアー『人間はガジェットではない』の読書メモ。</p>
-              </div>
-            </li>
-          </ul>
-        </section>
+      <div class="col-body">
+        <div class="cat-grid">
+          <a class="cat-tile" href="./zakki/cat-media.html">
+            <span class="cat-count">2</span>
+            <span class="cat-name">メディア論オン会</span>
+          </a>
 
-        <section class="year-group" aria-label="2023年の記事">
-          <p class="eyebrow year-label">2023</p>
-          <ul class="items">
-            <li class="item">
-              <div class="item-meta"><p>11.06</p></div>
-              <div class="item-body">
-                <a href="./zakki/2023-11-06.html" class="underline-quiet">
-                  <h3 class="item-title">シンガポールの音楽と National Day</h3>
-                </a>
-                <p class="item-venue">National Day の音楽から、シンガポールで聴かれている音楽について。</p>
-              </div>
-            </li>
-
-            <li class="item">
-              <div class="item-meta"><p>10.14</p></div>
-              <div class="item-body">
-                <a href="./zakki/2023-10-14.html" class="underline-quiet">
-                  <h3 class="item-title">シンガポールの移民政策</h3>
-                </a>
-                <p class="item-venue">移民に寛容な国の歴史と、2010年以降の変化について。</p>
-              </div>
-            </li>
-
-            <li class="item">
-              <div class="item-meta"><p>09.05</p></div>
-              <div class="item-body">
-                <a href="./zakki/2023-09-05.html" class="underline-quiet">
-                  <h3 class="item-title">シンガポールの道徳教育</h3>
-                </a>
-                <p class="item-venue">赤道直下の気候と、国民性を築いてきた道徳教育について。</p>
-              </div>
-            </li>
-          </ul>
-        </section>
+          <a class="cat-tile" href="./zakki/cat-singapore.html">
+            <span class="cat-count">3</span>
+            <span class="cat-name">シンガポール</span>
+          </a>
+        </div>
 
         <!-- ============================================================
-             新しい記事を追加するとき:
-               1. zakki/ の既存ファイルを YYYY-MM-DD.html としてコピーし、
-                  タイトル・日付・本文を書き換える
-               2. その年の <section class="year-group"> の中、いちばん上に
-                  下のテンプレートを貼る (新しい記事が上に来るように並べる)
-               3. 新しい年の記事なら year-group ごと上に足す
-                  <section class="year-group" aria-label="2026年の記事">
-                    <p class="eyebrow year-label">2026</p>
-                    <ul class="items"> … </ul>
-                  </section>
+             カテゴリを増やすとき:
+               1. zakki/cat-<英数字のスラッグ>.html を既存のカテゴリページから
+                  コピーして作る (カテゴリ名と記事リストを書き換える)
+               2. 下のテンプレートをこの cat-grid の中に足す
 
-            <li class="item">
-              <div class="item-meta"><p>01.01</p></div>
-              <div class="item-body">
-                <a href="./zakki/2026-01-01.html" class="underline-quiet">
-                  <h3 class="item-title">タイトル</h3>
-                </a>
-                <p class="item-venue">一行の要約</p>
-              </div>
-            </li>
+          <a class="cat-tile" href="./zakki/cat-example.html">
+            <span class="cat-count">0</span>
+            <span class="cat-name">カテゴリ名</span>
+          </a>
 
              ============================================================ -->
       </div>

@@ -841,3 +841,59 @@ img, svg { max-width: 100%; display: block; }
   line-height: 1.9 !important;
   color: var(--muted);
 }
+
+/* 雑記: カテゴリのカード (scrapbox のプロジェクト一覧のような四角) */
+.cat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+  gap: 1.25rem;
+}
+.cat-tile {
+  position: relative;
+  display: block;
+  aspect-ratio: 1 / 1;
+  padding: 1rem;
+  border: 1px solid var(--rule);
+  background: #fff;
+  color: var(--ink);
+  text-decoration: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.cat-tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(28, 38, 51, 0.08);
+}
+.cat-name {
+  display: block;
+  font-family: "Noto Serif JP", Georgia, serif;
+  font-weight: 600;
+  font-size: 1rem;
+  line-height: 1.5;
+}
+.cat-count {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.875rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+.cat-count::after { content: " 記事"; }
+
+/* 読書メモ内の引用 */
+.essay-quote {
+  margin: 0 0 1.5rem;
+  padding: 0.25rem 0 0.25rem 1.25rem;
+  border-left: 2px solid var(--ink);
+  font-size: 0.9375rem;
+  line-height: 1.95;
+  color: var(--ink);
+}
+.essay-quote cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.8125rem;
+  font-style: normal;
+  color: var(--muted);
+}

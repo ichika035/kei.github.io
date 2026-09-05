@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>メディア論オン会 — 雑記 | Kei Ichikawa</title>
+  <meta name="description" content="メディア論オン会の記事一覧。メディア論の本を読んで書いたもの。" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="../style-jp.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="row">
+      <a href="../jp.html" class="brand">Kei Ichikawa</a>
+      <nav class="nav" aria-label="Main">
+        <a href="../index.html" class="underline-quiet">English</a>
+        <a href="../jp.html" class="underline-quiet">日本語</a>
+        <a href="../works.html" class="underline-quiet">今日の天気は?</a>
+        <a href="../zakki.html" class="underline-quiet">雑記</a>
+      </nav>
+    </div>
+    <div class="rule"></div>
+  </header>
+
+  <!-- Category header -->
+  <section class="section">
+    <a href="../zakki.html" class="back-link underline-quiet">← 雑記</a>
+    <p class="eyebrow">Category</p>
+    <h1 class="hero-title" style="margin-top: 1rem;">メディア論オン会</h1>
+    <p class="lead lead--sm">メディア論の本を読んで書いたもの。</p>
+  </section>
+
+  <div class="rule"></div>
+
+  <!-- Entries -->
+  <section class="section">
+    <div class="section-grid">
+      <div class="col-side"></div>
+      <div class="col-body">
+        <ul class="items">
+          <li class="item">
+            <div class="item-meta"><p>2026.09.05</p></div>
+            <div class="item-body">
+              <a href="./2026-09-05-protocol.html" class="underline-quiet">
+                <h3 class="item-title">戦術的メディア</h3>
+              </a>
+              <p class="item-venue">アレクサンダー・R・ギャロウェイ『プロトコル』第六章の読書メモ。</p>
+            </div>
+          </li>
+
+          <li class="item">
+            <div class="item-meta"><p>2026.09.05</p></div>
+            <div class="item-body">
+              <a href="./2026-09-05.html" class="underline-quiet">
+                <h3 class="item-title">人とは何か</h3>
+              </a>
+              <p class="item-venue">ジャロン・ラニアー『人間はガジェットではない』の読書メモ。</p>
+            </div>
+          </li>
+        </ul>
+
+        <!-- ============================================================
+             このカテゴリに記事を足すとき:
+               1. zakki/ の既存ファイルを YYYY-MM-DD.html としてコピーし、
+                  タイトル・日付・本文を書き換える
+                  (記事側の「← カテゴリ名」リンクもこのページに向ける)
+               2. 下のテンプレートをリストの一番上に貼る
+
+          <li class="item">
+            <div class="item-meta"><p>2026.01.01</p></div>
+            <div class="item-body">
+              <a href="./2026-01-01.html" class="underline-quiet">
+                <h3 class="item-title">タイトル</h3>
+              </a>
+              <p class="item-venue">一行の要約</p>
+            </div>
+          </li>
+
+             ============================================================ -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="rule"></div>
+    <div class="footer-inner">
+      <p>© <span id="year"></span> Kei Ichikawa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
