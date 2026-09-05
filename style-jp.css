@@ -630,3 +630,54 @@ img, svg { max-width: 100%; display: block; }
   .footer { margin-top: 3.5rem; }
   .footer-inner { padding: 1.5rem 1.25rem; flex-direction: column; }
 }
+
+
+/* ------------------------------------------------------------------
+   Essays (雑記)
+   ------------------------------------------------------------------ */
+.essay-body p {
+  margin: 0 0 1.75rem;
+  font-size: 1.0625rem;
+  line-height: 2;
+  color: var(--ink);
+  text-indent: 1em;
+}
+.essay-body p:first-child { margin-top: 0; }
+
+.essay-figure {
+  margin: 2.5rem 0;
+  padding: 0;
+}
+.essay-figure img {
+  display: block;
+  max-width: 100%;   /* 元画像より拡大しない (小さい写真がボケないように) */
+  height: auto;
+}
+.essay-figure figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.8125rem;
+  line-height: 1.9;
+  color: var(--muted);
+}
+
+.essay-notes {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+}
+.essay-notes ol {
+  margin: 0.75rem 0 0;
+  padding-left: 1.5rem;
+}
+.essay-notes li {
+  margin-bottom: 0.6rem;
+  font-size: 0.8125rem;
+  line-height: 1.8;
+  color: var(--muted);
+  overflow-wrap: anywhere;
+}
+.essay-body sup { font-size: 0.7em; color: var(--muted); }
+
+@media (max-width: 767px) {
+  .essay-body p { font-size: 1rem; line-height: 1.95; margin-bottom: 1.5rem; }
+}
