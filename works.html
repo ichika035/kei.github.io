@@ -4,12 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>今日の天気は? — Kei Ichikawa</title>
-  <meta name="description" content="市川慧のかつて関わったプロジェクト、イベント、執筆。訪問者の地域の天気を雪舟風の水墨画で描画します。" />
+  <meta name="description" content="市川慧のかつて関わったプロジェクト、イベント、執筆。訪問者の現在地の雨雲レーダーを表示します。" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
 
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
   <link rel="stylesheet" href="./style-jp.css">
 </head>
 
@@ -67,14 +68,14 @@
 
       <div class="hero-right">
         <div class="weather-frame">
-          <canvas id="weather-canvas" aria-label="訪問地の現在の天気を描いた水墨画"></canvas>
+          <div id="radar-map" aria-label="現在地周辺の雨雲レーダー"></div>
         </div>
         <p class="weather-meta">
-          <span id="weather-city">—</span>
+          <span id="radar-city">—</span>
           <span class="weather-dot" aria-hidden="true">・</span>
-          <span id="weather-label">—</span>
+          <span>雨雲レーダー</span>
           <span class="weather-dot" aria-hidden="true">・</span>
-          <span id="weather-temp">—</span>
+          <span id="radar-time">—</span>
         </p>
       </div>
     </div>
@@ -283,6 +284,7 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-  <script src="./weather.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="./radar.js"></script>
 </body>
 </html>
