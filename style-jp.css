@@ -718,3 +718,21 @@ img, svg { max-width: 100%; display: block; }
 @media (max-width: 767px) {
   .year-group + .year-group { margin-top: 2rem; }
 }
+
+/* 雨雲レーダー (works.html) */
+#radar-map {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: #eceae4;
+}
+#radar-map .leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.75);
+  font-size: 0.625rem;
+  color: var(--muted);
+}
+#radar-map .leaflet-control-zoom a {
+  color: var(--ink);
+  border-color: var(--rule);
+}
