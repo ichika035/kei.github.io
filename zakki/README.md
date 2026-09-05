@@ -12,14 +12,19 @@
    - `<p class="eyebrow">` の日付
    - `<h1 class="hero-title">` のタイトル
    - `<div class="col-body essay-body">` の中の本文 (`<p>` を並べるだけ)
-3. `/zakki.html` の記事リストの一番上に `<li class="item">` を追加する
-   (テンプレートが `zakki.html` の中にコメントとして書いてあります)
+3. `/zakki.html` の記事リストに `<li class="item">` を追加する
+   - 一覧は `<section class="year-group">` で年ごとに区切ってあるので、
+     その年のブロックの一番上に貼る (新しい記事が上に来るように)
+   - 新しい年の記事なら `year-group` ごとリストの先頭に足す
+   - テンプレートは `zakki.html` の中にコメントとして書いてあります
 4. main に push すると GitHub Actions が自動でサイトを再デプロイします
 
 ## 本文で使える部品
 
 - 段落: `<p>…</p>`
-- 注釈番号: `<sup>*1</sup>`
+- 注釈番号 (クリックで注/引用元へ):
+  - 引用元が URL のとき: `<sup class="fn-ref" id="fnref-1"><a href="https://…" target="_blank" rel="noopener">*1</a></sup>`
+  - URL がないとき: `<sup class="fn-ref" id="fnref-1"><a href="#fn-1">*1</a></sup>`
 - 画像 + キャプション:
 
   ```html
@@ -35,7 +40,7 @@
   <div class="essay-notes">
     <p class="eyebrow">Notes</p>
     <ol>
-      <li>…</li>
+      <li id="fn-1">… <a class="fn-back" href="#fnref-1">↩</a></li>
     </ol>
   </div>
   ```
