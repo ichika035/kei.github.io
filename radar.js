@@ -36,6 +36,8 @@
   const map = L.map(el, {
     center: [lat, lon],
     zoom: 8,
+    maxZoom: 10,
+    minZoom: 4,
     scrollWheelZoom: false,   // ページのスクロールを奪わない
     attributionControl: true,
   });
@@ -43,7 +45,7 @@
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; OpenStreetMap contributors',
     className: 'basemap-quiet',
-    maxZoom: 12,
+    maxZoom: 10,
     minZoom: 4,
   }).addTo(map);
 
@@ -101,8 +103,15 @@
       if (!frame) return;
 
       const next = L.tileLayer(
-        `${d.host}${frame.path}/512/{z}/{x}/{y}/2/1_1.png`,
-        { opacity: 0.75, maxZoom: 12, attribution: 'Radar: RainViewer' }
+        `${d.host}${frame.path}/256/{z}/{x}/{y}/2/1_1.png`,
+        {
+          opacity: 0.75,
+          // RainViewer の無料タイルは z7 まで。それ以上は z7 を引き伸ばして使う
+          // (指定しないと "Zoom Level Not Supported" の画像が返る)
+          maxNativeZoom: 7,
+          maxZoom: 10,
+          attribution: 'Radar: RainViewer',
+        }
       );
       const previous = radarLayer;
       next.addTo(map);
