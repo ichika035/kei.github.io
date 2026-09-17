@@ -842,44 +842,62 @@ img, svg { max-width: 100%; display: block; }
   color: var(--muted);
 }
 
-/* 雑記: カテゴリのカード (scrapbox のプロジェクト一覧のような四角) */
-.cat-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(9.5rem, 1fr));
+/* 雑記: カテゴリのアイコン (ページの中をゆっくり漂う、角のまるい四角) */
+.page-zakki { display: flex; flex-direction: column; min-height: 100vh; }
+@supports (min-height: 100dvh) { .page-zakki { min-height: 100dvh; } }
+.page-zakki .footer { margin-top: auto; } /* コピーライトは常にページの下部に */
+
+.zakki-intro { max-width: 36rem; }
+
+/* 見出しの下からフッターの手前までを、そのまま漂う範囲にする */
+.section--zakki {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-bottom: 2rem; /* 漂う範囲を広く取りたいので、上下の余白は控えめに */
+}
+@media (min-width: 768px) { .section--zakki { padding-top: 4rem; padding-bottom: 2rem; } }
+
+.cat-field {
+  position: relative;
+  flex: 1;
+  min-height: 16rem;
+  margin-top: 2.5rem;
+  overflow: hidden;
+  /* JS が動かないときは横に並べるだけ */
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
   gap: 1.25rem;
 }
+/* 漂わせる間は絶対配置にして transform で動かす */
+.cat-field--drifting .cat-tile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
 .cat-tile {
-  position: relative;
   display: block;
+  flex: none;
+  width: clamp(6.5rem, 18vw, 10rem);
   aspect-ratio: 1 / 1;
-  padding: 1rem;
+  border-radius: 1.25rem;
+  overflow: hidden;
   border: 1px solid var(--rule);
   background: #fff;
-  color: var(--ink);
-  text-decoration: none;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  transition: box-shadow 0.15s ease;
 }
-.cat-tile:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 18px rgba(28, 38, 51, 0.08);
+.cat-tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
 }
-.cat-name {
-  display: block;
-  font-family: "Noto Serif JP", Georgia, serif;
-  font-weight: 600;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-.cat-count {
-  position: absolute;
-  right: 1rem;
-  bottom: 0.875rem;
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  color: var(--muted);
-  font-variant-numeric: tabular-nums;
-}
-.cat-count::after { content: " 記事"; }
+.cat-tile:hover { box-shadow: 0 8px 24px rgba(28, 38, 51, 0.16); }
+.cat-tile:focus-visible { outline: 2px solid var(--hover); outline-offset: 3px; }
 
 /* 読書メモ内の引用 */
 .essay-quote {

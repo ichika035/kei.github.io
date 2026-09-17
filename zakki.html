@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="./style-jp.css">
 </head>
 
-<body>
+<body class="page-zakki">
   <header class="site-header">
     <div class="row">
       <a href="./jp.html" class="brand">Kei Ichikawa</a>
@@ -28,38 +28,38 @@
   </header>
 
   <!-- Categories -->
-  <section class="section" id="categories">
-    <div class="section-grid">
-      <div class="col-side">
-        <h1 class="headline">雑記</h1>
-        <p class="lead lead--sm">研究とは直接関係のない話がほとんどです。</p>
-      </div>
-      <div class="col-body">
-        <div class="cat-grid">
-          <a class="cat-tile" href="./zakki/cat-media.html">
-            <span class="cat-count">2</span>
-            <span class="cat-name">メディア論オン会</span>
-          </a>
+  <section class="section section--zakki" id="categories">
+    <div class="zakki-intro">
+      <h1 class="headline">雑記</h1>
+      <p class="lead lead--sm">研究とは直接関係のない話がほとんどです。漂っている四角をクリックしてください。</p>
+    </div>
 
-          <a class="cat-tile" href="./zakki/cat-singapore.html">
-            <span class="cat-count">3</span>
-            <span class="cat-name">シンガポール</span>
-          </a>
-        </div>
+    <!-- カテゴリのアイコンはこの中をランダムに漂い、へりで跳ね返る (zakki-drift.js) -->
+    <div class="cat-field" id="cat-field">
+      <a class="cat-tile" href="./zakki/cat-media.html" title="メディア論オン会" aria-label="メディア論オン会 (2 記事)">
+        <img src="./zakki/images/media-cover.png" alt="" />
+      </a>
 
-        <!-- ============================================================
-             カテゴリを増やすとき:
-               1. zakki/cat-<英数字のスラッグ>.html を既存のカテゴリページから
-                  コピーして作る (カテゴリ名と記事リストを書き換える)
-               2. 下のテンプレートをこの cat-grid の中に足す
+      <a class="cat-tile" href="./zakki/cat-singapore.html" title="シンガポール" aria-label="シンガポール (3 記事)">
+        <img src="./zakki/images/singapore.svg" alt="" />
+      </a>
 
-          <a class="cat-tile" href="./zakki/cat-example.html">
-            <span class="cat-count">0</span>
-            <span class="cat-name">カテゴリ名</span>
-          </a>
+      <a class="cat-tile" href="./zakki/cat-works.html" title="作った・関わったもの" aria-label="作った・関わったもの (3 記事)">
+        <img src="./transition_1.png" alt="" />
+      </a>
 
-             ============================================================ -->
-      </div>
+      <!-- ============================================================
+           カテゴリを増やすとき:
+             1. zakki/cat-<英数字のスラッグ>.html を既存のカテゴリページから
+                コピーして作る (カテゴリ名と記事リストを書き換える)
+             2. 下のテンプレートをこの cat-field の中に足す
+                (文字は載せず、正方形に近い画像を 1 枚だけ入れる)
+
+        <a class="cat-tile" href="./zakki/cat-example.html" title="カテゴリ名" aria-label="カテゴリ名">
+          <img src="./zakki/images/example.png" alt="" />
+        </a>
+
+           ============================================================ -->
     </div>
   </section>
 
@@ -73,5 +73,6 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script src="./zakki-drift.js"></script>
 </body>
 </html>
