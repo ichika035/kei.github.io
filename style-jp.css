@@ -109,7 +109,11 @@ img, svg { max-width: 100%; display: block; }
   .hero-portrait {
     width: clamp(280px, 24vw, 320px);
     border-radius: 8px;
+    /* 写真の上端を名前の文字の上端にそろえる
+       (名前の上の余白 1.25rem + 文字の上の空き) */
+    margin-top: 2.1rem;
   }
+  html[lang="ja"] .hero-portrait { margin-top: 1.7rem; }
 }
 
 .headline {
