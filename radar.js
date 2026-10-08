@@ -58,9 +58,9 @@
 
   const here = L.circleMarker([lat, lon], {
     radius: 4,
-    color: '#1c2633',
+    color: '#262421',
     weight: 1.5,
-    fillColor: '#1c2633',
+    fillColor: '#262421',
     fillOpacity: 0.9,
   }).addTo(map);
 

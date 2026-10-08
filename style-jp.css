@@ -1,33 +1,31 @@
 /* Tatami-inspired stylesheet for jp.html */
 
-/* 英字はすべてトップの名前 (Noto Serif JP) と同じ字形にそろえる。
-   Noto Serif JP の Latin 部分だけを自前で持ち、unicode-range で英字にだけ当てる。
-   和文は各要素の元の書体のまま。 */
-@font-face {
-  font-family: "Kei Latin";
-  font-style: normal;
-  font-weight: 200 900;
-  font-display: swap;
-  src: url("fonts/noto-serif-jp-latin.woff2") format("woff2");
-  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
-}
-@font-face {
-  font-family: "Kei Latin";
-  font-style: normal;
-  font-weight: 200 900;
-  font-display: swap;
-  src: url("fonts/noto-serif-jp-latin-ext.woff2") format("woff2");
-  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C4, U+2113, U+2C60-2C7F, U+A720-A7FF;
-}
+/* 書体は CV と同じ Helvetica Neue。PostScript 名でウェイトを直接指定する。
+   和文は Helvetica Neue に無いので Noto Serif JP (明朝) に落ちる。 */
+@font-face { font-family: "HN Body"; font-weight: 400; font-style: normal; src: local("HelveticaNeue-Light"), local("Helvetica Neue Light"); }
+@font-face { font-family: "HN Body"; font-weight: 400; font-style: italic; src: local("HelveticaNeue-LightItalic"), local("Helvetica Neue Light Italic"); }
+@font-face { font-family: "HN Body"; font-weight: 700; font-style: normal; src: local("HelveticaNeue-CondensedBold"), local("Helvetica Neue Condensed Bold"); }
+@font-face { font-family: "HN Body"; font-weight: 700; font-style: italic; src: local("HelveticaNeue-BoldItalic"), local("Helvetica Neue Bold Italic"); }
+@font-face { font-family: "HN Heading"; font-weight: 700; src: local("HelveticaNeue-CondensedBold"), local("Helvetica Neue Condensed Bold"); }
+@font-face { font-family: "HN Name"; font-weight: 400; src: local("HelveticaNeue"), local("Helvetica Neue"); }
+@font-face { font-family: "HN Name"; font-weight: 700; src: local("HelveticaNeue-Bold"), local("Helvetica Neue Bold"); }
 
 :root {
-  --ink: #1c2633;
-  --paper: #fafaf7;
-  --muted: #64748b;
+  --ink: #262421;   /* 墨 */
+  --paper: #ffffff;
+  --muted: #6e6a64; /* 鈍色寄りの温かいグレー */
   --accent: #2f5d50;
   --hover: #4a78a8; /* 薄い藍色 */
-  --max: 80rem; /* ~1280px, matches max-w-7xl */
-  --rule: rgba(28, 38, 51, 0.12);
+  --max: 80rem;
+  --rule: rgba(38, 36, 33, 0.12);
+
+  --jp: "Noto Serif JP", serif;   /* 和文は明朝 (Noto Serif JP) */
+  --font-body: "HN Body", "Helvetica Neue", Helvetica, Arial, var(--jp);
+  --font-head: "HN Heading", "Helvetica Neue", Helvetica, Arial, var(--jp);
+  --font-name: "HN Name", "Helvetica Neue", Helvetica, Arial, var(--jp);
+
+  /* 見出しの頭文字の色 (CV と同じ並び) */
+  --c1: #6ce0f1; --c2: #fb4485; --c3: #fda333; --c4: #c2e15f; --c5: #d3a4f9; --c6: #bf8040;
 }
 
 * { box-sizing: border-box; }
@@ -36,7 +34,7 @@ html, body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: "Kei Latin", "Noto Sans JP", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  font-family: var(--font-body);
   font-feature-settings: "palt";
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
@@ -54,28 +52,20 @@ a:hover,
 img, svg { max-width: 100%; display: block; }
 
 /* --- Typography --- */
-.font-display { font-family: "Noto Serif JP", Georgia, serif; }
+.font-display { font-family: var(--font-body); }
 
 .eyebrow {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
+  font-size: 0.875rem;
   color: var(--muted);
   margin: 0;
 }
 
-/* Hero の eyebrow は下の和文タイトル (市川 慧) の視覚的開始位置に合わせる */
-.section--hero .eyebrow {
-  letter-spacing: 0.2em;
-  padding-left: 0.35em;
-}
-
 .hero-title {
-  font-family: "Noto Serif JP", Georgia, serif;
-  font-weight: 700;
+  font-family: var(--font-name);
+  font-weight: 400;
   font-size: clamp(2.5rem, 8vw, 6rem);
   line-height: 1.05;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   margin: 1.25rem 0 0;
   color: var(--ink);
   word-break: keep-all;
@@ -123,7 +113,7 @@ img, svg { max-width: 100%; display: block; }
 }
 
 .headline {
-  font-family: "Noto Serif JP", Georgia, serif;
+  font-family: var(--font-head);
   font-weight: 700;
   font-size: clamp(1.75rem, 4vw, 3rem);
   line-height: 1.2;
@@ -145,22 +135,13 @@ img, svg { max-width: 100%; display: block; }
 }
 .underline-quiet:hover { background-size: 100% 1px; }
 
-.rule {
-  height: 1px;
-  background: var(--ink);
-  opacity: 0.12;
-  max-width: var(--max);
-  margin: 0 auto;
-}
 
 /* --- Header --- */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 40;
-  background: rgba(250, 250, 247, 0.8);
-  backdrop-filter: blur(6px);
-  -webkit-backdrop-filter: blur(6px);
+  background: var(--paper);
 }
 .site-header .row {
   display: flex;
@@ -173,7 +154,7 @@ img, svg { max-width: 100%; display: block; }
 @media (min-width: 768px) { .site-header .row { padding: 1.25rem 2.5rem; } }
 
 .brand {
-  font-family: "Noto Serif JP", Georgia, serif;
+  font-family: var(--font-name);
   font-weight: 700;
   font-size: 1.25rem;
   letter-spacing: -0.04em;
@@ -193,9 +174,6 @@ img, svg { max-width: 100%; display: block; }
 /* In-page section anchors live inside .nav, to the left of page-switch links.
    They are visually quieter so the three page links remain prominent. */
 .nav-section {
-  font-size: 0.6875rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
   color: var(--muted);
 }
 .nav-section:hover { color: var(--hover); }
@@ -221,13 +199,9 @@ img, svg { max-width: 100%; display: block; }
 .section--hero { padding-top: 2rem; padding-bottom: 3rem; }
 @media (min-width: 768px) {
   .section--hero {
-    /* 画面高いっぱいに寄せ、コンテンツを少し下寄りセンターに配置 */
-    min-height: calc(100vh - 4.75rem);
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding-top: 5rem;
-    padding-bottom: 3rem;
+    /* 上と、次の見出しまでの間を同じくらいにする */
+    padding-top: 7rem;
+    padding-bottom: 0;
   }
 }
 
@@ -241,10 +215,7 @@ img, svg { max-width: 100%; display: block; }
 
 .col-side { grid-column: span 12; }
 .col-body { grid-column: span 12; }
-@media (min-width: 768px) {
-  .col-side { grid-column: span 4; }
-  .col-body { grid-column: span 8; }
-}
+.col-side .headline { margin-bottom: 0; }
 
 /* Hero helpers */
 .lead {
@@ -278,9 +249,9 @@ img, svg { max-width: 100%; display: block; }
   height: 32px;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition: opacity 0.2s ease;
 }
-.social a:hover { transform: translateY(-2px); opacity: 0.75; }
+.social a:hover { opacity: 0.75; }
 .social a:hover { color: var(--ink); } /* svg が currentColor を使うので ink を維持 */
 .social img, .social svg { width: 24px; height: 24px; display: block; }
 .social svg { color: var(--ink); }
@@ -297,7 +268,7 @@ img, svg { max-width: 100%; display: block; }
 }
 .keywords li {
   counter-increment: k;
-  font-family: "Noto Serif JP", Georgia, serif;
+  font-family: var(--font-body);
   font-size: clamp(1.125rem, 1.8vw, 1.375rem);
   font-weight: 500;
   color: var(--ink);
@@ -311,15 +282,7 @@ img, svg { max-width: 100%; display: block; }
   overflow-wrap: normal;
   white-space: nowrap;           /* 単語単位で一行に */
 }
-.keywords li::before {
-  content: counter(k, decimal-leading-zero);
-  color: var(--muted);
-  font-family: "Kei Latin", ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 0.6875rem;
-  letter-spacing: 0.1em;
-  font-variant-numeric: tabular-nums;
-  flex: 0 0 auto;
-}
+.keywords li::before { content: none; }
 
 /* Scrollable list wrapper — keeps the left column fixed while items scroll inside the block (desktop only) */
 @media (min-width: 768px) {
@@ -328,7 +291,7 @@ img, svg { max-width: 100%; display: block; }
     overflow-y: auto;
     padding-right: 1rem;
     scrollbar-width: thin;
-    scrollbar-color: rgba(28, 38, 51, 0.25) transparent;
+    scrollbar-color: rgba(38, 36, 33, 0.25) transparent;
     /* subtle fade at bottom to hint more content */
     mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 2.5rem), transparent 100%);
     -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 2.5rem), transparent 100%);
@@ -336,10 +299,10 @@ img, svg { max-width: 100%; display: block; }
   .items-scroll::-webkit-scrollbar { width: 4px; }
   .items-scroll::-webkit-scrollbar-track { background: transparent; }
   .items-scroll::-webkit-scrollbar-thumb {
-    background: rgba(28, 38, 51, 0.25);
+    background: rgba(38, 36, 33, 0.25);
     border-radius: 2px;
   }
-  .items-scroll::-webkit-scrollbar-thumb:hover { background: rgba(28, 38, 51, 0.45); }
+  .items-scroll::-webkit-scrollbar-thumb:hover { background: rgba(38, 36, 33, 0.45); }
   .items-scroll .item:last-child { padding-bottom: 3rem; }
 }
 
@@ -369,14 +332,12 @@ img, svg { max-width: 100%; display: block; }
   .item-tag  { grid-column: span 3; text-align: right; }
 }
 .item-meta {
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
+  font-size: 0.8125rem;
   color: var(--muted);
 }
 .item-meta p { margin: 0 0 0.25rem; }
 .item-title {
-  font-family: "Noto Serif JP", Georgia, serif;
+  font-family: var(--font-head);
   font-weight: 700;
   font-size: 1.25rem;
   line-height: 1.45;
@@ -391,15 +352,6 @@ img, svg { max-width: 100%; display: block; }
 .item-body > a { display: block; }
 .item-authors { margin: 0.875rem 0 0; font-size: 0.875rem; color: var(--muted); }
 .item-venue   { margin: 0.375rem 0 0; font-size: 0.875rem; color: var(--muted); }
-.item-chip {
-  display: inline-block;
-  background: rgba(28, 38, 51, 0.05);
-  color: var(--ink);
-  font-size: 0.6875rem;
-  padding: 0.25rem 0.75rem;
-  border-radius: 9999px;
-  letter-spacing: 0.05em;
-}
 .me {
   font-weight: 600;
   color: var(--ink);
@@ -415,8 +367,8 @@ img, svg { max-width: 100%; display: block; }
   gap: 0.75rem;
   border: 1px solid var(--ink);
   color: var(--ink);
-  padding: 1rem 2rem;
-  border-radius: 9999px;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0;
   font-size: 0.875rem;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
@@ -447,9 +399,7 @@ img, svg { max-width: 100%; display: block; }
 }
 @media (min-width: 768px) { .footer-inner { padding: 1.75rem 2.5rem; } }
 .footer-inner .tagline {
-  font-family: "Kei Latin", ui-monospace, SFMono-Regular, Menlo, monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
+  font-family: var(--font-body);
 }
 
 /* ------- News list (auto-populated from Papers / Talks) ------- */
@@ -463,17 +413,17 @@ img, svg { max-width: 100%; display: block; }
   overflow-y: auto;
   padding-right: 0.75rem;
   scrollbar-width: thin;
-  scrollbar-color: rgba(28, 38, 51, 0.25) transparent;
+  scrollbar-color: rgba(38, 36, 33, 0.25) transparent;
   mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 2rem), transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, #000 0, #000 calc(100% - 2rem), transparent 100%);
 }
 .news-list::-webkit-scrollbar { width: 4px; }
 .news-list::-webkit-scrollbar-track { background: transparent; }
 .news-list::-webkit-scrollbar-thumb {
-  background: rgba(28, 38, 51, 0.25);
+  background: rgba(38, 36, 33, 0.25);
   border-radius: 2px;
 }
-.news-list::-webkit-scrollbar-thumb:hover { background: rgba(28, 38, 51, 0.45); }
+.news-list::-webkit-scrollbar-thumb:hover { background: rgba(38, 36, 33, 0.45); }
 @media (min-width: 768px) {
   .news-list { max-height: 14rem; }
 }
@@ -493,15 +443,13 @@ img, svg { max-width: 100%; display: block; }
   }
 }
 .news-label {
-  font-size: 0.6875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.25em;
+  font-size: 0.8125rem;
   color: var(--muted);
   font-weight: 500;
 }
 .news-text {
   margin: 0;
-  font-family: "Noto Serif JP", Georgia, serif;
+  font-family: var(--font-body);
   font-size: clamp(1.0625rem, 1.4vw, 1.1875rem);
   line-height: 1.55;
   letter-spacing: -0.005em;
@@ -623,7 +571,6 @@ img, svg { max-width: 100%; display: block; }
     gap: 1rem 1.25rem;
     width: 100%;
   }
-  .nav-section { font-size: 0.625rem; }
   .nav-divider { display: none; }
 
   .section { padding: 3.5rem 1.25rem; }
@@ -710,16 +657,16 @@ img, svg { max-width: 100%; display: block; }
 .essay-body .fn-ref a {
   color: var(--muted);
   text-decoration: none;
-  border-bottom: 1px solid rgba(28, 38, 51, 0.25);
+  border-bottom: 1px solid rgba(38, 36, 33, 0.25);
   padding-bottom: 1px;
 }
 .essay-body .fn-ref a:hover { color: var(--ink); border-bottom-color: var(--ink); }
 
 .essay-notes li { scroll-margin-top: 6rem; }
 .essay-notes li:target {
-  background: rgba(28, 38, 51, 0.06);
+  background: rgba(38, 36, 33, 0.06);
   border-radius: 3px;
-  box-shadow: 0 0 0 0.4rem rgba(28, 38, 51, 0.06);
+  box-shadow: 0 0 0 0.4rem rgba(38, 36, 33, 0.06);
 }
 .fn-back { color: var(--muted); text-decoration: none; }
 .fn-back:hover { color: var(--ink); }
@@ -731,7 +678,6 @@ img, svg { max-width: 100%; display: block; }
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--rule);
   font-size: 0.8125rem;
-  letter-spacing: 0.18em;
 }
 .year-group .items .item:first-child { padding-top: 1rem; }
 
@@ -763,7 +709,7 @@ img, svg { max-width: 100%; display: block; }
 
 /* 雑記: 読書メモ形式の記事 (見出し・箇条書き・図版・出典) */
 .essay-h2 {
-  font-family: "Noto Serif JP", Georgia, serif;
+  font-family: var(--font-head);
   font-size: 1.5rem;
   line-height: 1.4;
   margin: 3.5rem 0 1.25rem;
@@ -772,7 +718,7 @@ img, svg { max-width: 100%; display: block; }
 }
 .essay-body > .essay-h2:first-child { margin-top: 0; }
 .essay-h3 {
-  font-family: "Noto Serif JP", Georgia, serif;
+  font-family: var(--font-head);
   font-size: 1.1875rem;
   line-height: 1.5;
   margin: 2.5rem 0 1rem;
@@ -846,11 +792,11 @@ img, svg { max-width: 100%; display: block; }
   margin: 0 0 2.5rem;
   padding: 1.25rem 1.5rem;
   border: 1px solid var(--rule);
-  background: rgba(28, 38, 51, 0.02);
+  background: rgba(38, 36, 33, 0.02);
 }
 .essay-source-title {
   margin: 0.25rem 0 0 !important;
-  font-family: "Noto Serif JP", Georgia, serif;
+  font-family: var(--font-body);
   font-weight: 600;
   font-size: 1rem !important;
 }
@@ -916,7 +862,7 @@ img, svg { max-width: 100%; display: block; }
   object-fit: cover;
   border-radius: inherit;
 }
-.cat-tile:hover { box-shadow: 0 8px 24px rgba(28, 38, 51, 0.16); }
+.cat-tile:hover { box-shadow: 0 8px 24px rgba(38, 36, 33, 0.16); }
 .cat-tile:focus-visible { outline: 2px solid var(--hover); outline-offset: 3px; }
 
 /* 読書メモ内の引用 */
@@ -942,3 +888,15 @@ img, svg { max-width: 100%; display: block; }
   line-height: 1.7;
   color: var(--muted);
 }
+
+/* 和文ページの大見出し (市川 慧、記事タイトルなど) は太字のまま */
+html[lang="ja"] .hero-title { font-weight: 700; }
+
+/* 見出しの頭文字に色を付ける (CV と同じ)。色は c1〜c6 の順に回す */
+.headline .c { color: var(--accent-c, inherit); }
+.headline .c1 { --accent-c: var(--c1); }
+.headline .c2 { --accent-c: var(--c2); }
+.headline .c3 { --accent-c: var(--c3); }
+.headline .c4 { --accent-c: var(--c4); }
+.headline .c5 { --accent-c: var(--c5); }
+.headline .c6 { --accent-c: var(--c6); }

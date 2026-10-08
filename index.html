@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./style-jp.css">
 </head>
@@ -20,6 +20,7 @@
       <nav class="nav" aria-label="Main">
         <a href="#news" class="nav-section underline-quiet">News</a>
         <a href="#papers" class="nav-section underline-quiet">Papers</a>
+        <a href="#working-papers" class="nav-section underline-quiet">Working Papers</a>
         <a href="#talks" class="nav-section underline-quiet">Talks</a>
         <a href="#awards" class="nav-section underline-quiet">Awards</a>
         <a href="#service" class="nav-section underline-quiet">Service</a>
@@ -31,10 +32,8 @@
         <a href="./zakki.html" class="underline-quiet">雑記</a>
       </nav>
     </div>
-    <div class="rule"></div>
   </header>
 
-  <!-- Hero -->
   <section class="section section--hero">
     <div class="hero-block">
       <h1 class="hero-title">Kei Ichikawa</h1>
@@ -69,14 +68,11 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- News (auto-populated from Papers / Talks) -->
   <section class="section" id="news">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">News</p>
-        <h2 class="headline">News</h2>
+        <h2 class="headline"><span class="c c1">New</span>s</h2>
       </div>
       <div class="col-body">
         <ul class="news-list" id="news-list" aria-live="polite"></ul>
@@ -85,14 +81,11 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Research themes -->
   <section class="section">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">Research</p>
-        <h2 class="headline">Research Themes</h2>
+        <h2 class="headline"><span class="c c2">Res</span>earch Themes</h2>
       </div>
       <div class="col-body">
         <ol class="keywords">
@@ -107,14 +100,11 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Methods -->
   <section class="section">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">Methods</p>
-        <h2 class="headline">Research Methods</h2>
+        <h2 class="headline"><span class="c c3">Res</span>earch Methods</h2>
       </div>
       <div class="col-body">
         <ol class="keywords">
@@ -129,17 +119,54 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Papers -->
   <section class="section" id="papers">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">Papers</p>
-        <h2 class="headline">Publications</h2>
+        <h2 class="headline"><span class="c c4">Pub</span>lications</h2>
       </div>
       <div class="col-body">
         <ul class="items items-scroll" id="papers-list">
+          <li class="item" data-date="2026-09-22">
+            <div class="item-meta">
+              <p>2026</p>
+              <p>Journal</p>
+            </div>
+            <div class="item-body">
+              <a href="https://osf.io/preprints/osf/tnmyv_v1" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">Domain-specific emotional effects of deepfakes on news-sharing behaviour</h3>
+              </a>
+              <p class="item-authors"><span class="me">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara</p>
+              <p class="item-venue">Journal of Computational Social Science</p>
+            </div>
+          </li>
+
+          <li class="item" data-date="2025-05-23">
+            <div class="item-meta">
+              <p>2025</p>
+              <p>Journal</p>
+            </div>
+            <div class="item-body">
+              <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1574840/full" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">False failures, real distrust: the impact of an infrastructure failure deepfake on government trust</h3>
+              </a>
+              <p class="item-authors">Saifuddin Ahmed, Muhammad Masood, Adeline Wei Ting Bee, <span class="me">Kei Ichikawa</span></p>
+              <p class="item-venue">Frontiers in Psychology</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" id="working-papers">
+    <div class="section-grid">
+      <div class="col-side">
+        <h2 class="headline"><span class="c c5">Wor</span>king Papers</h2>
+      </div>
+      <div class="col-body">
+        <ul class="items items-scroll" id="preprints-list">
           <li class="item" data-date="2026-09-28">
             <div class="item-meta">
               <p>2026</p>
@@ -181,47 +208,16 @@
               <p class="item-venue">arXiv preprint (arXiv:2609.34026)</p>
             </div>
           </li>
-
-          <li class="item" data-date="2026-09-22">
-            <div class="item-meta">
-              <p>2026</p>
-              <p>Journal</p>
-            </div>
-            <div class="item-body">
-              <a href="https://osf.io/preprints/osf/tnmyv_v1" target="_blank" rel="noopener" class="underline-quiet">
-                <h3 class="item-title">Domain-specific emotional effects of deepfakes on news-sharing behaviour</h3>
-              </a>
-              <p class="item-authors"><span class="me">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara</p>
-              <p class="item-venue">Journal of Computational Social Science</p>
-            </div>
-          </li>
-
-          <li class="item" data-date="2025-05-23">
-            <div class="item-meta">
-              <p>2025</p>
-              <p>Journal</p>
-            </div>
-            <div class="item-body">
-              <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1574840/full" target="_blank" rel="noopener" class="underline-quiet">
-                <h3 class="item-title">False failures, real distrust: the impact of an infrastructure failure deepfake on government trust</h3>
-              </a>
-              <p class="item-authors">Saifuddin Ahmed, Muhammad Masood, Adeline Wei Ting Bee, <span class="me">Kei Ichikawa</span></p>
-              <p class="item-venue">Frontiers in Psychology</p>
-            </div>
-          </li>
         </ul>
       </div>
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Talks -->
   <section class="section" id="talks">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">Talks</p>
-        <h2 class="headline">Conferences</h2>
+        <h2 class="headline"><span class="c c6">Con</span>ferences</h2>
       </div>
       <div class="col-body">
         <ul class="items items-scroll" id="talks-list">
@@ -245,7 +241,7 @@
             <div class="item-body">
               <h3 class="item-title">The “Oil Spill” as Dimensionality Reduction? Uncovering the Structural Consolidation of American Lifestyle (2011–2022)</h3>
               <p class="item-authors">Hsiu-chi Lu, <span class="me">Kei Ichikawa</span></p>
-              <p class="item-venue">121st ASA Annual Meeting — New York City, USA</p>
+              <p class="item-venue">121st ASA Annual Meeting, New York City, USA</p>
             </div>
           </li>
 
@@ -257,7 +253,7 @@
             <div class="item-body">
               <h3 class="item-title">Making Identity Visible: Meme Communication and Intergroup Affect</h3>
               <p class="item-authors"><span class="me">Kei Ichikawa</span>, Aoi Naito, Jiayu Chen, Kazutoshi Sasahara</p>
-              <p class="item-venue">IC2S2 2026 (Poster) — University of Vermont, Burlington, Vermont, USA</p>
+              <p class="item-venue">IC2S2 2026 (Poster), University of Vermont, Burlington, Vermont, USA</p>
             </div>
           </li>
 
@@ -269,7 +265,7 @@
             <div class="item-body">
               <h3 class="item-title">The “Oil Spill” as Dimensionality Reduction? Uncovering the Structural Consolidation of American Lifestyle (2011–2022)</h3>
               <p class="item-authors">Hsiu-chi Lu, <span class="me">Kei Ichikawa</span></p>
-              <p class="item-venue">IC2S2 2026 (Parallel Talk) — University of Vermont, Burlington, Vermont, USA</p>
+              <p class="item-venue">IC2S2 2026 (Parallel Talk), University of Vermont, Burlington, Vermont, USA</p>
             </div>
           </li>
 
@@ -293,7 +289,7 @@
             <div class="item-body">
               <h3 class="item-title">How Emotion Shapes the Sharing of AI-Generated Images: Findings from an Online Experiment</h3>
               <p class="item-authors"><span class="me">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara</p>
-              <p class="item-venue">HICSS-58 — Hilton Waikoloa, Big Island, USA</p>
+              <p class="item-venue">HICSS-58, Hilton Waikoloa, Big Island, USA</p>
             </div>
           </li>
 
@@ -305,7 +301,7 @@
             <div class="item-body">
               <h3 class="item-title">The Emotional Levers of AI-generated Content</h3>
               <p class="item-authors"><span class="me">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara</p>
-              <p class="item-venue">IC2S2 2024 — Philadelphia, USA</p>
+              <p class="item-venue">IC2S2 2024, Philadelphia, USA</p>
             </div>
           </li>
 
@@ -325,14 +321,11 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Awards -->
   <section class="section" id="awards">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">Awards</p>
-        <h2 class="headline">Awards</h2>
+        <h2 class="headline"><span class="c c1">Awa</span>rds</h2>
       </div>
       <div class="col-body">
         <ul class="items items-scroll">
@@ -348,7 +341,7 @@
             <div class="item-meta"><p>2024</p></div>
             <div class="item-body">
               <a href="https://award.tech-director.org/winner01" target="_blank" rel="noopener" class="underline-quiet">
-                <h3 class="item-title">Tech Direction Awards — R&amp;D / Prototype, Bronze</h3>
+                <h3 class="item-title">Tech Direction Awards, R&amp;D / Prototype, Bronze</h3>
               </a>
               <p class="item-venue">Tech Directors Association</p>
             </div>
@@ -358,14 +351,11 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Service -->
   <section class="section" id="service">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">Service</p>
-        <h2 class="headline">Academic Service</h2>
+        <h2 class="headline"><span class="c c2">Aca</span>demic Service</h2>
       </div>
       <div class="col-body">
         <ul class="items items-scroll">
@@ -383,7 +373,7 @@
             <div class="item-meta"><p>2023</p></div>
             <div class="item-body">
               <h3 class="item-title">Teaching Assistant</h3>
-              <p class="item-venue">Study Design in User Research — Tokyo Institute of Technology</p>
+              <p class="item-venue">Study Design in User Research, Tokyo Institute of Technology</p>
             </div>
           </li>
         </ul>
@@ -391,14 +381,11 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Work -->
   <section class="section">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">Work</p>
-        <h2 class="headline">Current Positions</h2>
+        <h2 class="headline"><span class="c c3">Cur</span>rent Positions</h2>
       </div>
       <div class="col-body">
         <ul class="items items-scroll">
@@ -414,14 +401,11 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Contact CTA -->
   <section class="section" id="contact">
     <div class="section-grid">
       <div class="col-body">
-        <p class="eyebrow">Contact</p>
-        <h2 class="headline">Get in touch</h2>
+        <h2 class="headline"><span class="c c4">Get</span> in touch</h2>
         <p class="lead muted">
           For research inquiries, potential collaborations or questions, please feel free to reach out.
         </p>
@@ -437,7 +421,6 @@
   </section>
 
   <footer class="footer">
-    <div class="rule"></div>
     <div class="footer-inner">
       <p>© <span id="year"></span> Kei Ichikawa. All rights reserved.</p>
     </div>

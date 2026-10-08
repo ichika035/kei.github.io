@@ -8,7 +8,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./style-jp.css">
 </head>
@@ -20,6 +20,7 @@
       <nav class="nav" aria-label="Main">
         <a href="#news" class="nav-section underline-quiet">お知らせ</a>
         <a href="#papers" class="nav-section underline-quiet">学術論文</a>
+        <a href="#working-papers" class="nav-section underline-quiet">プレプリント</a>
         <a href="#talks" class="nav-section underline-quiet">会議発表</a>
         <a href="#awards" class="nav-section underline-quiet">受賞</a>
         <a href="#press" class="nav-section underline-quiet">プレス</a>
@@ -31,13 +32,10 @@
         <a href="./zakki.html" class="underline-quiet">雑記</a>
       </nav>
     </div>
-    <div class="rule"></div>
   </header>
 
-  <!-- Hero -->
   <section class="section section--hero">
     <div class="hero-block">
-      <p class="eyebrow">Kei Ichikawa</p>
       <h1 class="hero-title">市川 慧</h1>
       <img class="hero-portrait" src="./profile.jpg" alt="市川 慧 のポートレート">
       <p class="lead">
@@ -71,14 +69,11 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- News / お知らせ (auto-populated from Papers / Talks) -->
   <section class="section" id="news">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">News</p>
-        <h2 class="headline">お知らせ</h2>
+        <h2 class="headline"><span class="c c1">お知</span>らせ</h2>
       </div>
       <div class="col-body">
         <ul class="news-list" id="news-list" aria-live="polite"></ul>
@@ -87,14 +82,11 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Research themes -->
   <section class="section">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">Research</p>
-        <h2 class="headline">研究テーマ・関心</h2>
+        <h2 class="headline"><span class="c c2">研究</span>テーマ・関心</h2>
       </div>
       <div class="col-body">
         <ol class="keywords">
@@ -109,14 +101,11 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Methods -->
   <section class="section">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">Methods</p>
-        <h2 class="headline">研究手法</h2>
+        <h2 class="headline"><span class="c c3">研究</span>手法</h2>
       </div>
       <div class="col-body">
         <ol class="keywords">
@@ -131,17 +120,54 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Papers -->
   <section class="section" id="papers">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">Papers</p>
-        <h2 class="headline">学術論文</h2>
+        <h2 class="headline"><span class="c c4">学術</span>論文</h2>
       </div>
       <div class="col-body">
         <ul class="items items-scroll" id="papers-list">
+          <li class="item" data-date="2026-09-22">
+            <div class="item-meta">
+              <p>2026</p>
+              <p>Journal</p>
+            </div>
+            <div class="item-body">
+              <a href="https://osf.io/preprints/osf/tnmyv_v1" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">Domain-specific emotional effects of deepfakes on news-sharing behaviour</h3>
+              </a>
+              <p class="item-authors"><span class="me">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara</p>
+              <p class="item-venue">Journal of Computational Social Science</p>
+            </div>
+          </li>
+
+          <li class="item" data-date="2025-05-23">
+            <div class="item-meta">
+              <p>2025</p>
+              <p>Journal</p>
+            </div>
+            <div class="item-body">
+              <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1574840/full" target="_blank" rel="noopener" class="underline-quiet">
+                <h3 class="item-title">False failures, real distrust: the impact of an infrastructure failure deepfake on government trust</h3>
+              </a>
+              <p class="item-authors">Saifuddin Ahmed, Muhammad Masood, Adeline Wei Ting Bee, <span class="me">Kei Ichikawa</span></p>
+              <p class="item-venue">Frontiers in Psychology</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" id="working-papers">
+    <div class="section-grid">
+      <div class="col-side">
+        <h2 class="headline"><span class="c c5">プレ</span>プリント</h2>
+      </div>
+      <div class="col-body">
+        <ul class="items items-scroll" id="preprints-list">
           <li class="item" data-date="2026-09-28">
             <div class="item-meta">
               <p>2026</p>
@@ -152,9 +178,8 @@
                 <h3 class="item-title">Attentional DoS: Repeat Reposting, Collective Attention, and Information Diffusion on X</h3>
               </a>
               <p class="item-authors">Genta Toya, Bruno T. Sugano, <span class="me">Kei Ichikawa</span>, Qianyun Wu, Shuhei Saigusa, Yasuhiro Hashimoto, Masashi Toyoda, Naoki Yoshinaga, Kazutoshi Sasahara</p>
-              <p class="item-venue">arXiv プレプリント (arXiv:2609.35385)</p>
+              <p class="item-venue">arXiv preprint (arXiv:2609.35385)</p>
             </div>
-            <div class="item-tag"><span class="item-chip">Preprint</span></div>
           </li>
 
           <li class="item" data-date="2026-09-28">
@@ -167,9 +192,8 @@
                 <h3 class="item-title">Crude, Commercial, and Self-Referential: Chinese-Language Coordinated Activity in Japanese-Language X</h3>
               </a>
               <p class="item-authors"><span class="me">Kei Ichikawa</span>, Bruno T. Sugano, Genta Toya, Qianyun Wu, Yasuhiro Hashimoto, Masashi Toyoda, Naoki Yoshinaga, Kazutoshi Sasahara</p>
-              <p class="item-venue">arXiv プレプリント (arXiv:2610.00305)</p>
+              <p class="item-venue">arXiv preprint (arXiv:2610.00305)</p>
             </div>
-            <div class="item-tag"><span class="item-chip">Preprint</span></div>
           </li>
 
           <li class="item" data-date="2026-09-27">
@@ -182,53 +206,19 @@
                 <h3 class="item-title">Uncovering Non-Normality in Information Flow: Network Structure and Dynamics of Social Media Cascades</h3>
               </a>
               <p class="item-authors">Qianyun Wu, Bruno T. Sugano, Genta Toya, <span class="me">Kei Ichikawa</span>, Yasuhiro Hashimoto, Masashi Toyoda, Naoki Yoshinaga, Kazutoshi Sasahara</p>
-              <p class="item-venue">arXiv プレプリント (arXiv:2609.34026)</p>
+              <p class="item-venue">arXiv preprint (arXiv:2609.34026)</p>
             </div>
-            <div class="item-tag"><span class="item-chip">Preprint</span></div>
-          </li>
-
-          <li class="item" data-date="2026-09-22">
-            <div class="item-meta">
-              <p>2026</p>
-              <p>Journal</p>
-            </div>
-            <div class="item-body">
-              <a href="https://osf.io/preprints/osf/tnmyv_v1" target="_blank" rel="noopener" class="underline-quiet">
-                <h3 class="item-title">Domain-specific emotional effects of deepfakes on news-sharing behaviour</h3>
-              </a>
-              <p class="item-authors"><span class="me">市川慧</span>, 陳佳玉, 笹原和俊</p>
-              <p class="item-venue">Journal of Computational Social Science</p>
-            </div>
-            <div class="item-tag"><span class="item-chip">Accepted</span></div>
-          </li>
-
-          <li class="item" data-date="2025-05-23">
-            <div class="item-meta">
-              <p>2025</p>
-              <p>Journal</p>
-            </div>
-            <div class="item-body">
-              <a href="https://www.frontiersin.org/journals/psychology/articles/10.3389/fpsyg.2025.1574840/full" target="_blank" rel="noopener" class="underline-quiet">
-                <h3 class="item-title">False failures, real distrust: the impact of an infrastructure failure deepfake on government trust</h3>
-              </a>
-              <p class="item-authors">Saifuddin Ahmed, Muhammad Masood, Adeline Wei Ting Bee, <span class="me">市川慧</span></p>
-              <p class="item-venue">Frontiers in Psychology</p>
-            </div>
-            <div class="item-tag"><span class="item-chip">Published</span></div>
           </li>
         </ul>
       </div>
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Talks / Conferences -->
   <section class="section" id="talks">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">Talks</p>
-        <h2 class="headline">国際・国内会議</h2>
+        <h2 class="headline"><span class="c c6">国際</span>・国内会議</h2>
       </div>
       <div class="col-body">
         <ul class="items items-scroll" id="talks-list">
@@ -251,8 +241,8 @@
             </div>
             <div class="item-body">
               <h3 class="item-title">The “Oil Spill” as Dimensionality Reduction? Uncovering the Structural Consolidation of American Lifestyle (2011–2022)</h3>
-              <p class="item-authors">Hsiu-chi Lu, <span class="me">市川慧</span></p>
-              <p class="item-venue">第121回 米国社会学会(ASA) 年次大会 (口頭発表) — New York City, USA</p>
+              <p class="item-authors">Hsiu-chi Lu, <span class="me">Kei Ichikawa</span></p>
+              <p class="item-venue">第121回 米国社会学会(ASA) 年次大会 (口頭発表)、New York City, USA</p>
             </div>
           </li>
 
@@ -263,8 +253,8 @@
             </div>
             <div class="item-body">
               <h3 class="item-title">Making Identity Visible: Meme Communication and Intergroup Affect</h3>
-              <p class="item-authors"><span class="me">市川慧</span>, 内藤碧, 陳佳玉, 笹原和俊</p>
-              <p class="item-venue">IC2S2 2026 (ポスター発表) — University of Vermont, Burlington, Vermont, USA</p>
+              <p class="item-authors"><span class="me">Kei Ichikawa</span>, Aoi Naito, Jiayu Chen, Kazutoshi Sasahara</p>
+              <p class="item-venue">IC2S2 2026 (ポスター発表)、University of Vermont, Burlington, Vermont, USA</p>
             </div>
           </li>
 
@@ -275,8 +265,8 @@
             </div>
             <div class="item-body">
               <h3 class="item-title">The “Oil Spill” as Dimensionality Reduction? Uncovering the Structural Consolidation of American Lifestyle (2011–2022)</h3>
-              <p class="item-authors">Hsiu-chi Lu, <span class="me">市川慧</span></p>
-              <p class="item-venue">IC2S2 2026 (口頭発表) — University of Vermont, Burlington, Vermont, USA</p>
+              <p class="item-authors">Hsiu-chi Lu, <span class="me">Kei Ichikawa</span></p>
+              <p class="item-venue">IC2S2 2026 (口頭発表)、University of Vermont, Burlington, Vermont, USA</p>
             </div>
           </li>
 
@@ -299,8 +289,8 @@
             </div>
             <div class="item-body">
               <h3 class="item-title">How Emotion Shapes the Sharing of AI-Generated Images: Findings from an Online Experiment</h3>
-              <p class="item-authors"><span class="me">市川慧</span>, 陳佳玉, 笹原和俊</p>
-              <p class="item-venue">HICSS-58 — Hilton Waikoloa, Big Island, USA</p>
+              <p class="item-authors"><span class="me">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara</p>
+              <p class="item-venue">HICSS-58, Hilton Waikoloa, Big Island, USA</p>
             </div>
           </li>
 
@@ -311,8 +301,8 @@
             </div>
             <div class="item-body">
               <h3 class="item-title">The Emotional Levers of AI-generated Content</h3>
-              <p class="item-authors"><span class="me">市川慧</span>, 陳佳玉, 笹原和俊</p>
-              <p class="item-venue">IC2S2 2024 — Philadelphia, USA</p>
+              <p class="item-authors"><span class="me">Kei Ichikawa</span>, Jiayu Chen, Kazutoshi Sasahara</p>
+              <p class="item-venue">IC2S2 2024, Philadelphia, USA</p>
             </div>
           </li>
 
@@ -332,14 +322,11 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Awards -->
   <section class="section" id="awards">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">Awards</p>
-        <h2 class="headline">受賞</h2>
+        <h2 class="headline"><span class="c c1">受</span>賞</h2>
       </div>
       <div class="col-body">
         <ul class="items items-scroll">
@@ -355,7 +342,7 @@
             <div class="item-meta"><p>2024</p></div>
             <div class="item-body">
               <a href="https://award.tech-director.org/winner01" target="_blank" rel="noopener" class="underline-quiet">
-                <h3 class="item-title">第1回 Tech Direction Awards — R&amp;D / Prototype 部門 Bronze</h3>
+                <h3 class="item-title">第1回 Tech Direction Awards R&amp;D / Prototype 部門 Bronze</h3>
               </a>
               <p class="item-venue">一般社団法人テクニカルディレクターズアソシエーション</p>
             </div>
@@ -365,14 +352,11 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Press -->
   <section class="section" id="press">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">Press</p>
-        <h2 class="headline">プレスリリースなど</h2>
+        <h2 class="headline"><span class="c c2">プレ</span>スリリースなど</h2>
       </div>
       <div class="col-body">
         <ul class="items items-scroll">
@@ -380,7 +364,7 @@
             <div class="item-meta"><p>2024</p></div>
             <div class="item-body">
               <a href="https://chizaizukan.com/property/computational-food-texture-design-project/" target="_blank" rel="noopener" class="underline-quiet">
-                <h3 class="item-title">株式会社知財図鑑 — コンピュテーショナル食感デザインプロジェクト</h3>
+                <h3 class="item-title">株式会社知財図鑑　コンピュテーショナル食感デザインプロジェクト</h3>
               </a>
             </div>
           </li>
@@ -389,7 +373,7 @@
             <div class="item-meta"><p>2023</p></div>
             <div class="item-body">
               <a href="https://news.sharelab.jp/interviews/3dstructure-melt-food-230221/" target="_blank" rel="noopener" class="underline-quiet">
-                <h3 class="item-title">「3D構造体食感ビュッフェ」取材レポート — 下北沢で未知の食感を体験</h3>
+                <h3 class="item-title">「3D構造体食感ビュッフェ」取材レポート　下北沢で未知の食感を体験</h3>
               </a>
             </div>
           </li>
@@ -398,7 +382,7 @@
             <div class="item-meta"><p>2023</p></div>
             <div class="item-body">
               <a href="https://fabcafe.com/jp/magazine/nagoya/230219-melt-xproject-buffet" target="_blank" rel="noopener" class="underline-quiet">
-                <h3 class="item-title">3D構造体を味わう『食感ビュッフェ』開催レポート — Melt. X Project</h3>
+                <h3 class="item-title">3D構造体を味わう『食感ビュッフェ』開催レポート　Melt. X Project</h3>
               </a>
             </div>
           </li>
@@ -407,7 +391,7 @@
             <div class="item-meta"><p>2022</p></div>
             <div class="item-body">
               <a href="https://fabcafe.com/jp/events/nagoya/220712_mer/" target="_blank" rel="noopener" class="underline-quiet">
-                <h3 class="item-title">食感マテリアルディグ — コンピュテーショナル食感デザインの夜明け #4</h3>
+                <h3 class="item-title">食感マテリアルディグ　コンピュテーショナル食感デザインの夜明け #4</h3>
               </a>
             </div>
           </li>
@@ -416,14 +400,11 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Service -->
   <section class="section">
     <div class="section-grid">
       <div class="col-side">
-        <p class="eyebrow">Service</p>
-        <h2 class="headline">教育・学術組織<br />への貢献</h2>
+        <h2 class="headline"><span class="c c3">教育</span>・学術組織への貢献</h2>
       </div>
       <div class="col-body">
         <ul class="items items-scroll">
@@ -441,7 +422,7 @@
             <div class="item-meta"><p>2023</p></div>
             <div class="item-body">
               <h3 class="item-title">ティーチング・アシスタント (TA)</h3>
-              <p class="item-venue">ユーザー調査法 — 東京工業大学</p>
+              <p class="item-venue">ユーザー調査法（東京工業大学）</p>
             </div>
           </li>
         </ul>
@@ -449,14 +430,11 @@
     </div>
   </section>
 
-  <div class="rule"></div>
 
-  <!-- Contact CTA -->
   <section class="section" id="contact">
     <div class="section-grid">
       <div class="col-body">
-        <p class="eyebrow">Contact</p>
-        <h2 class="headline">お問い合わせ</h2>
+        <h2 class="headline"><span class="c c4">お問</span>い合わせ</h2>
         <p class="lead muted">
           研究に関するご質問や共同研究のご依頼など、お気軽にご連絡ください。
         </p>
@@ -472,7 +450,6 @@
   </section>
 
   <footer class="footer">
-    <div class="rule"></div>
     <div class="footer-inner">
       <p>© <span id="year"></span> Kei Ichikawa. All rights reserved.</p>
     </div>

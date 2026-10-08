@@ -1,6 +1,7 @@
 /* news.js
- * Populates the #news-list block by scanning the Papers (#papers-list)
- * and Talks (#talks-list) sections, merging them into a single list
+ * Populates the #news-list block by scanning the Papers (#papers-list),
+ * Working Papers / プレプリント (#preprints-list) and Talks (#talks-list)
+ * sections, merging them into a single list
  * sorted newest-first, and rendering every entry. The container itself
  * is capped (via CSS) so only ~2 entries are visible at once and the
  * rest is reachable by scrolling.
@@ -140,7 +141,7 @@
         order: idx,
         html: `
         <li class="news-item">
-          <span class="news-label">${label} · ${escapeHtml(d.year)}</span>
+          <span class="news-label">${isJP ? `${label}（${escapeHtml(d.year)}）` : `${label}, ${escapeHtml(d.year)}`}</span>
           <p class="news-text">${text}</p>
         </li>`
       };
@@ -167,7 +168,7 @@
         order: idx,
         html: `
         <li class="news-item">
-          <span class="news-label">${isJP ? '発表' : 'Talk'} · ${escapeHtml(d.year)}</span>
+          <span class="news-label">${isJP ? `発表（${escapeHtml(d.year)}）` : `Talk, ${escapeHtml(d.year)}`}</span>
           <p class="news-text">${text}</p>
         </li>`
       };
@@ -176,15 +177,16 @@
     // ------------------------------------------------ Build merged list
     const entries = [];
 
-    const papersList = document.getElementById('papers-list');
-    if (papersList) {
-      Array.from(papersList.querySelectorAll('.item')).forEach(function (it, i) {
+    ['papers-list', 'preprints-list'].forEach(function (id) {
+      const list = document.getElementById(id);
+      if (!list) return;
+      Array.from(list.querySelectorAll('.item')).forEach(function (it, i) {
         const kind = paperKind(it);
         if (!kind) return;
         const e = renderPaper(it, i, kind);
         if (e) entries.push(e);
       });
-    }
+    });
 
     const talksList = document.getElementById('talks-list');
     if (talksList) {
