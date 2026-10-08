@@ -1,7 +1,7 @@
 # CV — Kei Ichikawa
 
-This folder contains the CV source and the rendered PDF, styled to match the
-Tatami-inspired design of the main site.
+This folder contains the CV source and the rendered PDF, laid out in the
+Friggeri CV style.
 
 ## Files
 
@@ -29,17 +29,18 @@ The resulting `cv.pdf` uses A4 page size with 18 mm margins (defined inside
 
 ## Editing notes
 
-- Layout is driven by CSS grid in two columns: a 42 mm left "eyebrow / section
-  title" rail and a right content column.
-- Each publication / talk / award is a `<li class="...">` inside a
-  `<ul class="items">`. Duplicate an `<li>` to add a new entry.
-- The header uses a Japanese sub-name (`市川 慧`) under the Latin display name.
-  Change or remove via the `.subname` element.
-- Links are rendered with a hairline underline; on screen they highlight in
-  indigo (`--hover`). In the printed PDF they appear as plain text with an
-  underline.
+- Letter size. Page 1 has a full-width dark grey band with the name
+  (first name UltraLight, last name Regular) and a right-aligned `contact`
+  sidebar; the body column starts 6.1 cm from the left edge.
+- Section headings are lowercase with the first three letters wrapped in
+  `<span class="c">`; the accent colour cycles blue → red → orange → green →
+  purple → brown by section order.
+- Papers / talks use `<div class="entry">` (title / authors / *venue*, year);
+  education and positions use `.entrylist` (date + bold title + detail).
 
 ## Fonts
 
-Uses Google Fonts (Noto Serif JP for display, Noto Sans JP for body) fetched
-at render time. Chrome headless waits for fonts via `virtual-time-budget`.
+Helvetica Neue only (UltraLight, Regular, Light, Light Italic, Condensed Bold,
+Bold Italic), picked by PostScript name via `@font-face { src: local(...) }`.
+These fonts ship with macOS, so render on a Mac; CI uses a `macos-latest`
+runner for the same reason. On other systems it falls back to Helvetica/Arial.

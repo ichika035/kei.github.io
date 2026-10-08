@@ -25,29 +25,20 @@ concurrency:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # macOS runner: the CV is set in Helvetica Neue (Friggeri style), which
+    # ships with macOS but not with Ubuntu.
+    runs-on: macos-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Locate or install Chromium
-        run: |
-          if command -v google-chrome >/dev/null 2>&1; then
-            echo "Using preinstalled google-chrome:"
-            google-chrome --version
-          else
-            sudo apt-get update
-            sudo apt-get install -y chromium-browser
-          fi
-
       - name: Render cv.html → cv.pdf
         run: |
-          BROWSER=$(command -v google-chrome || command -v chromium-browser || command -v chromium)
-          echo "Renderer: $BROWSER"
+          BROWSER="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+          "$BROWSER" --version
           "$BROWSER" \
             --headless \
             --disable-gpu \
-            --no-sandbox \
             --no-pdf-header-footer \
             --virtual-time-budget=10000 \
             --print-to-pdf="$(pwd)/cv/cv.pdf" \
