@@ -19,8 +19,8 @@
   --raised: inset -1px -1px var(--dark), inset 1px 1px var(--light), inset -2px -2px var(--shadow), inset 2px 2px #fff;
   --sunken: inset -1px -1px #fff, inset 1px 1px var(--shadow), inset -2px -2px var(--light), inset 2px 2px var(--dark);
 
-  /* スタートボタンのマーク (緑の線の地球) */
-  --globe-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Ccircle cx='16' cy='16' r='14'/%3E%3C/clipPath%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='15' fill='%23031a08'/%3E%3Cg fill='none' stroke='%2333ff66' stroke-width='1.6' clip-path='url(%23c)'%3E%3Cellipse cx='16' cy='16' rx='6.5' ry='15'/%3E%3Cpath d='M16 1v30M1 16h30M2 9.5h28M2 22.5h28'/%3E%3C/g%3E%3Ccircle cx='16' cy='16' r='14.5' fill='none' stroke='%2333ff66' stroke-width='2'/%3E%3C/svg%3E");
+  /* スタートボタンのマーク (白黒の線の地球) */
+  --globe-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CclipPath id='c'%3E%3Ccircle cx='16' cy='16' r='14'/%3E%3C/clipPath%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='15' fill='%23000'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='1.6' clip-path='url(%23c)'%3E%3Cellipse cx='16' cy='16' rx='6.5' ry='15'/%3E%3Cpath d='M16 1v30M1 16h30M2 9.5h28M2 22.5h28'/%3E%3C/g%3E%3Ccircle cx='16' cy='16' r='14.5' fill='none' stroke='%23fff' stroke-width='2'/%3E%3C/svg%3E");
 }
 
 html:has(body.win98) { background: var(--desk, #008080); }
