@@ -2,5 +2,9 @@
 # Locally regeneratable via the chrome command in cv/README.md.
 cv/cv.pdf
 
+# Generated in CI by the same workflow from Google Analytics (see access.html).
+access.json
+access.enc.json
+
 # macOS
 .DS_Store

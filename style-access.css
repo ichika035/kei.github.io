@@ -1,0 +1,171 @@
+/* アクセスの地球儀 (access.html)。80 年代の緑色のモニタ風 */
+
+:root {
+  --phosphor: #33ff66;
+  --dim: rgba(51, 255, 102, 0.45);
+  --bg: #020a04;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  background: var(--bg);
+  color: var(--phosphor);
+  font-family: "VT323", "DotGothic16", ui-monospace, monospace;
+  font-size: 20px;
+  line-height: 1.15;
+  overflow: hidden;
+}
+
+.crt {
+  position: fixed;
+  inset: 0;
+  text-shadow: 0 0 4px rgba(51, 255, 102, 0.7);
+  animation: crt-on 0.6s ease-out;
+}
+/* 走査線と画面のふちの暗がり */
+.crt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    repeating-linear-gradient(to bottom, rgba(0, 0, 0, 0.28) 0 1px, transparent 1px 3px),
+    radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.65) 100%);
+  animation: flicker 4s infinite steps(1);
+}
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  48% { opacity: 0.92; }
+  50% { opacity: 1; }
+}
+/* 電源が入るように、横線から広がって映る */
+@keyframes crt-on {
+  0% { transform: scale(1, 0.004); filter: brightness(3); }
+  45% { transform: scale(1, 0.004); filter: brightness(3); }
+  100% { transform: none; filter: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .crt, .crt::after { animation: none; }
+}
+
+#globe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+#globe:active { cursor: grabbing; }
+
+.hud {
+  position: absolute;
+  margin: 0;
+  padding: 16px;
+  white-space: pre;
+}
+.hud p { margin: 0; }
+.hud-top { top: 0; left: 0; }
+.hud-bottom {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: var(--dim);
+}
+.hud a { color: var(--phosphor); text-decoration: none; }
+.hud a:hover { background: var(--phosphor); color: var(--bg); text-shadow: none; }
+
+.hud-list {
+  top: 0;
+  right: 0;
+  width: 22rem;
+  max-width: 100%;
+}
+.hud-head { display: flex; gap: 8px; align-items: baseline; }
+.hud button {
+  margin: 0;
+  padding: 0 6px;
+  border: 1px solid var(--phosphor);
+  background: transparent;
+  color: var(--phosphor);
+  font: inherit;
+  text-shadow: inherit;
+  cursor: pointer;
+}
+.hud button:hover,
+.hud button[aria-pressed="true"] { background: var(--phosphor); color: var(--bg); text-shadow: none; }
+.hud button:disabled { opacity: 0.3; cursor: default; }
+.hud button:disabled:hover { background: transparent; color: var(--phosphor); }
+
+#hud-total { margin-top: 6px; }
+#hud-rows {
+  list-style: none;
+  margin: 10px 0 0;
+  padding: 0;
+  font-family: "DotGothic16", "VT323", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+}
+#hud-rows .bar { color: var(--phosphor); }
+#hud-rows .zero { color: var(--dim); }
+
+/* パスワードを打つまでは入力欄だけを出す */
+.login { display: none; }
+.locked .login {
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.locked #globe,
+.locked .hud-top,
+.locked .hud-list { display: none; }
+.login input {
+  width: 12em;
+  margin-left: 0.5em;
+  padding: 0;
+  border: 0;
+  border-bottom: 1px solid var(--phosphor);
+  background: transparent;
+  color: var(--phosphor);
+  font: inherit;
+  text-shadow: inherit;
+  caret-color: var(--phosphor);
+  outline: none;
+}
+#login-msg { margin-top: 0.5em; min-height: 1.15em; }
+
+/* ESC で戻るとき、画面が白く飛ぶ */
+.whiteout {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: #fff;
+  animation: whiteout 0.6s ease-in forwards;
+}
+@keyframes whiteout {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .whiteout { animation: none; }
+}
+
+/* 狭い画面では一覧を下に寄せる */
+@media (max-width: 760px) {
+  html, body { font-size: 16px; }
+  .hud { padding: 12px 16px; }
+  .hud-list {
+    top: auto;
+    bottom: 40px;
+    width: 100%;
+    background: linear-gradient(to top, var(--bg) 70%, transparent);
+  }
+  #hud-rows { font-size: 12px; max-height: 8.5em; overflow: hidden; }
+}

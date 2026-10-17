@@ -7,11 +7,18 @@ name: Build & Deploy Site
 #      Pages artifact.
 #   3. Deploy to GitHub Pages.
 #
+# Also runs once a day so access.enc.json (per-country page views from Google
+# Analytics, encrypted with ACCESS_PASSWORD and shown on access.html only
+# after that password is typed) stays fresh. That step is skipped until the
+# GA_PROPERTY_ID / GA_CREDENTIALS / ACCESS_PASSWORD secrets are set.
+#
 # This replaces the previous "commit cv.pdf back to main" approach so
 # local pushes never collide with a bot commit.
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: "0 15 * * *"   # 00:00 JST
   workflow_dispatch:
 
 permissions:
@@ -28,6 +35,8 @@ jobs:
     # macOS runner: the CV is set in Helvetica Neue (Friggeri style), which
     # ships with macOS but not with Ubuntu.
     runs-on: macos-latest
+    env:
+      GA_PROPERTY_ID: ${{ secrets.GA_PROPERTY_ID }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -44,6 +53,23 @@ jobs:
             --print-to-pdf="$(pwd)/cv/cv.pdf" \
             "file://$(pwd)/cv/cv.html"
           ls -la cv/cv.pdf
+
+      - name: Fetch access stats → access.enc.json
+        if: env.GA_PROPERTY_ID != ''
+        continue-on-error: true
+        env:
+          GA_CREDENTIALS: ${{ secrets.GA_CREDENTIALS }}
+          ACCESS_PASSWORD: ${{ secrets.ACCESS_PASSWORD }}
+        run: |
+          printf '%s' "$GA_CREDENTIALS" > "$RUNNER_TEMP/ga.json"
+          python3 -m venv "$RUNNER_TEMP/venv"
+          "$RUNNER_TEMP/venv/bin/pip" install --quiet google-analytics-data cryptography
+          # The plain stats stay in RUNNER_TEMP; only the encrypted file is published.
+          GOOGLE_APPLICATION_CREDENTIALS="$RUNNER_TEMP/ga.json" \
+            "$RUNNER_TEMP/venv/bin/python" scripts/fetch_access.py > "$RUNNER_TEMP/access.json"
+          "$RUNNER_TEMP/venv/bin/python" scripts/encrypt_access.py < "$RUNNER_TEMP/access.json" > "$RUNNER_TEMP/access.enc.json"
+          mv "$RUNNER_TEMP/access.enc.json" access.enc.json
+          rm -f "$RUNNER_TEMP/ga.json" "$RUNNER_TEMP/access.json"
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3

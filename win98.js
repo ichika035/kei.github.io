@@ -1,4 +1,4 @@
-/* タスクバーの時計と、スタートボタンを押したときの「再起動」の演出。 */
+/* タスクバーの時計と、スタートボタン (アクセスの地球儀へ移る)。 */
 (function () {
   var clock = document.getElementById('clock');
   if (clock) {
@@ -13,27 +13,23 @@
   var start = document.querySelector('.start-button');
   if (!start) return;
 
+  // 画面がブラウン管のように消えてから、アクセスの地球儀 (access.html) へ移る
+  var target = new URL('access.html', document.currentScript.src).href;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var busy = false;
 
-  // 画面が一瞬消えて、黒い起動画面 (進み具合のバー) が出て、元の画面に戻る
   start.addEventListener('click', function () {
-    if (busy) return;
-    busy = true;
-
+    if (reduced.matches) { location.href = target; return; }
     var screen = document.createElement('div');
-    screen.className = 'reboot' + (reduced.matches ? ' reboot--calm' : '');
+    screen.className = 'reboot';
     screen.setAttribute('aria-hidden', 'true');
-    screen.innerHTML =
-      '<div class="reboot-crt"></div>' +
-      '<div class="reboot-boot"><div class="reboot-bar"><span></span></div></div>' +
-      '<div class="reboot-flash"></div>';
+    screen.innerHTML = '<div class="reboot-crt"></div>';
     document.body.appendChild(screen);
+    setTimeout(function () { location.href = target; }, 500);
+  });
 
-    screen.addEventListener('animationend', function (e) {
-      if (e.target !== screen) return;
-      screen.remove();
-      busy = false;
-    });
+  // 戻るボタンで戻ってきたときに黒い画面が残らないようにする
+  window.addEventListener('pageshow', function () {
+    var left = document.querySelector('.reboot');
+    if (left) left.remove();
   });
 })();

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Access Monitor — Kei Ichikawa</title>
+  <meta name="description" content="このサイトに、世界のどこから毎日どれくらいのアクセスがあるかを地球儀で表示します。" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=VT323&family=DotGothic16&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="./style-access.css">
+  <script src="./analytics.js"></script>
+</head>
+
+<body>
+  <main class="crt locked">
+    <form class="hud login" id="login" autocomplete="off">
+      <label for="password">PASSWORD:</label>
+      <input type="password" id="password" autocomplete="current-password" spellcheck="false" autofocus>
+      <p id="login-msg" role="status"></p>
+    </form>
+
+    <canvas id="globe" aria-label="国ごとのアクセス数を表した地球儀"></canvas>
+
+    <header class="hud hud-top">
+      <p id="hud-status">LOADING...</p>
+    </header>
+
+    <section class="hud hud-list" aria-label="国ごとのアクセス数">
+      <p class="hud-head">
+        <button type="button" id="prev" aria-label="前の日">&lt;</button>
+        <span id="hud-date">----------</span>
+        <button type="button" id="next" aria-label="次の日">&gt;</button>
+        <button type="button" id="all">30D</button>
+      </p>
+      <p id="hud-total">TOTAL ----- PV</p>
+      <ol id="hud-rows"></ol>
+    </section>
+
+    <footer class="hud hud-bottom">
+      <a href="./index.html" id="exit">[ESC] EXIT</a>
+      <span>DRAG: ROTATE   &lt; &gt;: DAY</span>
+    </footer>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+  <script src="./access.js"></script>
+</body>
+</html>
