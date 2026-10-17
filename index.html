@@ -11,12 +11,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="./style-jp.css">
+  <link rel="stylesheet" href="./style-win98.css">
 </head>
 
-<body>
+<body class="win98">
   <header class="site-header">
     <div class="row">
-      <a href="./index.html" class="brand">Kei Ichikawa</a>
+      <a href="./index.html" class="brand" aria-current="page">Kei Ichikawa</a>
       <nav class="nav" aria-label="Main">
         <a href="#news" class="nav-section underline-quiet">News</a>
         <a href="#papers" class="nav-section underline-quiet">Papers</a>
@@ -26,8 +27,7 @@
         <a href="#service" class="nav-section underline-quiet">Service</a>
         <a href="#contact" class="nav-section underline-quiet">Contact</a>
         <span class="nav-divider" aria-hidden="true"></span>
-        <a href="./index.html" aria-current="page">English</a>
-        <a href="./jp.html" class="underline-quiet">日本語</a>
+        <a href="./jp.html" class="underline-quiet">市川慧</a>
         <a href="./works.html" class="underline-quiet">How's the weather?</a>
         <a href="./zakki.html" class="underline-quiet">雑記</a>
       </nav>
@@ -35,6 +35,7 @@
   </header>
 
   <section class="section section--hero">
+    <div class="win-title"><p>Kei Ichikawa</p></div>
     <div class="hero-block">
       <h1 class="hero-title">Kei Ichikawa</h1>
       <img class="hero-portrait" src="./profile.jpg" alt="Portrait of Kei Ichikawa">
@@ -48,9 +49,9 @@
     </p>
 
     <div class="hero-links">
-      <a href="mailto:ichikawa.k.25a5@m.isct.ac.jp" class="underline-quiet">
+      <span>
         ichikawa.k.25a5[at]m.isct.ac.jp
-      </a>
+      </span>
     </div>
 
     <div class="social" aria-label="Social links">
@@ -403,6 +404,7 @@
 
 
   <section class="section" id="contact">
+    <div class="win-title"><p>Get in touch</p></div>
     <div class="section-grid">
       <div class="col-body">
         <h2 class="headline"><span class="c c4">Get</span> in touch</h2>
@@ -412,9 +414,9 @@
       </div>
       <div class="col-side">
         <div class="contact-cta">
-          <a href="mailto:ichikawa.k.25a5@m.isct.ac.jp" class="button">
+          <span class="button">
             ichikawa.k.25a5[at]m.isct.ac.jp
-          </a>
+          </span>
         </div>
       </div>
     </div>
@@ -422,7 +424,9 @@
 
   <footer class="footer">
     <div class="footer-inner">
+      <button type="button" class="start-button" aria-label="Restart">Start</button>
       <p>© <span id="year"></span> Kei Ichikawa. All rights reserved.</p>
+      <span class="tray"><time id="clock"></time></span>
     </div>
   </footer>
 
@@ -430,5 +434,6 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
   <script src="./news.js"></script>
+  <script src="./win98.js"></script>
 </body>
 </html>
