@@ -32,11 +32,10 @@
     else document.addEventListener('DOMContentLoaded', fn);
   }
 
-  ready(function () {
-    const newsList = document.getElementById('news-list');
-    if (!newsList) return;
-
-    const lang = (document.documentElement.lang || 'ja').toLowerCase();
+  // Builds the merged, newest-first entries from a document's lists. bios.js
+  // also calls it to show the latest few on the home tab.
+  function newsEntries(doc) {
+    const lang = (doc.documentElement.lang || 'ja').toLowerCase();
     const isJP = lang.startsWith('ja');
 
     const currentYear = new Date().getFullYear();
@@ -138,7 +137,10 @@
 
       return {
         when: dateOf(item),
+        item: item,
         order: idx,
+        label: label,
+        title: d.title,
         html: `
         <li class="news-item">
           <span class="news-label">${isJP ? `${label}（${escapeHtml(d.year)}）` : `${label}, ${escapeHtml(d.year)}`}</span>
@@ -165,7 +167,10 @@
             : `${isFuture ? 'Presenting' : 'Presented'} ${titleHtml}.`);
       return {
         when: dateOf(item),
+        item: item,
         order: idx,
+        label: isJP ? '発表' : 'Talk',
+        title: d.title,
         html: `
         <li class="news-item">
           <span class="news-label">${isJP ? `発表（${escapeHtml(d.year)}）` : `Talk, ${escapeHtml(d.year)}`}</span>
@@ -178,7 +183,7 @@
     const entries = [];
 
     ['papers-list', 'preprints-list'].forEach(function (id) {
-      const list = document.getElementById(id);
+      const list = doc.getElementById(id);
       if (!list) return;
       Array.from(list.querySelectorAll('.item')).forEach(function (it, i) {
         const kind = paperKind(it);
@@ -188,7 +193,7 @@
       });
     });
 
-    const talksList = document.getElementById('talks-list');
+    const talksList = doc.getElementById('talks-list');
     if (talksList) {
       Array.from(talksList.querySelectorAll('.item')).forEach(function (it, i) {
         const e = renderTalk(it, i);
@@ -203,6 +208,16 @@
       return a.order - b.order;
     });
 
+    return entries;
+  }
+  window.newsEntries = newsEntries;
+
+  ready(function () {
+    const newsList = document.getElementById('news-list');
+    if (!newsList) return;
+    const entries = newsEntries(document);
     newsList.innerHTML = entries.map(function (e) { return e.html; }).join('');
+    // bios.js shows the source item's details when an entry is selected.
+    Array.from(newsList.children).forEach(function (li, i) { li.newsSource = entries[i].item; });
   });
 })();

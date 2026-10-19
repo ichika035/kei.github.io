@@ -141,25 +141,93 @@ html, body {
 }
 #login-msg { margin-top: 0.5em; min-height: 1.15em; }
 
-/* ESC で戻るとき、画面が白く飛ぶ */
-.whiteout {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  background: #fff;
-  animation: whiteout 0.6s ease-in forwards;
+/* パスワードの画面だけは、ほかのページと同じ BIOS の画面 (style-bios.css と同じ色) にする */
+.locked {
+  --b-bg: #18295e;
+  --b-bar: #0e1a40;
+  --b-chrome: #e8e8e8;
+  --b-ink: #0e1a40;
+  --b-text: #f7f7f2;
+  --b-val: #ffe27a;
+  --b-sub: #b4ebff;
+  --b-line: #9aa6d6;
+  background: var(--b-bg);
+  color: var(--b-text);
+  font-family: "BIZ UDGothic", "MS Gothic", monospace;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.75;
+  text-shadow: none;
 }
-@keyframes whiteout {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+.locked::after { display: none; }
+.locked::before {
+  content: "KEI ICHIKAWA SETUP UTILITY";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 2px 1ch;
+  background: var(--b-chrome);
+  color: var(--b-ink);
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+.locked .login {
+  min-width: min(24em, calc(100vw - 32px));
+  padding: 0 0 20px;
+  border: 4px double var(--b-line);
+  background: var(--b-bar);
+  white-space: normal;
+}
+.locked .login::before {
+  content: "Enter Password";
+  display: block;
+  margin-bottom: 20px;
+  padding: 6px 2ch;
+  border-bottom: 2px solid var(--b-line);
+  color: var(--b-sub);
+  text-align: center;
+}
+.locked .login label { margin-left: 2ch; }
+.locked .login input {
+  width: 11em;
+  max-width: calc(100% - 4ch);
+  margin: 0 2ch 0 1ch;
+  padding: 2px 1ch;
+  border: 0;
+  background: var(--b-chrome);
+  color: var(--b-ink);
+  caret-color: var(--b-ink);
+  text-shadow: none;
+}
+.locked .login input:focus-visible { outline: 2px solid var(--b-val); outline-offset: 2px; }
+.locked #login-msg { margin: 12px 2ch 0; color: var(--b-val); }
+.locked .hud-bottom {
+  padding: 3px 2ch;
+  background: var(--b-chrome);
+  color: var(--b-ink);
+  font-size: 0.85em;
+}
+.locked .hud-bottom span { display: none; }
+.locked .hud a { color: var(--b-ink); }
+.locked .hud a:hover { background: var(--b-ink); color: var(--b-chrome); }
+
+/* ESC で戻るとき、映ったときの逆に、横線に縮んでから点になって消える */
+.crt.crt-off { animation: crt-off 0.55s ease-in forwards; }
+@keyframes crt-off {
+  0% { transform: none; filter: none; }
+  45% { transform: scale(1, 0.004); filter: brightness(3); }
+  80% { transform: scale(0.002, 0.004); filter: brightness(3); opacity: 1; }
+  100% { transform: scale(0, 0.004); filter: brightness(3); opacity: 0; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .whiteout { animation: none; }
+  .crt.crt-off { animation: none; }
 }
 
 /* 狭い画面では一覧を下に寄せる */
 @media (max-width: 760px) {
   html, body { font-size: 16px; }
+  .locked { font-size: 18px; }
   .hud { padding: 12px 16px; }
   .hud-list {
     top: auto;

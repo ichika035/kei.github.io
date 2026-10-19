@@ -1,0 +1,539 @@
+/* BIOS のセットアップ画面風の見た目。
+   各ページで style-jp.css の後に読み込んで上書きする (cv は PDF の元なので対象外、access.html もそのまま)。
+   タイトル・ヘルプ欄・キーの案内と、節をタブで切り替える仕組みは bios.js が足す。 */
+
+.bios {
+  /* 色だけに頼らず ([値]、► などの記号でも区別する)、どの組み合わせも文字と地のコントラスト比 7:1 以上 */
+  --bg: #18295e;        /* 画面の紺 (BIOS の青より彩度を落として、まぶしくしない) */
+  --bar: #0e1a40;       /* メニューの帯 */
+  --chrome: #e8e8e8;    /* タイトル・選んだ行・キーの案内の地 */
+  --chrome-ink: #0e1a40;
+  --text: #f7f7f2;
+  --dim: #d6dcef;       /* 著者名など、控えめな文字 */
+  --val: #ffe27a;       /* [値] の黄色 */
+  --sub: #b4ebff;       /* 見出しの水色 */
+  --line: #9aa6d6;
+
+  --font-body: "BIZ UDGothic", "MS Gothic", "Osaka-Mono", monospace;
+  --font-head: var(--font-body);
+  --font-name: var(--font-body);
+}
+
+html:has(body.bios) { background: var(--bg, #13247a); }
+body.bios {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-feature-settings: normal;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.75;
+  letter-spacing: 0.02em;
+}
+.bios a:hover { color: inherit; }
+.bios .underline-quiet { background-image: none; transition: none; }
+.bios :focus-visible { outline: 2px solid var(--val); outline-offset: -2px; }
+
+/* ------- タイトル ------- */
+.bios-title {
+  padding: 2px 1ch;
+  background: var(--chrome);
+  color: var(--chrome-ink);
+  text-align: center;
+  letter-spacing: 0.08em;
+}
+
+/* ------- メニュー (ヘッダーのナビ) ------- */
+.bios .site-header {
+  position: static;
+  background: var(--bar);
+}
+.bios .site-header .row,
+.bios .nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 0;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+}
+.bios .site-header .row {
+  /* メニューは 1 段のまま。入りきらない幅では横にスクロールする */
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  padding: 0 1ch;
+  overflow-x: auto;
+  scrollbar-width: none;
+  font-size: 0.85em;
+  letter-spacing: 0;
+}
+@media (max-width: 1300px) {
+  .bios .site-header .row { font-size: 0.78em; }
+  .bios .brand,
+  .bios .nav a { padding: 3px 0.5ch; }
+}
+.bios .site-header .row::-webkit-scrollbar { display: none; }
+.bios .nav { flex: 1 0 auto; flex-wrap: nowrap; }
+.bios .nav-divider {
+  display: block;
+  width: 2px;
+  height: auto;
+  margin: 6px 0.5ch;
+  background: var(--line);
+}
+.bios .brand,
+.bios .nav a {
+  display: block;
+  padding: 3px 0.9ch;
+  color: var(--text);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: inherit;
+  white-space: nowrap;
+}
+.bios .nav a[hidden] { display: none; }
+.bios .brand:hover,
+.bios .nav a:hover { background: rgba(255, 255, 255, 0.14); }
+/* 選んでいるタブ (節のあるページ) / 今いるページ (それ以外) */
+.bios .site-header a.is-selected,
+.bios:not(.bios-tabbed) .site-header a[aria-current="page"] {
+  background: var(--chrome);
+  color: var(--chrome-ink);
+}
+.bios-tabbed .site-header a[aria-current="page"] { pointer-events: auto; }
+
+/* 右端の EN / JP (bios.js) */
+.bios-lang {
+  position: sticky;
+  right: 0;
+  display: flex;
+  flex: none;
+  margin-left: auto;
+  padding-left: 1ch;
+  background: var(--bar);
+}
+.bios .bios-lang a { padding: 3px 1ch; color: var(--text); }
+.bios .bios-lang a:hover { background: rgba(255, 255, 255, 0.14); }
+.bios .bios-lang a.is-on { background: var(--chrome); color: var(--chrome-ink); }
+
+/* ------- 本文とヘルプ欄 ------- */
+.bios-frame {
+  flex: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 30ch;
+  padding: 8px;
+}
+.bios-main,
+.bios-help {
+  min-width: 0;
+  border: 4px double var(--line);
+}
+.bios-main {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 28px;
+  border-right: 0;
+}
+.bios-help { padding: 20px 0; }
+.bios-help-title {
+  margin-bottom: 16px;
+  padding: 0 1ch 12px;
+  border-bottom: 2px solid var(--line);
+  color: var(--sub);
+  text-align: center;
+}
+.bios-help-body {
+  position: sticky;
+  top: 16px;
+  padding: 0 2ch;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  font-weight: 400;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.bios-help-body p { margin: 0; }
+.bios-help-body p + p { margin-top: 1em; }
+.bios-help-body .item-title { font-weight: 700; }
+.bios-help-body .item-title + .bios-help-key { margin-top: 0.25em; }
+.bios-help-body em { font-style: normal; color: var(--val); }
+.bios-help-body .bios-help-key { color: var(--val); font-weight: 700; }
+.bios-help-body .item-abstract { font-size: 0.85em; }
+.bios-help-body .item-abstract::before { content: "Abstract"; display: block; color: var(--sub); font-weight: 700; }
+/* アブストラクトは一覧には出さず、ヘルプ欄だけに出す */
+.bios .item-abstract { display: none; }
+.bios-help-body .item-abstract { display: block; }
+
+/* ------- 節 ------- */
+.bios .section {
+  max-width: none;
+  margin: 0;
+  padding: 0 2ch;
+}
+.bios .section:not([hidden]) ~ .section:not([hidden]) { margin-top: 36px; }
+.bios .section[hidden] { display: none; }
+.bios .win-title { display: none; }
+.bios .section-grid { display: block; }
+.bios .col-side:not(:has(*)) { display: none; }
+
+.bios .headline {
+  margin: 0 0 12px;
+  color: var(--sub);
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: inherit;
+  word-break: normal;
+}
+.bios .headline::before { content: "\25BA\00a0"; }
+.bios .headline .c { color: inherit; }
+
+.bios .hero-title {
+  margin: 0;
+  color: var(--val);
+  font-family: inherit;
+  font-size: 1.6em;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.3;
+}
+.bios .eyebrow { color: var(--dim); font-size: 0.85em; }
+.bios .back-link { margin-bottom: 8px; color: var(--sub); font-size: 0.9em; }
+.bios .muted { color: var(--dim); }
+.bios .lead {
+  max-width: 40em;
+  margin-top: 16px;
+  color: var(--text);
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.8;
+}
+.bios .lead--sm { color: var(--dim); font-size: 0.9em; }
+.bios .lead a,
+.bios .news-text a,
+.bios .essay-body a,
+.bios .bios-help-body a {
+  color: var(--sub);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* トップの名前・説明と写真 */
+.bios .hero-portrait {
+  width: 320px;
+  height: auto;
+  aspect-ratio: 1;
+  margin-top: 0;
+  border: 2px solid var(--line);
+  border-radius: 0;
+  object-fit: cover;
+}
+@media (min-width: 768px) {
+  .bios .hero-block {
+    grid-template-rows: auto auto 1fr;
+    align-items: start;
+  }
+}
+
+/* [値] の形で出すもの */
+.bios .hero-links { margin-top: 16px; font-size: 1em; }
+.bios .hero-links > span,
+.bios .contact-cta .button,
+.bios .bios-val,
+.bios .item-meta,
+.bios .news-label { color: var(--val); }
+.bios .hero-links > span::before,
+.bios .contact-cta .button::before,
+.bios .bios-val::before,
+.bios .item-meta::before,
+.bios .news-label::before { content: "["; }
+.bios .hero-links > span::after,
+.bios .contact-cta .button::after,
+.bios .bios-val::after,
+.bios .item-meta::after,
+.bios .news-label::after { content: "]"; }
+
+.bios .contact-cta { margin-top: 12px; height: auto; justify-content: flex-start; }
+.bios .contact-cta .button,
+.bios .contact-cta .button:hover {
+  width: auto;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--val);
+  font-size: 1em;
+  user-select: all;
+}
+
+.bios .social { gap: 10px; margin-top: 16px; }
+.bios .social a {
+  width: auto;
+  height: auto;
+  padding: 6px 10px;
+  border: 2px solid var(--line);
+  background: var(--chrome);
+}
+.bios .social a:hover { opacity: 1; background: var(--val); }
+.bios .social img,
+.bios .social svg { width: 22px; height: 22px; color: var(--chrome-ink); }
+
+/* 研究テーマ・研究手法の要約 (bios.js) */
+.bios-summary { max-width: 46em; margin-top: 20px; }
+.bios-summary p {
+  display: grid;
+  grid-template-columns: 17ch minmax(0, 1fr);
+  gap: 0 2ch;
+  margin: 0 0 8px;
+}
+.bios-summary .bios-val { display: inline-block; margin-right: 1ch; }
+
+/* 最近のお知らせ (bios.js) */
+.bios-recent { margin-top: 36px; }
+.bios .bios-recent .item { grid-template-columns: 12ch minmax(0, 1fr); }
+.bios-recent .item-title { overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+.bios-link-row { margin: 4px -1ch 0; padding: 6px 1ch; }
+.bios-link-row a::before { content: "\25BA\00a0"; color: var(--sub); }
+
+/* 日付と時刻 (bios.js) */
+.bios-sys { margin-top: 20px; }
+.bios-sys p {
+  display: grid;
+  grid-template-columns: 14ch auto;
+  justify-content: start;
+  margin: 0;
+}
+
+/* ------- 1 行 = 1 項目 (bios.js が .bios-row を付ける) ------- */
+.bios .items,
+.bios .items-scroll,
+.bios .news-list {
+  max-height: none;
+  overflow: visible;
+  padding-right: 0;
+  background: none;
+  mask-image: none;
+  -webkit-mask-image: none;
+}
+.bios .item,
+.bios .news-item {
+  display: grid;
+  grid-template-columns: 22ch minmax(0, 1fr);
+  gap: 0 2ch;
+  align-items: baseline;
+  margin: 0 -1ch;
+  padding: 6px 1ch;
+  border: 0;
+}
+.bios .item:first-child,
+.bios .news-item:first-child { padding-top: 6px; }
+.bios .items-scroll .item:last-child { padding-bottom: 6px; }
+.bios .news-item { display: block; }
+.bios .news-label { display: block; }
+.bios .item-meta,
+.bios .item-body { grid-column: auto; }
+.bios .item-meta {
+  display: flex;
+  font-size: 1em;
+  white-space: nowrap;
+}
+.bios .item-meta p { margin: 0; }
+.bios .item-meta p + p { margin-left: 1ch; }
+.bios .item-title {
+  color: inherit;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1.5;
+}
+.bios .item-authors,
+.bios .item-venue {
+  margin-top: 4px;
+  color: var(--dim);
+  font-size: 0.85em;
+  font-weight: 400;
+}
+.bios .me { color: inherit; font-weight: 700; }
+.bios .news-label { font-size: 1em; font-weight: 700; white-space: nowrap; }
+.bios .news-text {
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0;
+}
+.bios .news-text em { color: var(--dim); font-weight: 400; }
+.bios .news-empty { color: var(--dim); font-size: 0.9em; }
+
+/* 研究テーマ・手法 */
+.bios .keywords {
+  display: block;
+  max-width: 36em;
+}
+.bios .keywords li {
+  display: grid;
+  padding: 4px 0;
+  border: 0;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: 700;
+  letter-spacing: 0;
+  white-space: normal;
+}
+
+/* 選んでいる行は灰色の地に反転する */
+.bios-row { cursor: default; outline: none; }
+.bios-row:has(a[href]) { cursor: pointer; }
+.bios-row:focus,
+.bios-row:focus .item-meta,
+.bios-row:focus .news-label,
+.bios-row:focus .item-authors,
+.bios-row:focus .item-venue,
+.bios-row:focus .news-text,
+.bios-row:focus .news-text em,
+.bios-row:focus a {
+  background-color: var(--chrome);
+  color: var(--chrome-ink);
+}
+
+/* 著者はタイトルの上、掲載先 (ジャーナル・学会) はタイトルの下に出す */
+.bios .item-body { display: flex; flex-direction: column; }
+.bios .item-authors { order: -1; margin: 0 0 2px; }
+.bios .item-venue { margin-top: 2px; color: var(--sub); }
+
+/* ------- 作品・雑記の本文 ------- */
+.bios .essay-body {
+  max-width: 46em;
+  font-weight: 400;
+}
+.bios .essay-body p,
+.bios .essay-body--notes p {
+  color: var(--text);
+  font-size: 1em;
+  line-height: 1.9;
+}
+.bios .essay-list li { font-size: 1em; line-height: 1.8; }
+.bios .essay-list ul > li { color: var(--dim); }
+.bios .essay-h2,
+.bios .essay-h3,
+.bios .essay-h4 { font-family: inherit; font-weight: 700; letter-spacing: 0; }
+.bios .essay-h2 { color: var(--sub); font-size: 1.15em; border-bottom: 2px solid var(--line); }
+.bios .essay-h3 { color: var(--val); font-size: 1.05em; }
+.bios .essay-h4 { color: var(--text); font-size: 1em; }
+.bios .essay-arrow { border-left-color: var(--line); color: var(--text); }
+.bios .essay-arrow::before { color: var(--dim); }
+.bios .essay-note { color: var(--dim); font-size: 0.9em !important; line-height: 1.8 !important; }
+.bios .essay-quote { border-left-color: var(--val); color: var(--text); font-size: 1em; }
+.bios .essay-quote cite { color: var(--dim); }
+.bios .essay-source { border: 4px double var(--line); background: none; }
+.bios .essay-source-title { color: var(--val); font-family: inherit; font-weight: 700; font-size: 1em !important; }
+.bios .essay-source-meta,
+.bios .essay-source-desc { color: var(--dim); font-size: 0.85em !important; }
+.bios .essay-figs img,
+.bios .media-image,
+.bios .media-video { border: 2px solid var(--line); }
+.bios .media-image { background: #000; }
+.bios .essay-figs figcaption,
+.bios .essay-figure figcaption { color: var(--dim); font-size: 0.8em; }
+.bios .essay-notes { border-top: 2px solid var(--line); }
+.bios .essay-notes li { color: var(--dim); font-size: 0.85em; }
+.bios .essay-notes li:target { background: rgba(255, 255, 255, 0.1); box-shadow: 0 0 0 0.4rem rgba(255, 255, 255, 0.1); }
+.bios .essay-body sup,
+.bios .fn-back,
+.bios .essay-body .fn-ref a { color: var(--dim); }
+.bios .essay-body .fn-ref a { border-bottom-color: var(--dim); }
+.bios .year-label { border-bottom: 2px solid var(--line); color: var(--sub); font-size: 1em; }
+
+/* ------- 今日の天気は? (works.html) ------- */
+.bios .weather-frame { border: 2px solid var(--line); background: #000; }
+.bios .weather-meta { color: var(--dim); font-size: 0.85em; }
+.bios .weather-hint { color: var(--dim); font-size: 0.8em; }
+
+/* ------- 雑記 (zakki.html) ------- */
+.bios.page-zakki .section--zakki { padding-top: 0; padding-bottom: 0; }
+.bios .zakki-intro { max-width: none; }
+.bios .zakki-intro .lead--sm { margin-top: 0; }
+.bios .cat-field {
+  margin-top: 16px;
+  border: 2px solid var(--line);
+  background: var(--bar);
+}
+.bios .cat-tile {
+  border: 2px solid var(--line);
+  border-radius: 0;
+  background: #000;
+  transition: none;
+}
+.bios .cat-tile img { border-radius: 0; }
+.bios .cat-tile:hover { border-color: var(--val); box-shadow: none; }
+
+/* ------- キーの案内とコピーライト (フッター) ------- */
+.bios .footer { margin: 0; background: var(--chrome); }
+.bios .footer-inner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0 3ch;
+  max-width: none;
+  padding: 3px 2ch;
+  color: var(--chrome-ink);
+  font-size: 0.85em;
+}
+.bios .footer-inner p { margin: 0; }
+.bios-keys { display: flex; flex-wrap: wrap; gap: 0 3ch; }
+.bios-keys kbd {
+  padding: 0 0.5ch;
+  background: var(--chrome-ink);
+  color: var(--chrome);
+  font: inherit;
+}
+
+/* ------- 最初に出る起動画面 (bios.js) ------- */
+.bios-post {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  padding: 2ch;
+  overflow: hidden;
+  background: #000;
+  color: #c0c0c0;
+  font-weight: 400;
+  white-space: pre-wrap;
+}
+.bios-post .hi { color: #fff; font-weight: 700; }
+.bios-post .ok { color: var(--val); }
+.bios-post-skip { position: absolute; left: 2ch; bottom: 2ch; }
+
+@media (max-width: 760px) {
+  body.bios { font-size: 18px; }
+  .bios .site-header .row {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .bios .nav { flex-wrap: nowrap; width: auto; gap: 0; }
+  .bios-frame { grid-template-columns: 1fr; padding: 6px; }
+  .bios-main { border-right: 4px double var(--line); border-bottom: 0; padding-top: 16px; }
+  .bios-help-body { position: static; padding: 0 1ch; }
+  .bios .section { padding: 0 1ch; }
+  .bios .hero-portrait { width: 150px; }
+  .bios .item { display: block; padding: 8px 1ch; }
+  .bios .item-meta { display: inline-flex; margin-right: 1ch; }
+  .bios-keys { display: none; }
+  .bios-summary p { grid-template-columns: 1fr; }
+}

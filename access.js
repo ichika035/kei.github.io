@@ -27,12 +27,11 @@
   })();
 
   // ------------------------------------------------------------ Exit
-  // ESC (パスワードがわからないときも) か EXIT で、画面が白く飛んでから来たページへ戻る
+  // ESC (パスワードがわからないときも) か EXIT で、映ったときの逆に画面が横線に縮んで消えてから来たページへ戻る
   function exit() {
-    if (document.querySelector('.whiteout')) return;
-    const white = document.createElement('div');
-    white.className = 'whiteout';
-    document.body.appendChild(white);
+    const crt = document.querySelector('.crt');
+    if (crt.classList.contains('crt-off')) return;
+    crt.classList.add('crt-off');
     const back = document.referrer && new URL(document.referrer).origin === location.origin;
     setTimeout(() => {
       if (back) history.back();
@@ -41,10 +40,9 @@
   }
   $('exit').addEventListener('click', (e) => { e.preventDefault(); exit(); });
   document.addEventListener('keydown', (e) => { if (e.key === 'Escape') exit(); });
-  // 戻ってきたときに白い画面が残らないようにする
+  // 戻ってきたときに消えた画面のままにならないようにする
   window.addEventListener('pageshow', () => {
-    const white = document.querySelector('.whiteout');
-    if (white) white.remove();
+    document.querySelector('.crt').classList.remove('crt-off');
   });
 
   // ------------------------------------------------------------ Password

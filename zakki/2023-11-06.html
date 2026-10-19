@@ -8,19 +8,18 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=BIZ+UDGothic:wght@400;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="../style-jp.css">
-  <link rel="stylesheet" href="../style-win98.css">
+  <link rel="stylesheet" href="../style-bios.css">
   <script src="../analytics.js"></script>
 </head>
 
-<body class="win98">
+<body class="bios">
   <header class="site-header">
     <div class="row">
-      <a href="../index.html" class="brand">Kei Ichikawa</a>
+      <a href="../jp.html" class="brand">Home</a>
       <nav class="nav" aria-label="Main">
-        <a href="../jp.html" class="underline-quiet">市川慧</a>
         <a href="../works.html" class="underline-quiet">今日の天気は?</a>
         <a href="../zakki.html" class="underline-quiet">雑記</a>
       </nav>
@@ -58,15 +57,14 @@
 
   <footer class="footer">
     <div class="footer-inner">
-      <button type="button" class="start-button" aria-label="アクセスの地球儀を開く">スタート</button>
       <p>© <span id="year"></span> Kei Ichikawa. All rights reserved.</p>
-      <span class="tray"><time id="clock"></time></span>
     </div>
   </footer>
+
+  <script src="../bios.js"></script>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-  <script src="../win98.js"></script>
 </body>
 </html>
