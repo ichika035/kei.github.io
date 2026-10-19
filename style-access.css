@@ -143,14 +143,14 @@ html, body {
 
 /* パスワードの画面だけは、ほかのページと同じ BIOS の画面 (style-bios.css と同じ色) にする */
 .locked {
-  --b-bg: #18295e;
-  --b-bar: #0e1a40;
+  --b-bg: #000000;
+  --b-bar: #161616;
   --b-chrome: #e8e8e8;
-  --b-ink: #0e1a40;
-  --b-text: #f7f7f2;
-  --b-val: #ffe27a;
-  --b-sub: #b4ebff;
-  --b-line: #9aa6d6;
+  --b-ink: #000000;
+  --b-text: #ececec;
+  --b-val: #ffffff;
+  --b-sub: #ffffff;
+  --b-line: #8c8c8c;
   background: var(--b-bg);
   color: var(--b-text);
   font-family: "BIZ UDGothic", "MS Gothic", monospace;
@@ -161,22 +161,20 @@ html, body {
 }
 .locked::after { display: none; }
 .locked::before {
-  content: "KEI ICHIKAWA SETUP UTILITY";
+  content: "kei@isct: ~/access";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   padding: 2px 1ch;
-  background: var(--b-chrome);
-  color: var(--b-ink);
-  text-align: center;
-  letter-spacing: 0.08em;
+  border-bottom: 1px solid var(--b-line);
+  color: var(--b-sub);
 }
 .locked .login {
   min-width: min(24em, calc(100vw - 32px));
   padding: 0 0 20px;
-  border: 4px double var(--b-line);
-  background: var(--b-bar);
+  border: 1px solid var(--b-line);
+  background: var(--b-bg);
   white-space: normal;
 }
 .locked .login::before {
@@ -184,7 +182,7 @@ html, body {
   display: block;
   margin-bottom: 20px;
   padding: 6px 2ch;
-  border-bottom: 2px solid var(--b-line);
+  border-bottom: 1px solid var(--b-line);
   color: var(--b-sub);
   text-align: center;
 }
@@ -204,13 +202,13 @@ html, body {
 .locked #login-msg { margin: 12px 2ch 0; color: var(--b-val); }
 .locked .hud-bottom {
   padding: 3px 2ch;
-  background: var(--b-chrome);
-  color: var(--b-ink);
+  border-top: 1px solid var(--b-line);
+  color: var(--b-text);
   font-size: 0.85em;
 }
 .locked .hud-bottom span { display: none; }
-.locked .hud a { color: var(--b-ink); }
-.locked .hud a:hover { background: var(--b-ink); color: var(--b-chrome); }
+.locked .hud a { color: var(--b-text); }
+.locked .hud a:hover { background: var(--b-chrome); color: var(--b-ink); }
 
 /* ESC で戻るとき、映ったときの逆に、横線に縮んでから点になって消える */
 .crt.crt-off { animation: crt-off 0.55s ease-in forwards; }
